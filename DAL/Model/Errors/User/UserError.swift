@@ -18,5 +18,9 @@ enum UserError : Error {
 
     enum QueryError : Error {
         case userNotFound
+        case userNotSaved
+    }
+    enum AuthenticationError : Error {
+        case userNotLoggedIn
     }
 }

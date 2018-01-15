@@ -10,4 +10,5 @@ import Foundation
 
 enum RequestError : Error {
     case jsonEncodingError
+    case urlError
 }

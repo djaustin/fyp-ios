@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Organisation : Codable {
+struct DMOrganisation : Codable {
     var name: String
     var email: String
     var password: String

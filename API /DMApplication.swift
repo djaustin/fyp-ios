@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Application : Codable {
+struct DMApplication : Codable {
     let name: String
     let id: String?
     let clientIds: [String]

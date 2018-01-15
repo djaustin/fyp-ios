@@ -10,9 +10,9 @@ import Foundation
 
 struct GetUsersResponse : Codable {
     var status: String
-    var data: PostUserResponseData
+    var data: GetUsersResponseData
     
-    struct PostUserResponseData : Codable {
+    struct GetUsersResponseData : Codable {
         var users: [DMUser]
     }
 }

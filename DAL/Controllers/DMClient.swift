@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Client : Codable {
+class DMClient : Codable {
     let id: String
     let name: String
     let redirectUri: String
@@ -24,4 +24,6 @@ struct Client : Codable {
         case applicationId
         case id = "_id"
     }
+    
+    static let endpoint = URL(string: "https://digitalmonitor.tk/api/users/clients")!
 }

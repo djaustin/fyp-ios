@@ -9,6 +9,11 @@
 import UIKit
 import OAuth2
 
+func UI(_ block: @escaping ()->Void) {
+    DispatchQueue.main.async(execute: block)
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

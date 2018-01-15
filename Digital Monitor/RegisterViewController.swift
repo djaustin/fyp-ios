@@ -12,6 +12,7 @@ class RegisterViewController: UIViewController {
 
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
@@ -22,9 +23,13 @@ class RegisterViewController: UIViewController {
        let user = DMUser(email: txtEmail.text!, password: txtPassword.text!, firstName: txtFirstName.text!, lastName: txtLastName.text!)
         user.register { (success, error) in
             if let error = error {
-                print(error)
+                UI {
+                    self.lblStatus.text = String(describing: error)
+                }
             } else {
-                print(success)
+                UI {
+                    self.performSegue(withIdentifier: "registerToLogin", sender: self)
+                }
             }
         }
     }

@@ -9,26 +9,21 @@
 import UIKit
 import OAuth2
 
-func UI(_ block: @escaping ()->Void) {
-    DispatchQueue.main.async(execute: block)
-}
-
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBAction func loginButtonWasTapped(_ sender: Any) {
-        let jsonEncoder = JSONEncoder()
         DMUser.login(withEmail: txtEmail.text!, password: txtPassword.text!) { (user, error) in
             if let error = error {
                 UI {
                     self.lblStatus.text = String(describing: error)
                 }
             } else {
-                if let user = user {
+                if user != nil {
                     UI {
-                        self.lblStatus.text = "Logged in \(String(data:try! jsonEncoder.encode(user), encoding: .utf8))"
+                        self.performSegue(withIdentifier: "loginSuccessful", sender: self)
                     }
                 } else {
                     UI {
@@ -39,9 +34,16 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue){
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if DMUser.userIsLoggedIn {
+            performSegue(withIdentifier: "loginSuccessful", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,8 +25,8 @@ class DMUser : Codable {
         case id = "_id"
     }
     
-    static let endpoint = URL(string: "https://digitalmonitor.tk/api/users")!
-    
+    static let usersEndpoint = URL(string: "https://digitalmonitor.tk/api/users")!
+    static let userClientsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients"
     init(email: String, password: String, firstName: String, lastName: String) {
         self.email = email
         self.password = password
@@ -88,7 +88,7 @@ class DMUser : Codable {
         }
         
         let requestBody = RegistrationRequestBody(firstName: firstName, lastName: lastName, email: email, password: password)
-        var req = oauth2ClientCredentials.request(forURL: DMUser.endpoint)
+        var req = oauth2ClientCredentials.request(forURL: DMUser.usersEndpoint)
         
         req.httpMethod = "POST"
         guard let requestBodyJSON = try? jsonEncoder.encode(requestBody) else {
@@ -131,7 +131,7 @@ class DMUser : Codable {
         print("Getting user")
         let jsonDecoder = JSONDecoder()
         let oauth2ClientCredentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
-        var urlComponents = URLComponents(url: DMUser.endpoint, resolvingAgainstBaseURL: false)!
+        var urlComponents = URLComponents(url: DMUser.usersEndpoint, resolvingAgainstBaseURL: false)!
         urlComponents.queryItems = [URLQueryItem(name: "email", value: email)]
         let req = oauth2ClientCredentials.request(forURL: urlComponents.url!)
 
@@ -165,6 +165,60 @@ class DMUser : Codable {
             }
         }
         
+        task.resume()
+    }
+    
+    static func logout(){
+        self.authenticatedUser = nil
+        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.accessToken = nil
+        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.refreshToken = nil
+    }
+    
+    static var userIsLoggedIn: Bool {
+        get {
+            return self.authenticatedUser != nil
+        }
+    }
+    
+    func getAuthorisedClients(_ onCompletion: @escaping ([DMClient]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: DMUser.userClientsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        print(URL)
+        let req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: URL)
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(nil, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        if let responseBody = try? jsonDecoder.decode(GetClientsResponse.self, from: data){
+                            let clients = responseBody.data.clients
+                            return onCompletion(clients, nil)
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
         task.resume()
     }
     

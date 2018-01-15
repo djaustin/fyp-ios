@@ -21,5 +21,5 @@ struct User : Codable{
         case firstName
         case lastName
         case id = "_id"
-    }
+    }   
 }
