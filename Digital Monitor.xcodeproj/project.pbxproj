@@ -15,6 +15,9 @@
 		DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726E2008DD63008DAD30 /* RequestError.swift */; };
 		DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272702008F0A7008DAD30 /* ResponseError.swift */; };
 		DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527276200A3AD1008DAD30 /* PostUserResponse.swift */; };
+		DB52727B200A67B5008DAD30 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727A200A67B5008DAD30 /* UserController.swift */; };
+		DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727D200A74CF008DAD30 /* DMUser.swift */; };
+		DB527285200B9668008DAD30 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527284200B9668008DAD30 /* UserError.swift */; };
 		DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80C2006598300952EF7 /* AppDelegate.swift */; };
 		DBB9D80F2006598300952EF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80E2006598300952EF7 /* ViewController.swift */; };
 		DBB9D8122006598300952EF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8102006598300952EF7 /* Main.storyboard */; };
@@ -24,6 +27,9 @@
 		DBB9D8212006603900952EF7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8202006603900952EF7 /* Cartfile */; };
 		DBB9D8302006652900952EF7 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB9D82F2006652900952EF7 /* OAuth2.framework */; };
 		DBB9D832200674B800952EF7 /* RegistrationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D831200674B800952EF7 /* RegistrationRequestBody.swift */; };
+		DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */; };
+		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
+		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +41,9 @@
 		DB52726E2008DD63008DAD30 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		DB5272702008F0A7008DAD30 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		DB527276200A3AD1008DAD30 /* PostUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserResponse.swift; sourceTree = "<group>"; };
+		DB52727A200A67B5008DAD30 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		DB52727D200A74CF008DAD30 /* DMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUser.swift; sourceTree = "<group>"; };
+		DB527284200B9668008DAD30 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		DBB9D8092006598300952EF7 /* Digital Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9D80C2006598300952EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB9D80E2006598300952EF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +55,9 @@
 		DBB9D8202006603900952EF7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		DBB9D82F2006652900952EF7 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		DBB9D831200674B800952EF7 /* RegistrationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestBody.swift; sourceTree = "<group>"; };
+		DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOwnerExchangeResponse.swift; sourceTree = "<group>"; };
+		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
+		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,7 @@
 		DB16BC3620075EFD009D3294 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				DBCB8E23200BCBA400F5D58E /* OAuth2 */,
 				DB527274200A3A8C008DAD30 /* Users */,
 			);
 			path = Responses;
@@ -102,7 +115,6 @@
 		DB16BC3820075F86009D3294 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -110,6 +122,9 @@
 		DB16BC3920075FC7009D3294 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				DB527283200B965C008DAD30 /* Response */,
+				DB527282200B9642008DAD30 /* Request */,
+				DB527281200B9638008DAD30 /* User */,
 				DB52726E2008DD63008DAD30 /* RequestError.swift */,
 				DB5272702008F0A7008DAD30 /* ResponseError.swift */,
 			);
@@ -120,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				DB527276200A3AD1008DAD30 /* PostUserResponse.swift */,
+				DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -131,9 +147,49 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		DB527278200A678F008DAD30 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DB52727A200A67B5008DAD30 /* UserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DB52727C200A74C1008DAD30 /* API  */ = {
+			isa = PBXGroup;
+			children = (
+				DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */,
+				DB52727D200A74CF008DAD30 /* DMUser.swift */,
+			);
+			path = "API ";
+			sourceTree = "<group>";
+		};
+		DB527281200B9638008DAD30 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DB527284200B9668008DAD30 /* UserError.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		DB527282200B9642008DAD30 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DB527283200B965C008DAD30 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		DBB9D8002006598200952EF7 = {
 			isa = PBXGroup;
 			children = (
+				DB52727C200A74C1008DAD30 /* API  */,
 				DBB9D8202006603900952EF7 /* Cartfile */,
 				DBB9D83320067A0800952EF7 /* DAL */,
 				DBB9D80B2006598300952EF7 /* Digital Monitor */,
@@ -175,10 +231,20 @@
 		DBB9D83320067A0800952EF7 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				DB527278200A678F008DAD30 /* Controllers */,
 				DB16BC3820075F86009D3294 /* Connection */,
 				DB16BC3420075EE2009D3294 /* Model */,
 			);
 			path = DAL;
+			sourceTree = "<group>";
+		};
+		DBCB8E23200BCBA400F5D58E /* OAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */,
+				DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */,
+			);
+			path = OAuth2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,14 +339,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */,
 				DB52726B2007C01E008DAD30 /* Application.swift in Sources */,
 				DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */,
 				DBB9D832200674B800952EF7 /* RegistrationRequestBody.swift in Sources */,
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
+				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
+				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
+				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,
+				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* Organisation.swift in Sources */,
+				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* ViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,

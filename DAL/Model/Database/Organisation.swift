@@ -9,11 +9,11 @@
 import Foundation
 
 struct Organisation : Codable {
-    let name: String
-    let email: String
-    let password: String
-    let id: String?
-    let applicationIds: [String]
+    var name: String
+    var email: String
+    var password: String
+    var id: String?
+    var applicationIds: [String]
     
     enum CodingKeys: String, CodingKey {
         case name

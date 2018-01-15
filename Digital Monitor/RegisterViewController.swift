@@ -19,17 +19,16 @@ class RegisterViewController: UIViewController {
    
     
     @IBAction func registerButtonWasTapped(_ sender: Any) {
-        let api = DigitalMonitorAPI.sharedInstance
-        print("About to call registerUser")
-        api.registerUser(email: txtEmail.text!, password: txtPassword.text!, firstName: txtFirstName.text!, lastName: txtLastName.text!) { (data, error) in
-            print("in registerUser callback")
+       let user = DMUser(email: txtEmail.text!, password: txtPassword.text!, firstName: txtFirstName.text!, lastName: txtLastName.text!)
+        user.register { (success, error) in
             if let error = error {
                 print(error)
             } else {
-                print(data!)
+                print(success)
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

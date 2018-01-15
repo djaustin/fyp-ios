@@ -12,4 +12,5 @@ enum ResponseError : Error {
     case nilResponse
     case responseDecodeError
     case responseNotOK
+    case noResponseData
 }
