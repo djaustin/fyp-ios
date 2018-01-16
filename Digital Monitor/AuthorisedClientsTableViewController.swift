@@ -25,7 +25,8 @@ class AuthorisedClientsTableViewController: UITableViewController {
                     print(error)
                 } else {
                     if let clients = clients {
-                        self.dataSet = clients
+                        // Only add third party clients. This app uses a client but its a trusted first party and shouldn't be removable by the user
+                        self.dataSet = clients.filter {$0.isThirdParty}
                         UI{
                             self.tableView.reloadData()
                         }
@@ -71,25 +72,32 @@ class AuthorisedClientsTableViewController: UITableViewController {
     }
     
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let client = dataSet[indexPath.row]
+            user?.revokeAccess(fromClient: client, onCompletion: { (success, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    if success {
+                        UI{
+                            self.dataSet.remove(at: indexPath.row)
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    }
+                }
+            })
+            
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -115,6 +123,4 @@ class AuthorisedClientsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-
 }

@@ -27,6 +27,7 @@ class DMUser : Codable {
     
     static let usersEndpoint = URL(string: "https://digitalmonitor.tk/api/users")!
     static let userClientsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients"
+    static let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
     init(email: String, password: String, firstName: String, lastName: String) {
         self.email = email
         self.password = password
@@ -222,5 +223,51 @@ class DMUser : Codable {
         task.resume()
     }
     
+    
+    func revokeAccess(fromClient client: DMClient, onCompletion: @escaping (Bool, Error?) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(false, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = id else {
+            return onCompletion(false, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: DMUser.userClientByIdEndpointTemplate, id, client.id)) else {
+            return onCompletion(false, RequestError.urlError)
+        }
+        print(URL)
+        var req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: URL)
+        req.httpMethod = "DELETE"
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(false, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(false, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        if let responseBody = try? jsonDecoder.decode(RevokeClientAccessResponse.self, from: data){
+                            if responseBody.status == "success"{
+                                return onCompletion(true, nil)
+                            } else {
+                                return onCompletion(false, ResponseError.errorOnStatusOk)
+                            }
+                        } else {
+                            onCompletion(false, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(false, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(false, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
+        task.resume()
+    }
     
 }

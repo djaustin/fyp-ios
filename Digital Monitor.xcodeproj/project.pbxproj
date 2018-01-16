@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */; };
 		DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */; };
 		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
 		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				DB527276200A3AD1008DAD30 /* PostUserResponse.swift */,
 				DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */,
+				DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
+				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
 				DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */,

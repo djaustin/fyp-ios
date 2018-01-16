@@ -13,4 +13,5 @@ enum ResponseError : Error {
     case responseDecodeError
     case responseNotOK
     case noResponseData
+    case errorOnStatusOk
 }

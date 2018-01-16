@@ -15,6 +15,7 @@ class DMClient : Codable {
     let secret: String?
     let clientId: String?
     let applicationId: String
+    let isThirdParty: Bool
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -23,7 +24,7 @@ class DMClient : Codable {
         case clientId = "id"
         case applicationId
         case id = "_id"
+        case isThirdParty
     }
     
-    static let endpoint = URL(string: "https://digitalmonitor.tk/api/users/clients")!
 }
