@@ -28,6 +28,8 @@ class DMUser : Codable {
     static let usersEndpoint = URL(string: "https://digitalmonitor.tk/api/users")!
     static let userClientsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients"
     static let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
+    static let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
+    
     init(email: String, password: String, firstName: String, lastName: String) {
         self.email = email
         self.password = password
@@ -263,6 +265,51 @@ class DMUser : Codable {
                     }
                 } else {
                     onCompletion(false, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
+        task.resume()
+    }
+    
+    func getOverallUsageInSeconds(onCompletion: @escaping (Int?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: DMUser.userOverallMetricsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        print(URL)
+        var req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: URL)
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(nil, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        if let responseBody = try? jsonDecoder.decode(OverallMetricsResponse.self, from: data){
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.duration, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
                 }
             }
         }

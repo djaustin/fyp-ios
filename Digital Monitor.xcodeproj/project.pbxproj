@@ -22,7 +22,7 @@
 		DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */; };
 		DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80C2006598300952EF7 /* AppDelegate.swift */; };
 		DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80E2006598300952EF7 /* LoginViewController.swift */; };
-		DBB9D8122006598300952EF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8102006598300952EF7 /* Main.storyboard */; };
+		DBB9D8122006598300952EF7 /* Application.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8102006598300952EF7 /* Application.storyboard */; };
 		DBB9D8142006598300952EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8132006598300952EF7 /* Assets.xcassets */; };
 		DBB9D8172006598300952EF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8152006598300952EF7 /* LaunchScreen.storyboard */; };
 		DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */; };
@@ -35,6 +35,9 @@
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
 		DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */; };
 		DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */; };
+		DBFA4D0A200E7F160020D702 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA4D09200E7F160020D702 /* UsageViewController.swift */; };
+		DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */; };
+		DBFA4D0F200E8D150020D702 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFA4D0E200E8D150020D702 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +57,7 @@
 		DBB9D8092006598300952EF7 /* Digital Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9D80C2006598300952EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB9D80E2006598300952EF7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		DBB9D8112006598300952EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBB9D8112006598300952EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Application.storyboard; sourceTree = "<group>"; };
 		DBB9D8132006598300952EF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB9D8162006598300952EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB9D8182006598300952EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +71,9 @@
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
 		DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisedClientsTableViewController.swift; sourceTree = "<group>"; };
+		DBFA4D09200E7F160020D702 /* UsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
+		DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallMetricsResponse.swift; sourceTree = "<group>"; };
+		DBFA4D0E200E8D150020D702 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 		DB527274200A3A8C008DAD30 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				DBFA4D0B200E800C0020D702 /* Metrics */,
 				DB527276200A3AD1008DAD30 /* PostUserResponse.swift */,
 				DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */,
 				DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */,
@@ -232,7 +239,9 @@
 			children = (
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
-				DBB9D8102006598300952EF7 /* Main.storyboard */,
+				DBB9D8102006598300952EF7 /* Application.storyboard */,
+				DBFA4D0E200E8D150020D702 /* Main.storyboard */,
+				DBFA4D09200E7F160020D702 /* UsageViewController.swift */,
 				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
@@ -268,6 +277,14 @@
 				DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */,
 			);
 			path = OAuth2;
+			sourceTree = "<group>";
+		};
+		DBFA4D0B200E800C0020D702 /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */,
+			);
+			path = Metrics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,10 +347,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFA4D0F200E8D150020D702 /* Main.storyboard in Resources */,
 				DBB9D8172006598300952EF7 /* LaunchScreen.storyboard in Resources */,
 				DBB9D8142006598300952EF7 /* Assets.xcassets in Resources */,
 				DBB9D8212006603900952EF7 /* Cartfile in Resources */,
-				DBB9D8122006598300952EF7 /* Main.storyboard in Resources */,
+				DBB9D8122006598300952EF7 /* Application.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +388,7 @@
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
+				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
 				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,
@@ -378,6 +397,7 @@
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
+				DBFA4D0A200E7F160020D702 /* UsageViewController.swift in Sources */,
 				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
@@ -391,12 +411,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DBB9D8102006598300952EF7 /* Main.storyboard */ = {
+		DBB9D8102006598300952EF7 /* Application.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DBB9D8112006598300952EF7 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Application.storyboard;
 			sourceTree = "<group>";
 		};
 		DBB9D8152006598300952EF7 /* LaunchScreen.storyboard */ = {

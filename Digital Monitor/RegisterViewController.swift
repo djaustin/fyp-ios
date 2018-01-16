@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
                 }
             } else {
                 UI {
-                    self.performSegue(withIdentifier: "registerToLogin", sender: self)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
