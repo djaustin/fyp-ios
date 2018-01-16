@@ -14,9 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    
-    var nextViewController: UIViewController! 
-    
+        
     @IBAction func loginButtonWasTapped(_ sender: Any) {
         DMUser.login(withEmail: txtEmail.text!, password: txtPassword.text!) { (user, error) in
             if let error = error {
@@ -26,7 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 if user != nil {
                     UI {
-                        self.show(self.nextViewController!, sender: self)
+                        self.performSegue(withIdentifier: "login", sender: self)
                     }
                 } else {
                     UI {
@@ -44,12 +42,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sb = UIStoryboard(name: "Application", bundle: nil)
-        nextViewController = sb.instantiateInitialViewController()!
         txtEmail.delegate = self
         txtPassword.delegate = self
         if DMUser.userIsLoggedIn {
-            show(nextViewController!, sender: self)
+            performSegue(withIdentifier: "login", sender: self)
         }
     }
 

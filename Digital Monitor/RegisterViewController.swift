@@ -28,12 +28,15 @@ class RegisterViewController: UIViewController {
                 }
             } else {
                 UI {
-                    self.navigationController?.popViewController(animated: true)
+                self.performSegue(withIdentifier: "registerToLogin", sender: self)
                 }
             }
         }
     }
     
+    @IBAction func loginButtonWasTapped(_ sender: Any) {
+        performSegue(withIdentifier: "registerToLogin", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
