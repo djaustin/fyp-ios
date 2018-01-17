@@ -23,6 +23,7 @@
 		DB52727B200A67B5008DAD30 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727A200A67B5008DAD30 /* UserController.swift */; };
 		DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727D200A74CF008DAD30 /* DMUser.swift */; };
 		DB527285200B9668008DAD30 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527284200B9668008DAD30 /* UserError.swift */; };
+		DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */; };
 		DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */; };
 		DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80C2006598300952EF7 /* AppDelegate.swift */; };
 		DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80E2006598300952EF7 /* LoginViewController.swift */; };
@@ -39,7 +40,6 @@
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
 		DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */; };
 		DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */; };
-		DBFA4D0A200E7F160020D702 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA4D09200E7F160020D702 /* UsageViewController.swift */; };
 		DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +60,7 @@
 		DB52727A200A67B5008DAD30 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DB52727D200A74CF008DAD30 /* DMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUser.swift; sourceTree = "<group>"; };
 		DB527284200B9668008DAD30 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsMetricsResponse.swift; sourceTree = "<group>"; };
 		DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClientsResponse.swift; sourceTree = "<group>"; };
 		DBB9D8092006598300952EF7 /* Digital Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9D80C2006598300952EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
 		DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisedClientsTableViewController.swift; sourceTree = "<group>"; };
-		DBFA4D09200E7F160020D702 /* UsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
 		DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallMetricsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +249,6 @@
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
-				DBFA4D09200E7F160020D702 /* UsageViewController.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
@@ -292,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */,
+				DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */,
 			);
 			path = Metrics;
 			sourceTree = "<group>";
@@ -408,11 +408,11 @@
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
-				DBFA4D0A200E7F160020D702 /* UsageViewController.swift in Sources */,
 				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
 				DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */,
+				DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */,
 				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,

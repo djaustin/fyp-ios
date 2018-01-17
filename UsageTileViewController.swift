@@ -17,8 +17,14 @@ class UsageTileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applicationUsageView.titleLabel.text = "Top Application"
+        applicationUsageView.informationLabel.text = nil
+        platformUsageView.usageTimeLabel.text = nil
         platformUsageView.titleLabel.text = "Top Platform"
-        overallUsageView.titleLabel.text = "Overall Usage"
+        platformUsageView.informationLabel.text = nil
+        platformUsageView.usageTimeLabel.text = nil
+        overallUsageView.titleLabel.text = "Overall"
+        overallUsageView.informationLabel.text = nil
+        overallUsageView.usageTimeLabel.text = nil
         user = DMUser.authenticatedUser
         user?.getOverallUsageInSeconds(onCompletion: { (seconds, error) in
             if let error = error {
@@ -28,6 +34,26 @@ class UsageTileViewController: UIViewController {
             } else {
                 UI{
                     self.overallUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: seconds!)
+                }
+            }
+        })
+        user?.getApplicationsMetrics(onCompletion: { (data, error) in
+            if let error = error {
+                UI{
+                    self.applicationUsageView.informationLabel.text = String(describing: error)
+                }
+            } else {
+                if let data = data {
+                    guard let largestApplication = data.max(by: {$0.duration < $1.duration}) else {
+                        UI {
+                            self.applicationUsageView.informationLabel.text = "Cannot find max"
+                        }
+                        return
+                    }
+                    UI {
+                        self.applicationUsageView.informationLabel.text = largestApplication.name
+                        self.applicationUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: largestApplication.duration)
+                    }
                 }
             }
         })
