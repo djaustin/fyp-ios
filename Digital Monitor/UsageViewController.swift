@@ -48,17 +48,12 @@ class UsageViewController: UIViewController {
                     }
                 } else {
                     if let seconds = seconds {
-                        let (h,m,s) = self.hoursMinutesSeconds(fromSeconds: seconds)
                         UI {
-                            self.lblOverallUsageValue.text = String(format: "%u:%02u:%02u", h, m, s)
+                            self.lblOverallUsageValue.text = String(digitalClockFormatFromSeconds: seconds)
                         }
                     }
                 }
             })
         }
-    }
-    
-    private func hoursMinutesSeconds(fromSeconds seconds: Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, seconds % 60)
     }
 }

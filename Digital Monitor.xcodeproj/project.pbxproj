@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */; };
 		DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */; };
+		DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */; };
+		DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB29E0C5200F78BC00E988DB /* UsageTileView.xib */; };
+		DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C7200F7A7700E988DB /* UsageTileView.swift */; };
+		DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */; };
 		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
 		DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726A2007C01E008DAD30 /* DMApplication.swift */; };
@@ -42,6 +46,10 @@
 /* Begin PBXFileReference section */
 		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
+		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileViewController.swift; path = ../UsageTileViewController.swift; sourceTree = "<group>"; };
+		DB29E0C5200F78BC00E988DB /* UsageTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsageTileView.xib; sourceTree = "<group>"; };
+		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
+		DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FromSeconds.swift"; sourceTree = "<group>"; };
 		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
 		DB52726A2007C01E008DAD30 /* DMApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMApplication.swift; sourceTree = "<group>"; };
@@ -235,10 +243,14 @@
 		DBB9D80B2006598300952EF7 /* Digital Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				DB29E0C7200F7A7700E988DB /* UsageTileView.swift */,
+				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
+				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
 				DBFA4D09200E7F160020D702 /* UsageViewController.swift */,
+				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
@@ -348,6 +360,7 @@
 				DBB9D8142006598300952EF7 /* Assets.xcassets in Resources */,
 				DBB9D8212006603900952EF7 /* Cartfile in Resources */,
 				DBB9D8122006598300952EF7 /* Main.storyboard in Resources */,
+				DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,12 +391,14 @@
 			files = (
 				DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */,
 				DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */,
+				DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */,
 				DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */,
 				DBB9D832200674B800952EF7 /* RegistrationRequestBody.swift in Sources */,
 				DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */,
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
+				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
@@ -398,6 +413,7 @@
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
 				DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */,
+				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,
 				DB52726D2007C055008DAD30 /* DMClient.swift in Sources */,
