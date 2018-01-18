@@ -80,4 +80,12 @@ class DMUser : Codable {
         userController.getApplicationsMetrics(forUser: self, onCompletion: onCompletion)
     }
     
+    func getPlatformsMetrics(onCompletion: @escaping ([PlatformUsageData]?, Error?) -> Void){
+        userController.getPlatforms(forUser: self, onCompletion: onCompletion)
+    }
+    
+    func getAggregatedMetrics(onCompletion: @escaping (AggregatedMetricsResponseData?, Error?) -> Void){
+        userController.getAggregatedMetrics(forUser: self, onCompletion: onCompletion)
+    }
+    
 }

@@ -15,7 +15,58 @@ class UserController {
     let userClientsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients"
     let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
     let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
-    let userApplicationsMetrucsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications"
+    let userApplicationsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications"
+    let userPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms"
+    let userAggregatedMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/"
+    
+    func getAggregatedMetrics(forUser user: DMUser, onCompletion: @escaping (AggregatedMetricsResponseData?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: userAggregatedMetricsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        print(URL)
+        let req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: URL)
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(nil, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        
+                        do{
+                            let responseBody = try jsonDecoder.decode(AggregatedMetricsResponse.self, from: data)
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        }catch {
+                            print(String(data: data, encoding: .utf8))
+                            print(error)
+                            onCompletion(nil, error)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
+        task.resume()
+    }
     
     func getApplicationsMetrics(forUser user: DMUser, onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
@@ -25,7 +76,7 @@ class UserController {
         guard let id = user.id else {
             return onCompletion(nil, UserError.QueryError.userNotSaved)
         }
-        guard let URL = URL(string: String(format: userApplicationsMetrucsEndpointTemplate, id)) else {
+        guard let URL = URL(string: String(format: userApplicationsMetricsEndpointTemplate, id)) else {
             return onCompletion(nil, RequestError.urlError)
         }
         print(URL)
@@ -44,6 +95,51 @@ class UserController {
                         if let responseBody = try? jsonDecoder.decode(ApplicationsMetricsResponse.self, from: data){
                             if responseBody.status == "success"{
                                 return onCompletion(responseBody.data.applications, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
+        task.resume()
+    }
+    
+    func getPlatforms(forUser user: DMUser, onCompletion: @escaping ([PlatformUsageData]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: userPlatformsMetricsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        print(URL)
+        let req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: URL)
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(nil, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        if let responseBody = try? jsonDecoder.decode(PlatformsMetricsResponse.self, from: data){
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.platforms, nil)
                             } else {
                                 return onCompletion(nil, ResponseError.errorOnStatusOk)
                             }

@@ -24,6 +24,8 @@
 		DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727D200A74CF008DAD30 /* DMUser.swift */; };
 		DB527285200B9668008DAD30 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527284200B9668008DAD30 /* UserError.swift */; };
 		DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */; };
+		DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */; };
+		DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */; };
 		DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */; };
 		DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80C2006598300952EF7 /* AppDelegate.swift */; };
 		DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80E2006598300952EF7 /* LoginViewController.swift */; };
@@ -61,6 +63,8 @@
 		DB52727D200A74CF008DAD30 /* DMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUser.swift; sourceTree = "<group>"; };
 		DB527284200B9668008DAD30 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsMetricsResponse.swift; sourceTree = "<group>"; };
+		DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsMetricsResponse.swift; sourceTree = "<group>"; };
+		DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedMetricsResponse.swift; sourceTree = "<group>"; };
 		DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClientsResponse.swift; sourceTree = "<group>"; };
 		DBB9D8092006598300952EF7 /* Digital Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9D80C2006598300952EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 			children = (
 				DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */,
 				DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */,
+				DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */,
+				DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */,
 			);
 			path = Metrics;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
+				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
@@ -405,6 +412,7 @@
 				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,
 				DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */,
 				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
+				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,

@@ -12,7 +12,8 @@ struct OverallMetricsResponse : Codable {
     let status : String
     let data : OverallMetricsResponseData
     
-    struct OverallMetricsResponseData : Codable {
-        let duration : Int
-    }
+}
+
+struct OverallMetricsResponseData : Codable {
+    let duration : Int
 }
