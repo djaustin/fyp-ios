@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UsageTileView" customModule="Digital_Monitor" customModuleProvider="target">
             <connections>
+                <outlet property="button" destination="Dgu-MV-DT1" id="6L6-cI-zSh"/>
                 <outlet property="informationLabel" destination="SeW-kl-7iE" id="rSv-Ep-VIR"/>
                 <outlet property="titleLabel" destination="qTx-fY-Kbk" id="vvL-ae-m8T"/>
                 <outlet property="usageTimeLabel" destination="qOS-I5-NzD" id="hFO-4a-ulP"/>
@@ -23,24 +24,28 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTx-fY-Kbk">
-                    <rect key="frame" x="5" y="11" width="190" height="23"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTx-fY-Kbk">
+                    <rect key="frame" x="5" y="11" width="190" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-kl-7iE">
-                    <rect key="frame" x="5" y="42" width="190" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-kl-7iE">
+                    <rect key="frame" x="5" y="19" width="190" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-I5-NzD">
-                    <rect key="frame" x="5" y="80.5" width="190" height="39.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-I5-NzD">
+                    <rect key="frame" x="5" y="27.5" width="190" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgu-MV-DT1">
+                    <rect key="frame" x="73" y="150" width="55" height="30"/>
+                    <state key="normal" title="View All"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -51,8 +56,10 @@
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jit-MR-JHe"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="top" secondItem="SeW-kl-7iE" secondAttribute="bottom" constant="8.5" id="OzT-9z-hLH"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Svx-Hq-lJA"/>
+                <constraint firstItem="Dgu-MV-DT1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y3N-AH-twT"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="aAn-z6-NJI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qTx-fY-Kbk" secondAttribute="trailing" constant="5" id="hzz-NF-86p"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Dgu-MV-DT1" secondAttribute="bottom" constant="20" id="lAm-P8-SJU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SeW-kl-7iE" secondAttribute="trailing" constant="5" id="rW6-uO-CUJ"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="11" id="sIy-JA-9De"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qOS-I5-NzD" secondAttribute="trailing" constant="5" id="wCB-7p-11O"/>

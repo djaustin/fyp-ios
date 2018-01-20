@@ -16,12 +16,23 @@ class UsageTileViewController: UIViewController {
     @IBAction func viewButtonWasTapped(_ sender: Any) {
         getUsageOverviewData()
     }
+    
+    var applicationData: [ApplicationUsageData] = []
+    var platformData: [PlatformUsageData] = []
+    
     @IBOutlet weak var applicationUsageView: UsageTileView!
     @IBOutlet weak var platformUsageView: UsageTileView!
     @IBOutlet weak var overallUsageView: UsageTileView!
     var user: DMUser?
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        user = DMUser.authenticatedUser
+        getUsageOverviewData()
+        // Do any additional setup after loading the view.
+    }
+    
+    func setupViews(){
         fromDatePicker.date = Calendar.current.date(byAdding: .day, value: -7, to: fromDatePicker.date)!
         applicationUsageView.titleLabel.text = "Top Application"
         applicationUsageView.informationLabel.text = nil
@@ -33,11 +44,23 @@ class UsageTileViewController: UIViewController {
         overallUsageView.titleLabel.text = "Overall"
         overallUsageView.informationLabel.text = nil
         overallUsageView.usageTimeLabel.text = nil
-        user = DMUser.authenticatedUser
-        getUsageOverviewData()
-        // Do any additional setup after loading the view.
+        overallUsageView.button.isEnabled = false
+        overallUsageView.button.isHidden = true
+        
+        let applicationTappedGesture = UITapGestureRecognizer(target: self, action: #selector(applicationTileWasTapped(_:)))
+        let platformTappedGesture = UITapGestureRecognizer(target: self, action: #selector(platformTileWasTapped(_:)))
+        
+        platformUsageView.button.addGestureRecognizer(platformTappedGesture)
+        applicationUsageView.button.addGestureRecognizer(applicationTappedGesture)
+    }
+    
+    @objc func applicationTileWasTapped(_ sender: UITapGestureRecognizer){
+        performSegue(withIdentifier: "applicationUsage", sender: self)
     }
 
+    @objc func platformTileWasTapped(_ sender: UITapGestureRecognizer){
+                performSegue(withIdentifier: "platformUsage", sender: self)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,6 +86,8 @@ class UsageTileViewController: UIViewController {
                 }
             } else {
                 if let data = data {
+                    self.applicationData = data.applications
+                    self.platformData = data.platforms
                     self.populateOverallUsageTile(withData: data.overall)
                     self.populatePlatformsUsageTile(withData: data.platforms)
                     self.populateApplicationsUsageTile(withData: data.applications)
@@ -117,6 +142,16 @@ class UsageTileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getUsageOverviewData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PlatformUsageCollectionViewController {
+            vc.dataSource = platformData
+        }
+        
+        if let vc = segue.destination as? ApplicationUsageCollectionViewController {
+            vc.dataSource = applicationData
+        }
     }
 
 }

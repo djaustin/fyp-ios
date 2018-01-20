@@ -40,6 +40,8 @@
 		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
 		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
+		DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */; };
+		DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */; };
 		DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */; };
 		DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */; };
 		DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */; };
@@ -81,6 +83,8 @@
 		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
+		DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUsageCollectionViewController.swift; sourceTree = "<group>"; };
+		DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUsageCollectionViewController.swift; sourceTree = "<group>"; };
 		DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisedClientsTableViewController.swift; sourceTree = "<group>"; };
 		DBFA4D0C200E801E0020D702 /* OverallMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallMetricsResponse.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
+				DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */,
+				DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
@@ -406,7 +412,9 @@
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
 				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
+				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
+				DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
 				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,

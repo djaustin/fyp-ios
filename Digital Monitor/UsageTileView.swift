@@ -8,12 +8,13 @@
 
 import UIKit
 
-class UsageTileView: UIView {
+class UsageTileView: UICollectionViewCell {
 
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var usageTimeLabel: UILabel!
     @IBOutlet var view: UIView!
+    @IBOutlet weak var button: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
