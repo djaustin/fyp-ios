@@ -19,6 +19,70 @@ class UserController {
     let userPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms"
     let userAggregatedMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/"
     
+    func getAggregatedMetrics(forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping (AggregatedMetricsResponseData?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let urlString = URL(string: String(format: userAggregatedMetricsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        var queryItems: [URLQueryItem] = []
+        for (key, value) in query {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        
+        guard var urlComponents = URLComponents(url: urlString, resolvingAgainstBaseURL: false) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        urlComponents.queryItems = queryItems
+        
+        guard let url = urlComponents.url else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        let req = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.request(forURL: url)
+        print("about to generate task")
+        let task = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.session.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                guard let response = response as? HTTPURLResponse else {
+                    return onCompletion(nil, ResponseError.nilResponse)
+                }
+                
+                if response.statusCode == 200 {
+                    if let data = data {
+                        
+                        do{
+                            let responseBody = try jsonDecoder.decode(AggregatedMetricsResponse.self, from: data)
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        }catch {
+                            print(String(data: data, encoding: .utf8))
+                            print(error)
+                            onCompletion(nil, error)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+        print("about to send request" )
+        task.resume()
+    }
+    
     func getAggregatedMetrics(forUser user: DMUser, onCompletion: @escaping (AggregatedMetricsResponseData?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
         if !DMUser.userIsLoggedIn {

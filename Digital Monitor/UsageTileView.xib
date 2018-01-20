@@ -44,12 +44,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qOS-I5-NzD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0hi-n5-4cH"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="2sq-73-mYJ"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="4Px-jI-z9H"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="6vt-aY-uAf"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CHp-kP-JNp"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jit-MR-JHe"/>
+                <constraint firstItem="qOS-I5-NzD" firstAttribute="top" secondItem="SeW-kl-7iE" secondAttribute="bottom" constant="8.5" id="OzT-9z-hLH"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Svx-Hq-lJA"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="aAn-z6-NJI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qTx-fY-Kbk" secondAttribute="trailing" constant="5" id="hzz-NF-86p"/>

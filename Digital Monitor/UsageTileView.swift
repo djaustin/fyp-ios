@@ -28,7 +28,10 @@ class UsageTileView: UIView {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         layer.cornerRadius = 15
         layer.masksToBounds = true
-
+        informationLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.adjustsFontSizeToFitWidth = true
+        usageTimeLabel.adjustsFontSizeToFitWidth = true
+        
     
 
     }

@@ -88,4 +88,8 @@ class DMUser : Codable {
         userController.getAggregatedMetrics(forUser: self, onCompletion: onCompletion)
     }
     
+    func getAggregatedMetrics(withQuery query: [String: String], onCompletion: @escaping (AggregatedMetricsResponseData?, Error?) -> Void){
+        userController.getAggregatedMetrics(forUser: self, withQuery: query, onCompletion: onCompletion)
+    }
+    
 }

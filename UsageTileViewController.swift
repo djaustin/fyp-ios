@@ -10,12 +10,19 @@ import UIKit
 
 class UsageTileViewController: UIViewController {
 
+    @IBOutlet weak var fromDatePicker: UIDatePicker!
+    @IBOutlet weak var toDatePicker: UIDatePicker!
+    
+    @IBAction func viewButtonWasTapped(_ sender: Any) {
+        getUsageOverviewData()
+    }
     @IBOutlet weak var applicationUsageView: UsageTileView!
     @IBOutlet weak var platformUsageView: UsageTileView!
     @IBOutlet weak var overallUsageView: UsageTileView!
     var user: DMUser?
     override func viewDidLoad() {
         super.viewDidLoad()
+        fromDatePicker.date = Calendar.current.date(byAdding: .day, value: -7, to: fromDatePicker.date)!
         applicationUsageView.titleLabel.text = "Top Application"
         applicationUsageView.informationLabel.text = nil
         applicationUsageView.usageTimeLabel.text = nil
@@ -31,13 +38,23 @@ class UsageTileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func getUsageOverviewData(){
-        user?.getAggregatedMetrics(onCompletion: { (data, error) in
+        
+        let fromTime = Int(fromDatePicker.date.timeIntervalSince1970 * 1000)
+        let toTime = Int(toDatePicker.date.timeIntervalSince1970 * 1000)
+        
+        let query = [
+            "fromTime": String(fromTime),
+            "toTime": String(toTime)
+        ]
+        
+        user?.getAggregatedMetrics(withQuery: query, onCompletion: { (data, error) in
             if let error = error {
                 UI{
                     self.platformUsageView.informationLabel.text = String(describing: error)
@@ -56,6 +73,10 @@ class UsageTileViewController: UIViewController {
     
     func populatePlatformsUsageTile(withData data: [PlatformUsageData]){
         guard data.count > 0 else {
+            UI {
+                self.platformUsageView.informationLabel.text = nil
+                self.platformUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: 0)
+            }
             return
         }
         guard let topPlatform = data.max(by: {$0.duration < $1.duration}) else {
@@ -71,6 +92,10 @@ class UsageTileViewController: UIViewController {
     }
     func populateApplicationsUsageTile(withData data: [ApplicationUsageData]){
         guard data.count > 0 else {
+            UI {
+                self.applicationUsageView.informationLabel.text = nil
+                self.applicationUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: 0)
+            }
             return
         }
         guard let largestApplication = data.max(by: {$0.duration < $1.duration}) else {
@@ -93,15 +118,5 @@ class UsageTileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         getUsageOverviewData()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -354,46 +354,81 @@
                                 <rect key="frame" x="190" y="420" width="181" height="193"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xS6-aZ-gA6">
-                                <rect key="frame" x="157" y="87" width="61" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZu-8b-i7H" customClass="UsageTileView" customModule="Digital_Monitor" customModuleProvider="target">
+                                <rect key="frame" x="5" y="265" width="365" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="qNZ-gQ-Xxk"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5I-Ov-sjp">
+                                <rect key="frame" x="15" y="79" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZu-8b-i7H" customClass="UsageTileView" customModule="Digital_Monitor" customModuleProvider="target">
-                                <rect key="frame" x="5" y="133" width="365" height="282"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CDk-6Q-czd">
+                                <rect key="frame" x="0.0" y="165" width="375" height="53"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="538147419.10367203">
+                                    <!--2018-01-20 13:23:39 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7V-6O-3Bb">
+                                <rect key="frame" x="15" y="152" width="24" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJA-kb-jQk">
+                                <rect key="frame" x="170" y="226" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View"/>
+                                <connections>
+                                    <action selector="viewButtonWasTapped:" destination="W3U-GD-cVE" eventType="touchUpInside" id="nb7-KS-H0C"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="J8E-Za-ha8">
+                                <rect key="frame" x="0.0" y="91" width="375" height="53"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="538147419.10367203">
+                                    <!--2018-01-20 13:23:39 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="0.95358737244897962" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="s7V-6O-3Bb" firstAttribute="leading" secondItem="8En-Mp-8sn" secondAttribute="centerX" constant="-172.5" id="11f-HS-XmL"/>
                             <constraint firstItem="EJi-Hn-PLd" firstAttribute="leading" secondItem="ze8-JD-ldN" secondAttribute="leading" constant="5" id="4YR-aN-Gur"/>
                             <constraint firstItem="ze8-JD-ldN" firstAttribute="bottom" secondItem="EJi-Hn-PLd" secondAttribute="bottom" constant="5" id="5pK-2I-KPe"/>
                             <constraint firstItem="ze8-JD-ldN" firstAttribute="bottom" secondItem="ich-Lo-q8R" secondAttribute="bottom" constant="5" id="9JG-Ua-Pay"/>
-                            <constraint firstItem="EZu-8b-i7H" firstAttribute="top" secondItem="xS6-aZ-gA6" secondAttribute="bottom" constant="25.5" id="AMm-A0-eyY"/>
                             <constraint firstItem="EJi-Hn-PLd" firstAttribute="top" secondItem="EZu-8b-i7H" secondAttribute="bottom" constant="5" id="DDu-16-N1t"/>
-                            <constraint firstItem="xS6-aZ-gA6" firstAttribute="centerX" secondItem="8En-Mp-8sn" secondAttribute="centerX" id="Rh4-fA-PoS"/>
+                            <constraint firstItem="D5I-Ov-sjp" firstAttribute="leading" secondItem="ze8-JD-ldN" secondAttribute="leading" constant="15" id="E0e-Sv-Yde"/>
+                            <constraint firstItem="s7V-6O-3Bb" firstAttribute="leading" secondItem="8En-Mp-8sn" secondAttribute="centerX" constant="-172.5" id="Gku-Mo-RfI"/>
                             <constraint firstItem="ze8-JD-ldN" firstAttribute="trailing" secondItem="ich-Lo-q8R" secondAttribute="trailing" constant="4" id="Ury-89-95K"/>
                             <constraint firstItem="EZu-8b-i7H" firstAttribute="leading" secondItem="ze8-JD-ldN" secondAttribute="leading" constant="5" id="ak4-RX-Hxt"/>
                             <constraint firstAttribute="bottom" secondItem="EZu-8b-i7H" secondAttribute="bottom" constant="252" id="dtk-OI-5Cz"/>
                             <constraint firstItem="ich-Lo-q8R" firstAttribute="leading" secondItem="8En-Mp-8sn" secondAttribute="centerX" constant="2.5" id="gcX-h1-nJg"/>
-                            <constraint firstItem="xS6-aZ-gA6" firstAttribute="top" secondItem="ze8-JD-ldN" secondAttribute="top" constant="23" id="kb9-6E-Fzv"/>
                             <constraint firstAttribute="centerX" secondItem="EJi-Hn-PLd" secondAttribute="trailing" constant="2.5" id="mKD-BO-UKW"/>
+                            <constraint firstItem="D5I-Ov-sjp" firstAttribute="top" secondItem="ze8-JD-ldN" secondAttribute="top" constant="15" id="mKJ-Pa-eU7"/>
                             <constraint firstItem="ich-Lo-q8R" firstAttribute="top" secondItem="EZu-8b-i7H" secondAttribute="bottom" constant="5" id="nBg-wp-BZm"/>
                             <constraint firstItem="ze8-JD-ldN" firstAttribute="trailing" secondItem="EZu-8b-i7H" secondAttribute="trailing" constant="5" id="qct-bT-ap2"/>
+                            <constraint firstItem="s7V-6O-3Bb" firstAttribute="top" secondItem="ze8-JD-ldN" secondAttribute="top" constant="88" id="vtj-wT-iPl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ze8-JD-ldN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Usage" id="2F4-Rw-ig6"/>
                     <connections>
                         <outlet property="applicationUsageView" destination="EJi-Hn-PLd" id="iG2-uz-aQW"/>
+                        <outlet property="fromDatePicker" destination="J8E-Za-ha8" id="iOs-DR-OFS"/>
                         <outlet property="overallUsageView" destination="EZu-8b-i7H" id="eRy-Sm-Mkb"/>
                         <outlet property="platformUsageView" destination="ich-Lo-q8R" id="eYS-pK-cob"/>
+                        <outlet property="toDatePicker" destination="CDk-6Q-czd" id="0Dh-Vt-Abg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdn-Vv-KWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686" y="322"/>
+            <point key="canvasLocation" x="2685.5999999999999" y="321.58920539730138"/>
         </scene>
     </scenes>
     <resources>
