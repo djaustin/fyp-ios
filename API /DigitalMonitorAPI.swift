@@ -24,10 +24,16 @@ class DigitalMonitorAPI{
         "client_id": "dmios",
         "client_secret": "password"
         ] as OAuth2JSON
+    static let oauthSettings = [
+        "token_uri": "https://digitalmonitor.tk/api/oauth2/token",
+        "client_id": "dmios",
+        "client_secret": "password"
+        ] as OAuth2JSON
     private init() {
         
         let clientCredentialsClient = OAuth2ClientCredentials(settings: settings)
         let passwordGrant = OAuth2PasswordGrant(settings: settings)
+        passwordGrant.logger = OAuth2DebugLogger(.trace)
         clientCredentialsClient.logger = OAuth2DebugLogger(.trace)
         self.oauth2ClientCredentials = clientCredentialsClient
         self.oauth2PasswordGrant = passwordGrant
@@ -47,6 +53,7 @@ class DigitalMonitorAPI{
         oauth2PasswordGrant.obtainAccessToken { (json, error) in
             onCompletion(error)
         }
+
     }
 
 }

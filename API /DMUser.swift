@@ -53,8 +53,7 @@ class DMUser : Codable {
     
     static func logout(){
         self.authenticatedUser = nil
-        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.accessToken = nil
-        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.refreshToken = nil
+        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.forgetTokens()
     }
     
     static var userIsLoggedIn: Bool {

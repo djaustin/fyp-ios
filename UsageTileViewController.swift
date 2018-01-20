@@ -28,7 +28,6 @@ class UsageTileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         user = DMUser.authenticatedUser
-        getUsageOverviewData()
         // Do any additional setup after loading the view.
     }
     
