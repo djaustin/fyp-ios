@@ -375,7 +375,7 @@ class UserController {
             return onCompletion(false, UserError.RegistrationError.missingPassword)
         }
         
-        let requestBody = RegistrationRequestBody(firstName: firstName, lastName: lastName, email: email, password: password)
+        let requestBody = UserRegistrationRequestBody(firstName: firstName, lastName: lastName, email: email, password: password)
         var req = oauth2ClientCredentials.request(forURL: usersEndpoint)
         
         req.httpMethod = "POST"
@@ -414,10 +414,7 @@ class UserController {
     
     func login(withEmail email: String, password: String, onCompletion: @escaping (DMUser?, Error?) -> Void){
         // Delete existing tokens as we only want resource owner token now and want to make sure its for the newly authenticated user and not a different user
-        oauth2ClientCredentials.forgetTokens()
         oauth2PasswordGrant.forgetTokens()
-        print(oauth2ClientCredentials.accessToken, oauth2ClientCredentials.refreshToken)
-        print(oauth2PasswordGrant.accessToken, oauth2PasswordGrant.refreshToken)
         // Use supplied credentials to attempt to get an access token for this user
         oauth2PasswordGrant.password = password
         oauth2PasswordGrant.username = email

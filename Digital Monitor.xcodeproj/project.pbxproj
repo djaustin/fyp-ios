@@ -13,6 +13,13 @@
 		DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB29E0C5200F78BC00E988DB /* UsageTileView.xib */; };
 		DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C7200F7A7700E988DB /* UsageTileView.swift */; };
 		DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */; };
+		DB2D2CCD20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */; };
+		DB2D2CCF20163E38006E5BA1 /* OrganisationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */; };
+		DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */; };
+		DB2D2CD8201642A5006E5BA1 /* PostOrganisationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CD7201642A5006E5BA1 /* PostOrganisationResponse.swift */; };
+		DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDA20164776006E5BA1 /* OrganisationError.swift */; };
+		DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */; };
+		DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */; };
 		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
 		DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726A2007C01E008DAD30 /* DMApplication.swift */; };
@@ -35,7 +42,7 @@
 		DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */; };
 		DBB9D8212006603900952EF7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8202006603900952EF7 /* Cartfile */; };
 		DBB9D8302006652900952EF7 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB9D82F2006652900952EF7 /* OAuth2.framework */; };
-		DBB9D832200674B800952EF7 /* RegistrationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D831200674B800952EF7 /* RegistrationRequestBody.swift */; };
+		DBB9D832200674B800952EF7 /* UserRegistrationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */; };
 		DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */; };
 		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
 		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
@@ -54,6 +61,13 @@
 		DB29E0C5200F78BC00E988DB /* UsageTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsageTileView.xib; sourceTree = "<group>"; };
 		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
 		DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FromSeconds.swift"; sourceTree = "<group>"; };
+		DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationViewController.swift; sourceTree = "<group>"; };
+		DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationController.swift; sourceTree = "<group>"; };
+		DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationRequest.swift; sourceTree = "<group>"; };
+		DB2D2CD7201642A5006E5BA1 /* PostOrganisationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrganisationResponse.swift; sourceTree = "<group>"; };
+		DB2D2CDA20164776006E5BA1 /* OrganisationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationError.swift; sourceTree = "<group>"; };
+		DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationLoginViewController.swift; sourceTree = "<group>"; };
+		DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrganisationsResponse.swift; sourceTree = "<group>"; };
 		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
 		DB52726A2007C01E008DAD30 /* DMApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMApplication.swift; sourceTree = "<group>"; };
@@ -78,7 +92,7 @@
 		DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DBB9D8202006603900952EF7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		DBB9D82F2006652900952EF7 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
-		DBB9D831200674B800952EF7 /* RegistrationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestBody.swift; sourceTree = "<group>"; };
+		DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationRequestBody.swift; sourceTree = "<group>"; };
 		DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOwnerExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
@@ -116,8 +130,8 @@
 		DB16BC3520075EEA009D3294 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D2CD3201641E1006E5BA1 /* Organisations */,
 				DB527275200A3A97008DAD30 /* Users */,
-				DBB9D831200674B800952EF7 /* RegistrationRequestBody.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -125,6 +139,7 @@
 		DB16BC3620075EFD009D3294 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D2CD62016428C006E5BA1 /* Organisations */,
 				DB956671200D1E2E00CCB9D6 /* Clients */,
 				DBCB8E23200BCBA400F5D58E /* OAuth2 */,
 				DB527274200A3A8C008DAD30 /* Users */,
@@ -150,6 +165,7 @@
 		DB16BC3920075FC7009D3294 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D2CD920164757006E5BA1 /* Organisation */,
 				DB527283200B965C008DAD30 /* Response */,
 				DB527282200B9642008DAD30 /* Request */,
 				DB527281200B9638008DAD30 /* User */,
@@ -157,6 +173,31 @@
 				DB5272702008F0A7008DAD30 /* ResponseError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		DB2D2CD3201641E1006E5BA1 /* Organisations */ = {
+			isa = PBXGroup;
+			children = (
+				DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */,
+			);
+			path = Organisations;
+			sourceTree = "<group>";
+		};
+		DB2D2CD62016428C006E5BA1 /* Organisations */ = {
+			isa = PBXGroup;
+			children = (
+				DB2D2CD7201642A5006E5BA1 /* PostOrganisationResponse.swift */,
+				DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */,
+			);
+			path = Organisations;
+			sourceTree = "<group>";
+		};
+		DB2D2CD920164757006E5BA1 /* Organisation */ = {
+			isa = PBXGroup;
+			children = (
+				DB2D2CDA20164776006E5BA1 /* OrganisationError.swift */,
+			);
+			path = Organisation;
 			sourceTree = "<group>";
 		};
 		DB527274200A3A8C008DAD30 /* Users */ = {
@@ -173,6 +214,7 @@
 		DB527275200A3A97008DAD30 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -181,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				DB52727A200A67B5008DAD30 /* UserController.swift */,
+				DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,9 +294,11 @@
 		DBB9D80B2006598300952EF7 /* Digital Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */,
 				DB29E0C7200F7A7700E988DB /* UsageTileView.swift */,
 				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
 				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
+				DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */,
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
@@ -401,11 +446,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2D2CD8201642A5006E5BA1 /* PostOrganisationResponse.swift in Sources */,
 				DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */,
 				DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */,
+				DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */,
 				DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */,
 				DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */,
-				DBB9D832200674B800952EF7 /* RegistrationRequestBody.swift in Sources */,
+				DBB9D832200674B800952EF7 /* UserRegistrationRequestBody.swift in Sources */,
+				DB2D2CCD20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift in Sources */,
+				DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */,
+				DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */,
 				DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */,
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
@@ -413,8 +463,10 @@
 				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
 				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
+				DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
 				DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */,
+				DB2D2CCF20163E38006E5BA1 /* OrganisationController.swift in Sources */,
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
 				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,

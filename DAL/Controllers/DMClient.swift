@@ -26,5 +26,5 @@ class DMClient : Codable {
         case id = "_id"
         case isThirdParty
     }
-    
+
 }
