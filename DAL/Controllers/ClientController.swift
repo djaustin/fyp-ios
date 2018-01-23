@@ -1,0 +1,58 @@
+//
+//  ClientController.swift
+//  Digital Monitor
+//
+//  Created by Dan Austin on 23/01/2018.
+//  Copyright © 2018 Dan Austin. All rights reserved.
+//
+
+import Foundation
+import OAuth2
+
+class ClientController {
+    let jsonDecoder = JSONDecoder()
+    let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
+    
+    let applicationClientEndpointTemplate = "https://digitalmonitor.tk/api/organisations/%@/applications/%@/clients"
+    
+    func getClients(forApplication application: DMApplication, ownedBy organisation: DMOrganisation, onCompletion: @escaping ([DMClient]?, Error?) -> Void){
+        guard let appId = application.id else {
+            return onCompletion(nil, ApplicationError.QueryError.missingId)
+        }
+        
+        guard let orgId = organisation.id else {
+            return onCompletion(nil, OrganisationError.QueryError.missingId)
+        }
+        
+        guard let url = URL(string: String(format: applicationClientEndpointTemplate, orgId, appId)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        let req = oauth2PasswordGrant.request(forURL: url)
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        
+                        if let responseBody = try? self.jsonDecoder.decode(GetClientsResponse.self, from: data){
+                            onCompletion(responseBody.data.clients, nil)
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                        
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+        
+    }
+}

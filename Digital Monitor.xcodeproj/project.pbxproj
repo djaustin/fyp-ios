@@ -13,6 +13,10 @@
 		DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB29E0C5200F78BC00E988DB /* UsageTileView.xib */; };
 		DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C7200F7A7700E988DB /* UsageTileView.swift */; };
 		DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */; };
+		DB2C2656201791F80010A202 /* ApplicationClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2655201791F80010A202 /* ApplicationClientsTableViewController.swift */; };
+		DB2C2658201795C20010A202 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2657201795C20010A202 /* ClientController.swift */; };
+		DB2C265A201796320010A202 /* DMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2659201796310010A202 /* DMClient.swift */; };
+		DB2C265D201797B90010A202 /* ApplicationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C265C201797B90010A202 /* ApplicationError.swift */; };
 		DB2D2CCD20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */; };
 		DB2D2CCF20163E38006E5BA1 /* OrganisationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */; };
 		DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */; };
@@ -23,7 +27,6 @@
 		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
 		DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726A2007C01E008DAD30 /* DMApplication.swift */; };
-		DB52726D2007C055008DAD30 /* DMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726C2007C055008DAD30 /* DMClient.swift */; };
 		DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726E2008DD63008DAD30 /* RequestError.swift */; };
 		DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272702008F0A7008DAD30 /* ResponseError.swift */; };
 		DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527276200A3AD1008DAD30 /* PostUserResponse.swift */; };
@@ -31,6 +34,9 @@
 		DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52727D200A74CF008DAD30 /* DMUser.swift */; };
 		DB527285200B9668008DAD30 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527284200B9668008DAD30 /* UserError.swift */; };
 		DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */; };
+		DB8F33DB20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8F33DA20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift */; };
+		DB8F33DD20173ED900FC6973 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8F33DC20173ED900FC6973 /* ApplicationController.swift */; };
+		DB8F33E02017413100FC6973 /* GetApplicationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8F33DF2017413100FC6973 /* GetApplicationsResponse.swift */; };
 		DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */; };
 		DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */; };
 		DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */; };
@@ -47,6 +53,8 @@
 		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
 		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
+		DBDBE39D20178C0C007BA1DD /* AddApplicationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDBE39C20178C0C007BA1DD /* AddApplicationRequest.swift */; };
+		DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDBE39E20178CDE007BA1DD /* AddApplicationResponse.swift */; };
 		DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */; };
 		DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */; };
 		DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */; };
@@ -57,10 +65,14 @@
 /* Begin PBXFileReference section */
 		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
-		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileViewController.swift; path = ../UsageTileViewController.swift; sourceTree = "<group>"; };
+		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTileViewController.swift; sourceTree = "<group>"; };
 		DB29E0C5200F78BC00E988DB /* UsageTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsageTileView.xib; sourceTree = "<group>"; };
-		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
+		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/User/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
 		DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FromSeconds.swift"; sourceTree = "<group>"; };
+		DB2C2655201791F80010A202 /* ApplicationClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationClientsTableViewController.swift; sourceTree = "<group>"; };
+		DB2C2657201795C20010A202 /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
+		DB2C2659201796310010A202 /* DMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMClient.swift; sourceTree = "<group>"; };
+		DB2C265C201797B90010A202 /* ApplicationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationError.swift; sourceTree = "<group>"; };
 		DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationViewController.swift; sourceTree = "<group>"; };
 		DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationController.swift; sourceTree = "<group>"; };
 		DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationRequest.swift; sourceTree = "<group>"; };
@@ -71,7 +83,6 @@
 		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
 		DB52726A2007C01E008DAD30 /* DMApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMApplication.swift; sourceTree = "<group>"; };
-		DB52726C2007C055008DAD30 /* DMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DMClient.swift; path = ../DAL/Controllers/DMClient.swift; sourceTree = "<group>"; };
 		DB52726E2008DD63008DAD30 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		DB5272702008F0A7008DAD30 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		DB527276200A3AD1008DAD30 /* PostUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserResponse.swift; sourceTree = "<group>"; };
@@ -79,6 +90,9 @@
 		DB52727D200A74CF008DAD30 /* DMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUser.swift; sourceTree = "<group>"; };
 		DB527284200B9668008DAD30 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		DB5A6922200F9E970030DDE6 /* ApplicationsMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsMetricsResponse.swift; sourceTree = "<group>"; };
+		DB8F33DA20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgansationApplicationsTableViewController.swift; sourceTree = "<group>"; };
+		DB8F33DC20173ED900FC6973 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
+		DB8F33DF2017413100FC6973 /* GetApplicationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApplicationsResponse.swift; sourceTree = "<group>"; };
 		DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsMetricsResponse.swift; sourceTree = "<group>"; };
 		DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedMetricsResponse.swift; sourceTree = "<group>"; };
 		DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClientsResponse.swift; sourceTree = "<group>"; };
@@ -97,6 +111,8 @@
 		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
+		DBDBE39C20178C0C007BA1DD /* AddApplicationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationRequest.swift; sourceTree = "<group>"; };
+		DBDBE39E20178CDE007BA1DD /* AddApplicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationResponse.swift; sourceTree = "<group>"; };
 		DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUsageCollectionViewController.swift; sourceTree = "<group>"; };
 		DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUsageCollectionViewController.swift; sourceTree = "<group>"; };
 		DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +146,7 @@
 		DB16BC3520075EEA009D3294 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				DBDBE39B20178BEB007BA1DD /* Applications */,
 				DB2D2CD3201641E1006E5BA1 /* Organisations */,
 				DB527275200A3A97008DAD30 /* Users */,
 			);
@@ -139,6 +156,7 @@
 		DB16BC3620075EFD009D3294 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				DB8F33DE201740C100FC6973 /* Applications */,
 				DB2D2CD62016428C006E5BA1 /* Organisations */,
 				DB956671200D1E2E00CCB9D6 /* Clients */,
 				DBCB8E23200BCBA400F5D58E /* OAuth2 */,
@@ -165,6 +183,7 @@
 		DB16BC3920075FC7009D3294 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				DB2C265B201797A40010A202 /* Application */,
 				DB2D2CD920164757006E5BA1 /* Organisation */,
 				DB527283200B965C008DAD30 /* Response */,
 				DB527282200B9642008DAD30 /* Request */,
@@ -173,6 +192,14 @@
 				DB5272702008F0A7008DAD30 /* ResponseError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		DB2C265B201797A40010A202 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DB2C265C201797B90010A202 /* ApplicationError.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		DB2D2CD3201641E1006E5BA1 /* Organisations */ = {
@@ -224,6 +251,8 @@
 			children = (
 				DB52727A200A67B5008DAD30 /* UserController.swift */,
 				DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */,
+				DB8F33DC20173ED900FC6973 /* ApplicationController.swift */,
+				DB2C2657201795C20010A202 /* ClientController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,7 +260,7 @@
 		DB52727C200A74C1008DAD30 /* API  */ = {
 			isa = PBXGroup;
 			children = (
-				DB52726C2007C055008DAD30 /* DMClient.swift */,
+				DB2C2659201796310010A202 /* DMClient.swift */,
 				DB5272682007BEF5008DAD30 /* DMOrganisation.swift */,
 				DB52726A2007C01E008DAD30 /* DMApplication.swift */,
 				DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */,
@@ -261,6 +290,15 @@
 			children = (
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		DB8F33DE201740C100FC6973 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				DB8F33DF2017413100FC6973 /* GetApplicationsResponse.swift */,
+				DBDBE39E20178CDE007BA1DD /* AddApplicationResponse.swift */,
+			);
+			path = Applications;
 			sourceTree = "<group>";
 		};
 		DB956671200D1E2E00CCB9D6 /* Clients */ = {
@@ -294,23 +332,14 @@
 		DBB9D80B2006598300952EF7 /* Digital Monitor */ = {
 			isa = PBXGroup;
 			children = (
-				DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */,
-				DB29E0C7200F7A7700E988DB /* UsageTileView.swift */,
-				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
-				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
-				DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */,
+				DBDBE39A20178688007BA1DD /* User */,
+				DBDBE39920178681007BA1DD /* Organisation */,
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
-				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
-				DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */,
-				DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
-				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
-				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
 				DBB9D8152006598300952EF7 /* LaunchScreen.storyboard */,
 				DBB9D8182006598300952EF7 /* Info.plist */,
-				DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */,
 			);
 			path = "Digital Monitor";
 			sourceTree = "<group>";
@@ -340,6 +369,49 @@
 				DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */,
 			);
 			path = OAuth2;
+			sourceTree = "<group>";
+		};
+		DBDBE39920178681007BA1DD /* Organisation */ = {
+			isa = PBXGroup;
+			children = (
+				DBDBE3A4201790B5007BA1DD /* Applications */,
+				DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */,
+				DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */,
+				DB8F33DA20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift */,
+			);
+			path = Organisation;
+			sourceTree = "<group>";
+		};
+		DBDBE39A20178688007BA1DD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DBF832FE200D13AE00F93748 /* AuthorisedClientsTableViewController.swift */,
+				DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */,
+				DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */,
+				DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */,
+				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
+				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
+				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
+				DB29E0C7200F7A7700E988DB /* UsageTileView.swift */,
+				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		DBDBE39B20178BEB007BA1DD /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				DBDBE39C20178C0C007BA1DD /* AddApplicationRequest.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		DBDBE3A4201790B5007BA1DD /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				DB2C2655201791F80010A202 /* ApplicationClientsTableViewController.swift */,
+			);
+			path = Applications;
 			sourceTree = "<group>";
 		};
 		DBFA4D0B200E800C0020D702 /* Metrics */ = {
@@ -450,10 +522,14 @@
 				DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */,
 				DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */,
 				DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */,
+				DB2C265D201797B90010A202 /* ApplicationError.swift in Sources */,
+				DBDBE39D20178C0C007BA1DD /* AddApplicationRequest.swift in Sources */,
 				DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */,
 				DB527277200A3AD1008DAD30 /* PostUserResponse.swift in Sources */,
+				DB8F33DB20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift in Sources */,
 				DBB9D832200674B800952EF7 /* UserRegistrationRequestBody.swift in Sources */,
 				DB2D2CCD20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift in Sources */,
+				DB2C2658201795C20010A202 /* ClientController.swift in Sources */,
 				DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */,
 				DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */,
 				DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */,
@@ -470,12 +546,17 @@
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
 				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,
+				DB2C265A201796320010A202 /* DMClient.swift in Sources */,
+				DB2C2656201791F80010A202 /* ApplicationClientsTableViewController.swift in Sources */,
 				DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */,
+				DB8F33E02017413100FC6973 /* GetApplicationsResponse.swift in Sources */,
 				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
 				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
+				DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
+				DB8F33DD20173ED900FC6973 /* ApplicationController.swift in Sources */,
 				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
@@ -484,7 +565,6 @@
 				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,
-				DB52726D2007C055008DAD30 /* DMClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

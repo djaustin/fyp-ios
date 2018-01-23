@@ -21,15 +21,16 @@ class OrganisationLoginViewController: UIViewController {
                     self.lblStatus.text = String(describing: error)
                 }
             } else {
-                if let organisation = organisation {
-                    UI {
-                        self.lblStatus.text = organisation.name
-                    }
+                UI {
+                    self.performSegue(withIdentifier: "login", sender: self)
                 }
             }
         }
     }
     
+    @IBAction func unwindToOrgLogin(_ sender: UIStoryboardSegue){
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

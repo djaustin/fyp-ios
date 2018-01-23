@@ -15,5 +15,6 @@ enum OrganisationError : Error {
     
     enum QueryError : Error {
         case organisationNotFound
+        case missingId
     }
 }

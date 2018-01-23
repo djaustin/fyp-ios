@@ -32,6 +32,8 @@ class DMOrganisation : Codable {
     
     static var authenticatedOrganisation: DMOrganisation? = nil
     private let organisationController = OrganisationController()
+    private let applicationController = ApplicationController()
+    private let clientController = ClientController()
     
     
     func register(onCompletion: @escaping (Bool?, Error?) -> Void){
@@ -42,6 +44,24 @@ class DMOrganisation : Codable {
         let organisationController = OrganisationController()
         
         organisationController.login(email: email, password: password, onCompletion: onCompletion)
+    }
+    
+    func getApplications(onCompletion: @escaping ([DMApplication]?, Error?) -> Void){
+        applicationController.getApplications(forOrganisation: self, onCompletion: onCompletion)
+    }
+    
+    static func logout() {
+        self.authenticatedOrganisation = nil
+        DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant.forgetTokens()
+    }
+    
+    func addApplication(withName name: String, onCompletion: @escaping (DMApplication?, Error?) -> Void){
+        applicationController.addApplication(withName: name, toOrganisation: self, onCompletion: onCompletion)
+        
+    }
+    
+    func getClients(forApplication application: DMApplication, onCompletion: @escaping ([DMClient]?, Error?) -> Void ){
+        clientController.getClients(forApplication: application, ownedBy: self, onCompletion: onCompletion)
     }
     
 }
