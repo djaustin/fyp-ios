@@ -14,15 +14,20 @@ class ApplicationClientsTableViewController: UITableViewController {
     var organisation: DMOrganisation?
     override func viewDidLoad() {
         super.viewDidLoad()
-        organisation = DMOrganisation.authenticatedOrganisation
-        loadApplicationClients()
-        
+        organisation = DMOrganisation.authenticatedOrganisation        
     }
     
-    @IBAction func addButtonWasPressed(_ sender: Any) {
-        
+    @IBAction func addButtonWasPressed(_ sender: Any){
+        deselectRowIfSelected()
+        performSegue(withIdentifier: "showClient", sender: self)
     }
-    
+
+    func deselectRowIfSelected(){
+        if let indices = tableView.indexPathsForSelectedRows {
+            tableView.deleteRows(at: indices, with: .automatic)
+        }
+    }
+
     func loadApplicationClients() {
         guard let application = application else {
             return print("Application NIL")
@@ -69,6 +74,10 @@ class ApplicationClientsTableViewController: UITableViewController {
         return cell
     }
  
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showClient", sender: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,5 +123,25 @@ class ApplicationClientsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadApplicationClients()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ClientViewController {
+            vc.application = application
+            if let row = tableView.indexPathForSelectedRow?.row {
+                vc.client = clients[row]
+            } else {
+                vc.client = nil
+            }
+            
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

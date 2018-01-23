@@ -17,6 +17,10 @@
 		DB2C2658201795C20010A202 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2657201795C20010A202 /* ClientController.swift */; };
 		DB2C265A201796320010A202 /* DMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2659201796310010A202 /* DMClient.swift */; };
 		DB2C265D201797B90010A202 /* ApplicationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C265C201797B90010A202 /* ApplicationError.swift */; };
+		DB2C26602017A46D0010A202 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C265F2017A46D0010A202 /* ClientViewController.swift */; };
+		DB2C26632017D7A90010A202 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C26622017D7A90010A202 /* ClientError.swift */; };
+		DB2C26662017E5BF0010A202 /* AddClientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C26652017E5BF0010A202 /* AddClientRequest.swift */; };
+		DB2C26682017E7130010A202 /* PostClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C26672017E7130010A202 /* PostClientResponse.swift */; };
 		DB2D2CCD20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */; };
 		DB2D2CCF20163E38006E5BA1 /* OrganisationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */; };
 		DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */; };
@@ -73,6 +77,10 @@
 		DB2C2657201795C20010A202 /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
 		DB2C2659201796310010A202 /* DMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMClient.swift; sourceTree = "<group>"; };
 		DB2C265C201797B90010A202 /* ApplicationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationError.swift; sourceTree = "<group>"; };
+		DB2C265F2017A46D0010A202 /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		DB2C26622017D7A90010A202 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		DB2C26652017E5BF0010A202 /* AddClientRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientRequest.swift; sourceTree = "<group>"; };
+		DB2C26672017E7130010A202 /* PostClientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostClientResponse.swift; sourceTree = "<group>"; };
 		DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationViewController.swift; sourceTree = "<group>"; };
 		DB2D2CCE20163E38006E5BA1 /* OrganisationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationController.swift; sourceTree = "<group>"; };
 		DB2D2CD4201641F6006E5BA1 /* OrganisationRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationRegistrationRequest.swift; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 		DB16BC3520075EEA009D3294 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				DB2C26642017E5B00010A202 /* Clients */,
 				DBDBE39B20178BEB007BA1DD /* Applications */,
 				DB2D2CD3201641E1006E5BA1 /* Organisations */,
 				DB527275200A3A97008DAD30 /* Users */,
@@ -183,6 +192,7 @@
 		DB16BC3920075FC7009D3294 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				DB2C26612017D78D0010A202 /* Client */,
 				DB2C265B201797A40010A202 /* Application */,
 				DB2D2CD920164757006E5BA1 /* Organisation */,
 				DB527283200B965C008DAD30 /* Response */,
@@ -200,6 +210,30 @@
 				DB2C265C201797B90010A202 /* ApplicationError.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		DB2C265E2017A42F0010A202 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				DB2C265F2017A46D0010A202 /* ClientViewController.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		DB2C26612017D78D0010A202 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				DB2C26622017D7A90010A202 /* ClientError.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		DB2C26642017E5B00010A202 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				DB2C26652017E5BF0010A202 /* AddClientRequest.swift */,
+			);
+			path = Clients;
 			sourceTree = "<group>";
 		};
 		DB2D2CD3201641E1006E5BA1 /* Organisations */ = {
@@ -305,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */,
+				DB2C26672017E7130010A202 /* PostClientResponse.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -409,6 +444,7 @@
 		DBDBE3A4201790B5007BA1DD /* Applications */ = {
 			isa = PBXGroup;
 			children = (
+				DB2C265E2017A42F0010A202 /* Clients */,
 				DB2C2655201791F80010A202 /* ApplicationClientsTableViewController.swift */,
 			);
 			path = Applications;
@@ -553,14 +589,18 @@
 				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
 				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
+				DB2C26602017A46D0010A202 /* ClientViewController.swift in Sources */,
 				DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
 				DB8F33DD20173ED900FC6973 /* ApplicationController.swift in Sources */,
 				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,
+				DB2C26632017D7A90010A202 /* ClientError.swift in Sources */,
+				DB2C26662017E5BF0010A202 /* AddClientRequest.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
 				DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */,
+				DB2C26682017E7130010A202 /* PostClientResponse.swift in Sources */,
 				DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */,
 				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
