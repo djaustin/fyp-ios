@@ -88,8 +88,6 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateSubViews()
@@ -121,10 +119,12 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         nameTextField.text = name
         idTextField.text = id
         redirectUriTextField.text = redirectUri
-        
-        
         secretTextField.delegate = self
         idTextField.delegate = self
+        nameTextField.delegate = self
+        nameTextField.tag = 1
+        redirectUriTextField.delegate = self
+        redirectUriTextField.tag = 2
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,18 +132,37 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false
+        if(textField.isEqual(idTextField) || textField.isEqual(secretTextField)) {
+            return false
+        } else {
+            return true
+        }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Requires implementing the UITextFieldDelegate protocol
+    // Requires textfield to have this view as its assigned delegate
+    // Is called whenever the return key is pressed on the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let currentTag = textField.tag
+        let finalTag = redirectUriTextField.tag
+        debugPrint(currentTag, finalTag)
+        if(currentTag == finalTag) {
+            textField.resignFirstResponder()
+            saveButtonWasPressed(self)
+        } else {
+            if let nextTextField = view.viewWithTag(currentTag+1) as? UITextField {
+                debugPrint(nextTextField)
+                nextTextField.becomeFirstResponder()
+            }
+        }
+        
+        // Tell text field to process return with default behaviour
+        return true
+    }
+    
 }

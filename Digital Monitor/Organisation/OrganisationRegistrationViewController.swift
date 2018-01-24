@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrganisationRegistrationViewController: UIViewController {
+class OrganisationRegistrationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
@@ -30,9 +30,19 @@ class OrganisationRegistrationViewController: UIViewController {
         }
     }
     
+    func setupViews(){
+        txtName.delegate = self
+        txtName.tag = 1
+        txtEmail.delegate = self
+        txtEmail.tag = 2
+        txtPassword.delegate = self
+        txtPassword.tag = 3
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupViews()
         // Do any additional setup after loading the view.
     }
 
@@ -41,6 +51,29 @@ class OrganisationRegistrationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
+    // Requires implementing the UITextFieldDelegate protocol
+    // Requires textfield to have this view as its assigned delegate
+    // Is called whenever the return key is pressed on the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let currentTag = textField.tag
+        let finalTag = txtPassword.tag
+        debugPrint(currentTag, finalTag)
+        if(currentTag == finalTag) {
+            textField.resignFirstResponder()
+            registerButtonWasPressed(self)
+        } else {
+            if let nextTextField = view.viewWithTag(currentTag+1) as? UITextField {
+                debugPrint(nextTextField)
+                nextTextField.becomeFirstResponder()
+            }
+        }
+        
+        // Tell text field to process return with default behaviour
+        return true
+    }
 
 }

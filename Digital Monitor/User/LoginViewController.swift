@@ -64,14 +64,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isEqual(txtEmail){
-            txtPassword.becomeFirstResponder()
-        } else if textField.isEqual(txtPassword){
-            // Hide keyboard
-            textField.resignFirstResponder()
-            loginButtonWasTapped(textField)
-        }
-        
         // Tell text field to process return with default behaviour
         return true
     }

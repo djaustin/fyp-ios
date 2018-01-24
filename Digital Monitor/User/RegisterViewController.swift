@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -39,8 +39,20 @@ class RegisterViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupViews()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupViews(){
+        txtFirstName.delegate = self
+        txtFirstName.tag = 1
+        txtLastName.delegate = self
+        txtLastName.tag = 2
+        txtEmail.delegate = self
+        txtEmail.tag = 3
+        txtPassword.delegate = self
+        txtPassword.tag = 4
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +60,30 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Requires implementing the UITextFieldDelegate protocol
+    // Requires textfield to have this view as its assigned delegate
+    // Is called whenever the return key is pressed on the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let currentTag = textField.tag
+        let finalTag = txtPassword.tag
+        debugPrint(currentTag, finalTag)
+        if(currentTag == finalTag) {
+            textField.resignFirstResponder()
+            registerButtonWasTapped(self)
+        } else {
+            if let nextTextField = view.viewWithTag(currentTag+1) as? UITextField {
+                debugPrint(nextTextField)
+                nextTextField.becomeFirstResponder()
+            }
+        }
+    
+        // Tell text field to process return with default behaviour
+        return true
+    }
 
     /*
     // MARK: - Navigation

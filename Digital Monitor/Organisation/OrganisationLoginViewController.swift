@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrganisationLoginViewController: UIViewController {
+class OrganisationLoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
@@ -28,13 +28,20 @@ class OrganisationLoginViewController: UIViewController {
         }
     }
     
+    func setupViews(){
+        txtEmail.delegate = self
+        txtEmail.tag = 1
+        txtPassword.delegate = self
+        txtPassword.tag = 2
+    }
+    
     @IBAction func unwindToOrgLogin(_ sender: UIStoryboardSegue){
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupViews()
         // Do any additional setup after loading the view.
     }
 
@@ -42,5 +49,29 @@ class OrganisationLoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Requires implementing the UITextFieldDelegate protocol
+    // Requires textfield to have this view as its assigned delegate
+    // Is called whenever the return key is pressed on the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let currentTag = textField.tag
+        let finalTag = txtPassword.tag
+        debugPrint(currentTag, finalTag)
+        if(currentTag == finalTag) {
+            textField.resignFirstResponder()
+            loginButtonWasTapped(self)
+        } else {
+            if let nextTextField = view.viewWithTag(currentTag+1) as? UITextField {
+                debugPrint(nextTextField)
+                nextTextField.becomeFirstResponder()
+            }
+        }
+        
+        // Tell text field to process return with default behaviour
+        return true
+    }
 }
