@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import OAuth2
+import p2_OAuth2
 
 class ApplicationController{
-    let organisationApplicationsEndpoint = "https://digitalmonitor.tk/api/organisations/%@/applications"
+    let organisationApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/organisations/%@/applications"
+    let applicationsEndpoint = URL(string: "https://digitalmonitor.tk/api/applications/")!
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
 //    func register(organisation: DMOrganisation, onCompletion: @escaping (Bool?, Error?) -> Void){
@@ -66,7 +67,7 @@ class ApplicationController{
         }
         
         let jsonDecoder = JSONDecoder()
-        guard let url = URL(string: String(format: organisationApplicationsEndpoint, organisationId)) else {
+        guard let url = URL(string: String(format: organisationApplicationsEndpointTemplate, organisationId)) else {
             return onCompletion(nil, RequestError.urlError)
         }
         
@@ -104,7 +105,7 @@ class ApplicationController{
             return onCompletion(nil, OrganisationError.QueryError.missingId)
         }
         
-        guard let url = URL(string: String(format: organisationApplicationsEndpoint, organisationId)) else {
+        guard let url = URL(string: String(format: organisationApplicationsEndpointTemplate, organisationId)) else {
             return onCompletion(nil, RequestError.urlError)
         }
 
@@ -146,34 +147,39 @@ class ApplicationController{
         
     }
     
-//    func login(email: String, password: String, onCompletion: @escaping (DMOrganisation?, Error?) -> Void) {
-//        oauth2PasswordGrant.forgetTokens()
-//        oauth2PasswordGrant.username = email
-//        oauth2PasswordGrant.password = password
-//
-//        oauth2PasswordGrant.authorize { (json, error) in
-//            print("completion")
-//            if let error = error {
-//                print("error found")
-//                onCompletion(nil, error)
-//            } else {
-//                print("no error found")
-//                // If successful, lookup the user details for the provided email to get a user object
-//                // Assign user object to authenticatedUser property
-//                print("About to get user")
-//                self.getOrganisation(byEmail: email) { (organisation, error) in
-//                    print("finished trying to get organisation")
-//                    if let error = error {
-//                        onCompletion(nil, error)
-//                    } else {
-//                        if let organisation = organisation {
-//                            DMOrganisation.authenticatedOrganisation = organisation
-//                            onCompletion(organisation, nil)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func getApplication(byId id: String, onCompletion: @escaping (DMApplication?, Error?) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        var urlComponents = URLComponents(url: applicationsEndpoint, resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+        let req = oauth2PasswordGrant.request(forURL: urlComponents.url!)
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        if let responseBody = try? jsonDecoder.decode(GetApplicationsResponse.self, from: data){
+                            let applications = responseBody.data.applications
+                            if applications.count < 1 {
+                                onCompletion(nil, ApplicationError.QueryError.applicationNotFound)
+                            } else {
+                                onCompletion(applications[0], nil)
+                            }
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                        
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+
     
 }

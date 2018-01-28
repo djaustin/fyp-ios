@@ -32,7 +32,10 @@ class UsageTileViewController: UIViewController {
     }
     
     func setupViews(){
-        fromDatePicker.date = Calendar.current.date(byAdding: .day, value: -7, to: fromDatePicker.date)!
+        let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: fromDatePicker.date)!
+        let today = Date()
+        fromDatePicker.setDate(oneWeekAgo.startOfDay, animated: true)
+        toDatePicker.setDate(today.endOfDay!, animated: true)
         applicationUsageView.titleLabel.text = "Top Application"
         applicationUsageView.informationLabel.text = nil
         applicationUsageView.usageTimeLabel.text = nil

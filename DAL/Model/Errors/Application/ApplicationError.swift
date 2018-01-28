@@ -11,5 +11,6 @@ import Foundation
 enum ApplicationError : Error {
     enum QueryError : Error {
         case missingId
+        case applicationNotFound
     }
 }

@@ -1,0 +1,23 @@
+PODS:
+  - p2.OAuth2 (4.0.1)
+
+DEPENDENCIES:
+  - p2.OAuth2 (from `https://github.com/p2/OAuth2`)
+
+EXTERNAL SOURCES:
+  p2.OAuth2:
+    :git: https://github.com/p2/OAuth2
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  p2.OAuth2:
+    :commit: c456a82c3fe19bb553d55f5b4a41e40681973949
+    :git: https://github.com/p2/OAuth2
+    :submodules: true
+
+SPEC CHECKSUMS:
+  p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
+
+PODFILE CHECKSUM: 7b946027dc8acfcdfae35e10e6259afc747f2ef0
+
+COCOAPODS: 1.4.0

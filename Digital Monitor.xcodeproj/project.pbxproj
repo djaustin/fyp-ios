@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48DC8B5419D159A1859D7628 /* Pods_Digital_Monitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */; };
 		DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */; };
 		DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */; };
 		DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */; };
@@ -50,9 +51,11 @@
 		DBB9D8142006598300952EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8132006598300952EF7 /* Assets.xcassets */; };
 		DBB9D8172006598300952EF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8152006598300952EF7 /* LaunchScreen.storyboard */; };
 		DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */; };
-		DBB9D8212006603900952EF7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB9D8202006603900952EF7 /* Cartfile */; };
-		DBB9D8302006652900952EF7 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB9D82F2006652900952EF7 /* OAuth2.framework */; };
 		DBB9D832200674B800952EF7 /* UserRegistrationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */; };
+		DBBCE691201DEFA300178715 /* GoalsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */; };
+		DBBCE694201DFA5F00178715 /* GoalTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE692201DFA5E00178715 /* GoalTileView.swift */; };
+		DBBCE695201DFA5F00178715 /* GoalTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBBCE693201DFA5E00178715 /* GoalTileView.xib */; };
+		DBBCE697201E01F800178715 /* Date+StartAndEndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */; };
 		DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */; };
 		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
 		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
@@ -67,6 +70,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63BD96E706A82B786B0E9718 /* Pods-Digital Monitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Digital Monitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor.release.xcconfig"; sourceTree = "<group>"; };
+		6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Digital_Monitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F73807EF99F5A6883CDAD7 /* Pods-Digital Monitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Digital Monitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor.debug.xcconfig"; sourceTree = "<group>"; };
 		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
 		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTileViewController.swift; sourceTree = "<group>"; };
@@ -112,9 +118,12 @@
 		DBB9D8162006598300952EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB9D8182006598300952EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		DBB9D8202006603900952EF7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		DBB9D82F2006652900952EF7 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationRequestBody.swift; sourceTree = "<group>"; };
+		DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsCollectionViewController.swift; sourceTree = "<group>"; };
+		DBBCE692201DFA5E00178715 /* GoalTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTileView.swift; sourceTree = "<group>"; };
+		DBBCE693201DFA5E00178715 /* GoalTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTileView.xib; sourceTree = "<group>"; };
+		DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartAndEndOfDay.swift"; sourceTree = "<group>"; };
 		DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOwnerExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
@@ -133,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBB9D8302006652900952EF7 /* OAuth2.framework in Frameworks */,
+				48DC8B5419D159A1859D7628 /* Pods_Digital_Monitor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,11 +357,11 @@
 			isa = PBXGroup;
 			children = (
 				DB52727C200A74C1008DAD30 /* API  */,
-				DBB9D8202006603900952EF7 /* Cartfile */,
 				DBB9D83320067A0800952EF7 /* DAL */,
 				DBB9D80B2006598300952EF7 /* Digital Monitor */,
 				DBB9D80A2006598300952EF7 /* Products */,
 				DBB9D8262006626F00952EF7 /* Frameworks */,
+				F9E707C50FE875140558370A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,6 +380,7 @@
 				DBDBE39920178681007BA1DD /* Organisation */,
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
+				DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
 				DBB9D8152006598300952EF7 /* LaunchScreen.storyboard */,
@@ -383,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				DBB9D82F2006652900952EF7 /* OAuth2.framework */,
+				6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,9 +437,12 @@
 				DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
+				DBBCE692201DFA5E00178715 /* GoalTileView.swift */,
+				DBBCE693201DFA5E00178715 /* GoalTileView.xib */,
 				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
 				DB29E0C7200F7A7700E988DB /* UsageTileView.swift */,
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
+				DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -461,6 +475,15 @@
 			path = Metrics;
 			sourceTree = "<group>";
 		};
+		F9E707C50FE875140558370A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2F73807EF99F5A6883CDAD7 /* Pods-Digital Monitor.debug.xcconfig */,
+				63BD96E706A82B786B0E9718 /* Pods-Digital Monitor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,10 +491,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBB9D81B2006598300952EF7 /* Build configuration list for PBXNativeTarget "Digital Monitor" */;
 			buildPhases = (
+				8CE1DC58A9BF59857B463DB2 /* [CP] Check Pods Manifest.lock */,
 				DBB9D8052006598200952EF7 /* Sources */,
 				DBB9D8062006598200952EF7 /* Frameworks */,
 				DBB9D8072006598200952EF7 /* Resources */,
-				DBB9D828200662B100952EF7 /* ShellScript */,
+				CC6F8BB152E634C46BE5F5BD /* [CP] Embed Pods Frameworks */,
+				297288C74D88EB89640E8AF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -523,29 +548,65 @@
 			files = (
 				DBB9D8172006598300952EF7 /* LaunchScreen.storyboard in Resources */,
 				DBB9D8142006598300952EF7 /* Assets.xcassets in Resources */,
-				DBB9D8212006603900952EF7 /* Cartfile in Resources */,
 				DBB9D8122006598300952EF7 /* Main.storyboard in Resources */,
 				DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */,
+				DBBCE695201DFA5F00178715 /* GoalTileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DBB9D828200662B100952EF7 /* ShellScript */ = {
+		297288C74D88EB89640E8AF5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/OAuth2.framework",
 			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OAuth2.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CE1DC58A9BF59857B463DB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Digital Monitor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC6F8BB152E634C46BE5F5BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/p2_OAuth2.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -558,6 +619,7 @@
 				DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */,
 				DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */,
 				DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */,
+				DBBCE691201DEFA300178715 /* GoalsCollectionViewController.swift in Sources */,
 				DB2C265D201797B90010A202 /* ApplicationError.swift in Sources */,
 				DBDBE39D20178C0C007BA1DD /* AddApplicationRequest.swift in Sources */,
 				DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */,
@@ -573,6 +635,7 @@
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
 				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
+				DBBCE697201E01F800178715 /* Date+StartAndEndOfDay.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
 				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
 				DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */,
@@ -605,6 +668,7 @@
 				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,
+				DBBCE694201DFA5F00178715 /* GoalTileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +803,7 @@
 		};
 		DBB9D81C2006598300952EF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2F73807EF99F5A6883CDAD7 /* Pods-Digital Monitor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -762,6 +827,7 @@
 		};
 		DBB9D81D2006598300952EF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63BD96E706A82B786B0E9718 /* Pods-Digital Monitor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

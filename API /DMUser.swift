@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import OAuth2
+import p2_OAuth2
 
 class DMUser : Codable {
     
@@ -16,6 +16,7 @@ class DMUser : Codable {
     var firstName: String?
     var lastName: String?
     var id: String?
+    var usageGoals: [UsageGoal] = []
     
     private enum CodingKeys: String, CodingKey {
         case email
@@ -23,6 +24,14 @@ class DMUser : Codable {
         case firstName
         case lastName
         case id = "_id"
+        case usageGoals
+    }
+    
+    struct UsageGoal : Codable {
+        var platform: String?
+        var applicationId: String?
+        var duration: Int
+        var period: String
     }
 
     

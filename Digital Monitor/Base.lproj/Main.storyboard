@@ -23,6 +23,7 @@
                     <connections>
                         <segue destination="iZL-Ak-B1t" kind="relationship" relationship="viewControllers" id="pLS-uh-OjD"/>
                         <segue destination="30h-yu-yfa" kind="relationship" relationship="viewControllers" id="Wwa-c9-Acg"/>
+                        <segue destination="2TZ-nW-5UF" kind="relationship" relationship="viewControllers" id="XOJ-Yb-Dcr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7G-C7-VQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +78,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbB-GB-kbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TgQ-kH-mSd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2685.5999999999999" y="-331.48425787106447"/>
+            <point key="canvasLocation" x="2686" y="-485"/>
         </scene>
         <!--Authorised Clients-->
         <scene sceneID="P9Z-Qj-as7">
@@ -115,7 +116,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3l0-dB-z8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3400.8000000000002" y="-331.48425787106447"/>
+            <point key="canvasLocation" x="3401" y="-485"/>
         </scene>
         <!--Account-->
         <scene sceneID="q1J-R1-32I">
@@ -134,7 +135,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH3-At-sTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="-330.13493253373315"/>
+            <point key="canvasLocation" x="1974" y="-485"/>
         </scene>
         <!--Register-->
         <scene sceneID="D1g-uX-xG3">
@@ -619,6 +620,45 @@
             </objects>
             <point key="canvasLocation" x="1975" y="322"/>
         </scene>
+        <!--Goals-->
+        <scene sceneID="yZv-bE-dcJ">
+            <objects>
+                <collectionViewController id="2TZ-nW-5UF" customClass="GoalsCollectionViewController" customModule="Digital_Monitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XF9-dK-DTY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ubd-yh-qb0">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BdW-ha-b67">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="2TZ-nW-5UF" id="ZYu-gs-hEY"/>
+                            <outlet property="delegate" destination="2TZ-nW-5UF" id="Lle-2N-mCM"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Goals" image="Target" id="gTp-ZO-Cqk"/>
+                    <connections>
+                        <segue destination="Zf8-u2-Kzm" kind="unwind" identifier="logout" unwindAction="unwindSegue:" id="PMt-dr-yVe"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acB-uS-pJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Zf8-u2-Kzm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="1288"/>
+        </scene>
         <!--Usage-->
         <scene sceneID="x1z-sd-4MS">
             <objects>
@@ -751,7 +791,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixW-Bb-o23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3401" y="322"/>
+            <point key="canvasLocation" x="4209" y="-13"/>
         </scene>
         <!--Platform Usage-->
         <scene sceneID="OII-67-ogl">
@@ -786,7 +826,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2N-4U-3fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3401" y="1096"/>
+            <point key="canvasLocation" x="4209" y="655"/>
         </scene>
         <!--Organisation Login View Controller-->
         <scene sceneID="dXO-5B-Sff">
@@ -900,6 +940,7 @@
     <resources>
         <image name="CalendarTime" width="30" height="30"/>
         <image name="Eye" width="30" height="30"/>
+        <image name="Target" width="30" height="30"/>
         <image name="User" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

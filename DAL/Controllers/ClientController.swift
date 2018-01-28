@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import OAuth2
+import p2_OAuth2
 
 class ClientController {
     let jsonDecoder = JSONDecoder()
