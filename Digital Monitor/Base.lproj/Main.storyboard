@@ -22,8 +22,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="iZL-Ak-B1t" kind="relationship" relationship="viewControllers" id="pLS-uh-OjD"/>
-                        <segue destination="30h-yu-yfa" kind="relationship" relationship="viewControllers" id="Wwa-c9-Acg"/>
                         <segue destination="2TZ-nW-5UF" kind="relationship" relationship="viewControllers" id="XOJ-Yb-Dcr"/>
+                        <segue destination="30h-yu-yfa" kind="relationship" relationship="viewControllers" id="Wwa-c9-Acg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7G-C7-VQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -827,6 +827,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2N-4U-3fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4209" y="655"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qDi-yx-q1O">
+            <objects>
+                <viewController id="bgC-BH-Sfe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ELf-ro-t8h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="N0C-NT-a73"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ae-Hj-Wkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3776.8000000000002" y="1698.8005997001501"/>
         </scene>
         <!--Organisation Login View Controller-->
         <scene sceneID="dXO-5B-Sff">

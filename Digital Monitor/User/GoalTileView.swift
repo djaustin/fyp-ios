@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 class GoalTileView: UICollectionViewCell {
 
-    @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var usageTimeLabel: UILabel!
     @IBOutlet var view: UIView!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var progressRing: UICircularProgressRingView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +30,6 @@ class GoalTileView: UICollectionViewCell {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         layer.cornerRadius = 15
         layer.masksToBounds = true
-        informationLabel.adjustsFontSizeToFitWidth = true
         titleLabel.adjustsFontSizeToFitWidth = true
         usageTimeLabel.adjustsFontSizeToFitWidth = true
         

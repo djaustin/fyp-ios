@@ -23,7 +23,20 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout"){
             self.user = user
             dataSource = user.usageGoals
-            collectionView?.reloadData()
+            user.getUsageGoalProgress(onCompletion: { goals, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    if let goals = goals {
+                        self.dataSource = goals
+                        debugPrint("UPDATE DATASOURCE", self.dataSource)
+                        UI {
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                }
+            })
+            
         }
         // Register cell classes
         self.collectionView!.register(GoalTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -75,8 +88,13 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                     } else {
                         if let app = app {
                             UI {
-                                usageTile.titleLabel.text = app.name
-                                usageTile.informationLabel.text = goal.platform
+                                if let platform = goal.platform {
+                                    usageTile.titleLabel.text = app.name
+                                    usageTile.subtitleLabel.text = platform
+                                    
+                                } else {
+                                    usageTile.titleLabel.text = app.name
+                                }
                                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
                             }
                         }
@@ -84,8 +102,14 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                 })
             } else {
                 usageTile.titleLabel.text = goal.platform
-                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
+                usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
             }
+            debugPrint("GOAL", goal)
+            if let progress = goal.progress{
+                usageTile.progressRing.value = CGFloat(progress*100)
+                debugPrint("PROGRESS BEING ADDED", usageTile.progressRing.value)
+            }
+            
             usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             usageTile.layer.borderWidth = 0.5
             usageTile.layer.cornerRadius = 0

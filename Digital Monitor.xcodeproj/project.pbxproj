@@ -62,6 +62,7 @@
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
 		DBDBE39D20178C0C007BA1DD /* AddApplicationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDBE39C20178C0C007BA1DD /* AddApplicationRequest.swift */; };
 		DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDBE39E20178CDE007BA1DD /* AddApplicationResponse.swift */; };
+		DBEBC77C201E35A0006C2466 /* GetGoalProgressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBC77B201E35A0006C2466 /* GetGoalProgressResponse.swift */; };
 		DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */; };
 		DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */; };
 		DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */; };
@@ -130,6 +131,7 @@
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
 		DBDBE39C20178C0C007BA1DD /* AddApplicationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationRequest.swift; sourceTree = "<group>"; };
 		DBDBE39E20178CDE007BA1DD /* AddApplicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationResponse.swift; sourceTree = "<group>"; };
+		DBEBC77B201E35A0006C2466 /* GetGoalProgressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGoalProgressResponse.swift; sourceTree = "<group>"; };
 		DBF4BD8C2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUsageCollectionViewController.swift; sourceTree = "<group>"; };
 		DBF4BD8E2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUsageCollectionViewController.swift; sourceTree = "<group>"; };
 		DBF832FC200D032E00F93748 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		DB527274200A3A8C008DAD30 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				DBEBC779201E358A006C2466 /* Goals */,
 				DBFA4D0B200E800C0020D702 /* Metrics */,
 				DB527276200A3AD1008DAD30 /* PostUserResponse.swift */,
 				DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */,
@@ -464,6 +467,14 @@
 			path = Applications;
 			sourceTree = "<group>";
 		};
+		DBEBC779201E358A006C2466 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				DBEBC77B201E35A0006C2466 /* GetGoalProgressResponse.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
 		DBFA4D0B200E800C0020D702 /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,10 +608,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/p2_OAuth2.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +650,7 @@
 				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
 				DBBCE697201E01F800178715 /* Date+StartAndEndOfDay.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
+				DBEBC77C201E35A0006C2466 /* GetGoalProgressResponse.swift in Sources */,
 				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
 				DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,

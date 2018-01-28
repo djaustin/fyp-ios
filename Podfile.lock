@@ -1,8 +1,10 @@
 PODS:
   - p2.OAuth2 (4.0.1)
+  - UICircularProgressRing (1.7.0)
 
 DEPENDENCIES:
   - p2.OAuth2 (from `https://github.com/p2/OAuth2`)
+  - UICircularProgressRing
 
 EXTERNAL SOURCES:
   p2.OAuth2:
@@ -17,7 +19,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
+  UICircularProgressRing: 35c3d291b679161ea27fb6216fee58c40a4bb597
 
-PODFILE CHECKSUM: 7b946027dc8acfcdfae35e10e6259afc747f2ef0
+PODFILE CHECKSUM: ac75baccad0d7c66b44820e70fbd9c08fc9f4b17
 
 COCOAPODS: 1.4.0

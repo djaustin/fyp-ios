@@ -9,5 +9,6 @@ target 'Digital Monitor' do
 
   # Pods for Digital Monitor
   pod 'p2.OAuth2', :git => 'https://github.com/p2/OAuth2', :submodules => true
+  pod 'UICircularProgressRing'
 
 end

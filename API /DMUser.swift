@@ -28,10 +28,20 @@ class DMUser : Codable {
     }
     
     struct UsageGoal : Codable {
+        var id: String?
         var platform: String?
         var applicationId: String?
         var duration: Int
         var period: String
+        var progress: Double?
+        private enum CodingKeys: String, CodingKey {
+            case platform
+            case applicationId
+            case duration
+            case period
+            case id = "_id"
+            case progress
+        }
     }
 
     
@@ -100,4 +110,7 @@ class DMUser : Codable {
         userController.getAggregatedMetrics(forUser: self, withQuery: query, onCompletion: onCompletion)
     }
     
+    func getUsageGoalProgress(onCompletion: @escaping ([UsageGoal]?, Error?) -> Void){
+        userController.getUsageGoalProgress(forUser: self, onCompletion: onCompletion)
+    }
 }

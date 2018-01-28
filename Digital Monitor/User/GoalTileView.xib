@@ -6,14 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UsageTileView" customModule="Digital_Monitor" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoalTileView" customModule="Digital_Monitor" customModuleProvider="target">
             <connections>
-                <outlet property="button" destination="Dgu-MV-DT1" id="6L6-cI-zSh"/>
-                <outlet property="informationLabel" destination="SeW-kl-7iE" id="rSv-Ep-VIR"/>
+                <outlet property="progressRing" destination="Fb7-Pm-bsg" id="uYI-Nm-l2v"/>
+                <outlet property="subtitleLabel" destination="Q2f-X3-xKo" id="vd7-sb-Us2"/>
                 <outlet property="titleLabel" destination="qTx-fY-Kbk" id="vvL-ae-m8T"/>
                 <outlet property="usageTimeLabel" destination="qOS-I5-NzD" id="hFO-4a-ulP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yqc-Ko-1YX"/>
@@ -30,40 +31,68 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-kl-7iE">
-                    <rect key="frame" x="5" y="19" width="190" height="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fb7-Pm-bsg" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
+                    <rect key="frame" x="62.5" y="62.5" width="75" height="75"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Fb7-Pm-bsg" secondAttribute="height" multiplier="1:1" id="BVc-qu-Gu8"/>
+                        <constraint firstAttribute="width" constant="75" id="d3p-PJ-WjY"/>
+                        <constraint firstAttribute="height" constant="75" id="nnu-ce-pAY"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                            <real key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                            <real key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="NO"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                            <real key="value" value="270"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                            <real key="value" value="269"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-I5-NzD">
-                    <rect key="frame" x="5" y="27.5" width="190" height="0.0"/>
+                    <rect key="frame" x="5" y="193.5" width="190" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgu-MV-DT1">
-                    <rect key="frame" x="73" y="150" width="55" height="30"/>
-                    <state key="normal" title="View All"/>
-                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-X3-xKo">
+                    <rect key="frame" x="5" y="13" width="190" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="SeW-kl-7iE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="2sq-73-mYJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Q2f-X3-xKo" secondAttribute="trailing" constant="5" id="3wg-gn-z6L"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="4Px-jI-z9H"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="6vt-aY-uAf"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CHp-kP-JNp"/>
+                <constraint firstItem="Q2f-X3-xKo" firstAttribute="top" secondItem="qTx-fY-Kbk" secondAttribute="bottom" constant="2" id="Hqe-CO-y7I"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qOS-I5-NzD" secondAttribute="bottom" constant="6.5" id="Ibo-a0-CJs"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jit-MR-JHe"/>
-                <constraint firstItem="qOS-I5-NzD" firstAttribute="top" secondItem="SeW-kl-7iE" secondAttribute="bottom" constant="8.5" id="OzT-9z-hLH"/>
-                <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Svx-Hq-lJA"/>
-                <constraint firstItem="Dgu-MV-DT1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y3N-AH-twT"/>
-                <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="aAn-z6-NJI"/>
+                <constraint firstItem="Fb7-Pm-bsg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qw0-TN-djs"/>
+                <constraint firstItem="Fb7-Pm-bsg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Y6v-UE-GpZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qTx-fY-Kbk" secondAttribute="trailing" constant="5" id="hzz-NF-86p"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Dgu-MV-DT1" secondAttribute="bottom" constant="20" id="lAm-P8-SJU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SeW-kl-7iE" secondAttribute="trailing" constant="5" id="rW6-uO-CUJ"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="11" id="sIy-JA-9De"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qOS-I5-NzD" secondAttribute="trailing" constant="5" id="wCB-7p-11O"/>
-                <constraint firstItem="SeW-kl-7iE" firstAttribute="top" secondItem="qTx-fY-Kbk" secondAttribute="bottom" constant="8" id="xXX-i6-UM9"/>
+                <constraint firstItem="Q2f-X3-xKo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="x8k-fF-rQU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

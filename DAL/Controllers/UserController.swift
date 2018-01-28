@@ -19,6 +19,7 @@ class UserController {
     let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
     let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
     let userApplicationsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications"
+    let userGoalProgressEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/progress"
     let userPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms"
     let userAggregatedMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/"
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
@@ -441,6 +442,45 @@ class UserController {
                 }
             }
         }
+    }
+    
+    func getUsageGoalProgress(forUser user: DMUser, onCompletion: @escaping ([DMUser.UsageGoal]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: userGoalProgressEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
         
+        let req = oauth2PasswordGrant.request(forURL: URL)
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        if let responseBody = try? jsonDecoder.decode(GetGoalProgressResponse.self, from: data){
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.usageGoals, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
     }
 }
