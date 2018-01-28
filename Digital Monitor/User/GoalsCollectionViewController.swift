@@ -90,10 +90,11 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                             UI {
                                 if let platform = goal.platform {
                                     usageTile.titleLabel.text = app.name
-                                    usageTile.subtitleLabel.text = platform
+                                    usageTile.subtitleLabel.text = "\(platform) - \(goal.period)"
                                     
                                 } else {
                                     usageTile.titleLabel.text = app.name
+                                    usageTile.subtitleLabel.text = goal.period
                                 }
                                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
                             }
@@ -102,11 +103,12 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                 })
             } else {
                 usageTile.titleLabel.text = goal.platform
+                usageTile.subtitleLabel.text = goal.period
                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
             }
             debugPrint("GOAL", goal)
             if let progress = goal.progress{
-                usageTile.progressRing.value = CGFloat(progress*100)
+                usageTile.progressRing.setProgress(value: CGFloat(progress*100), animationDuration: 2)
                 debugPrint("PROGRESS BEING ADDED", usageTile.progressRing.value)
             }
             

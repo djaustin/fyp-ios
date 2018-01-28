@@ -42,7 +42,7 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="value">
-                            <real key="value" value="100"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                             <real key="value" value="0.0"/>
