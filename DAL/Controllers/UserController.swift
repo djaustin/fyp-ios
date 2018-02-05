@@ -20,8 +20,11 @@ class UserController {
     let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
     let userApplicationsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications"
     let userGoalProgressEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/progress"
+    let userGoalsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/"
+    let userGoalsByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/%@"
     let userPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms"
     let userAggregatedMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/"
+    let userApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/applications/"
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     let oauth2ClientCredentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
     
@@ -479,6 +482,130 @@ class UserController {
                     }
                 } else {
                     onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func getAuthorisedApplications(forUser user: DMUser, onCompletion: @escaping ([DMApplication]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let URL = URL(string: String(format: userApplicationsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        let req = oauth2PasswordGrant.request(forURL: URL)
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        if let responseBody = try? jsonDecoder.decode(GetApplicationsResponse.self, from: data){
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.applications, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func add(usageGoal goal: DMUser.UsageGoal, toUser user: DMUser, onCompletion: @escaping (DMUser.UsageGoal?, Error?) -> Void){
+        let jsonEncoder = JSONEncoder()
+        let jsonDecoder = JSONDecoder()
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        
+        guard let URL = URL(string: String(format: userGoalsEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        var req = oauth2ClientCredentials.request(forURL: URL)
+        
+        req.httpMethod = "POST"
+        guard let requestBodyJSON = try? jsonEncoder.encode(goal) else {
+            return onCompletion(nil, RequestError.jsonEncodingError)
+        }
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        req.httpBody = requestBodyJSON
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 201 {
+                    if let data = oauthResponse.data {
+                        
+                        if let responseBody = try? jsonDecoder.decode(PostUsageGoalResponse.self, from: data){
+                            onCompletion(responseBody.data.usageGoal, nil)
+                        } else {
+                            onCompletion(nil, ResponseError.responseDecodeError)
+                        }
+                        
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func save(usageGoal goal: DMUser.UsageGoal, toUser user: DMUser, onCompletion: @escaping (Error?) -> Void){
+        let jsonEncoder = JSONEncoder()
+        guard let goalId = goal.id else {
+            return onCompletion(UsageGoalError.SaveError.missingId)
+        }
+        guard let userId = user.id else {
+            return onCompletion(UserError.QueryError.userNotSaved)
+        }
+        guard let url = URL(string: String(format: userGoalsByIdEndpointTemplate, userId, goalId)) else {
+            return onCompletion(RequestError.urlError)
+        }
+        
+        guard let body = try? jsonEncoder.encode(goal) else {
+            return onCompletion(RequestError.jsonEncodingError)
+        }
+        
+        var req = oauth2PasswordGrant.request(forURL: url)
+        
+        req.httpMethod = "PUT"
+        
+        req.httpBody = body
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
                 }
             }
         }

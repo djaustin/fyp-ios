@@ -28,6 +28,13 @@ class DMUser : Codable {
     }
     
     struct UsageGoal : Codable {
+        init(duration: Int, period: String, platform: String?, applicationId: String?) {
+            self.duration = duration
+            self.period = period
+            self.platform = platform
+            self.applicationId = applicationId
+        }
+        
         var id: String?
         var platform: String?
         var applicationId: String?
@@ -54,11 +61,24 @@ class DMUser : Codable {
     
     static var authenticatedUser: DMUser? = nil
     
-    private var userController = UserController()
+    private let userController = UserController()
     
     static func login(withEmail email: String, password: String, onCompletion: @escaping (DMUser?, Error?) -> Void){
         let userController = UserController()
-        userController.login(withEmail: email, password: password, onCompletion: onCompletion)
+        userController.login(withEmail: email, password: password) { (user, error) in
+            if let user = user {
+                if let tokenValue = UserDefaults.standard.string(forKey: "deviceToken"){
+                    let deviceToken = DMDeviceToken(value: tokenValue)
+                    deviceToken.associate(withUser: user, onCompletion: { (err) in
+                        if let error = error {
+                           print(error)
+                        }
+                    })
+                }
+            }
+            onCompletion(user, error)
+        }
+        // if login successful, register this user against the device token on the server
     }
     
     func register(onCompletion: @escaping (Bool, Error?) -> Void) {
@@ -112,5 +132,35 @@ class DMUser : Codable {
     
     func getUsageGoalProgress(onCompletion: @escaping ([UsageGoal]?, Error?) -> Void){
         userController.getUsageGoalProgress(forUser: self, onCompletion: onCompletion)
+    }
+    
+    func getAuthorisedApplications(onCompletion: @escaping ([DMApplication]?, Error?) -> Void ){
+        userController.getAuthorisedApplications(forUser: self, onCompletion: onCompletion)
+    }
+    
+    func add(usageGoal goal: UsageGoal, onCompletion: @escaping (UsageGoal?, Error?) -> Void){
+        userController.add(usageGoal: goal, toUser: self, onCompletion: { (goal, error) in
+            if let goal = goal {
+                self.usageGoals.append(goal)
+            }
+            onCompletion(goal, error)
+        })
+    }
+    
+    func updateLocalGoal(_ goal: UsageGoal){
+        if let index = self.usageGoals.index(where: { (element) -> Bool in element.id == goal.id }) {
+            usageGoals.remove(at: index)
+            usageGoals.insert(goal, at: index)
+        }
+    }
+    
+    func saveGoal(_ goal: UsageGoal, onCompletion: @escaping (Error?) -> Void){
+        userController.save(usageGoal: goal, toUser: self, onCompletion: { error in
+            if error != nil {
+                self.updateLocalGoal(goal)
+            }
+            onCompletion(error)
+        })
+        
     }
 }

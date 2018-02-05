@@ -14,51 +14,7 @@ class ApplicationController{
     let applicationsEndpoint = URL(string: "https://digitalmonitor.tk/api/applications/")!
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
-//    func register(organisation: DMOrganisation, onCompletion: @escaping (Bool?, Error?) -> Void){
-//        let jsonEncoder = JSONEncoder()
-//        let jsonDecoder = JSONDecoder()
-//
-//        guard let password = organisation.password else {
-//            return onCompletion(false, OrganisationError.RegistrationError.missingPassword)
-//        }
-//
-//
-//        let requestBody = OrganisationRegistrationRequestBody(name: organisation.name, email: organisation.email, password: password)
-//        var req = oauth2ClientCredentials.request(forURL: organisationsEndpoint)
-//
-//        req.httpMethod = "POST"
-//        guard let requestBodyJSON = try? jsonEncoder.encode(requestBody) else {
-//            return onCompletion(false, RequestError.jsonEncodingError)
-//        }
-//
-//        req.setValue("application/json", forHTTPHeaderField: "content-type")
-//        req.httpBody = requestBodyJSON
-//
-//        let loader = OAuth2DataLoader(oauth2: oauth2ClientCredentials)
-//
-//        loader.perform(request: req) { (oauthResponse) in
-//            if let error = oauthResponse.error {
-//                onCompletion(false, error)
-//            } else {
-//                if oauthResponse.response.statusCode == 201 {
-//                    if let data = oauthResponse.data {
-//                        do {
-//                            let responseBody = try jsonDecoder.decode(PostOrganisationResponse.self, from: data)
-//                            organisation.id = responseBody.data.organisation.id
-//                            onCompletion(true, nil)
-//                        } catch {
-//                            print(error)
-//                            onCompletion(false, ResponseError.responseDecodeError)
-//                        }
-//                    } else {
-//                        onCompletion(false, ResponseError.noResponseData)
-//                    }
-//                } else {
-//                    onCompletion(false, ResponseError.responseNotOK)
-//                }
-//            }
-//        }
-//    }
+
     
     func getApplications(forOrganisation organisation: DMOrganisation, onCompletion: @escaping ([DMApplication]?, Error?) -> Void){
         

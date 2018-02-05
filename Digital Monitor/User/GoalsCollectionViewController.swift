@@ -13,35 +13,35 @@ private let reuseIdentifier = "Cell"
 class GoalsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     
-    
+    var selectedGoal: DMUser.UsageGoal?
     var dataSource: [DMUser.UsageGoal] = []
     var user: DMUser!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout"){
-            self.user = user
-            dataSource = user.usageGoals
-            user.getUsageGoalProgress(onCompletion: { goals, error in
-                if let error = error {
-                    print(error)
-                } else {
-                    if let goals = goals {
-                        self.dataSource = goals
-                        debugPrint("UPDATE DATASOURCE", self.dataSource)
-                        UI {
-                            self.collectionView?.reloadData()
-                        }
-                    }
-                }
-            })
-            
-        }
+        self.clearsSelectionOnViewWillAppear = false
         // Register cell classes
         self.collectionView!.register(GoalTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout"){
+            self.user = user
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        dataSource = user.usageGoals
+        user.getUsageGoalProgress(onCompletion: { goals, error in
+            if let error = error {
+                print(error)
+            } else {
+                if let goals = goals {
+                    self.dataSource = goals
+                    debugPrint("UPDATE DATASOURCE", self.dataSource)
+                    UI {
+                        self.collectionView?.reloadData()
+                    }
+                }
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,15 +49,6 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -168,6 +159,21 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
     
     }
     */
+    
+    @IBAction func addButtonWasPressed(_ sender: Any) {
+        selectedGoal = nil
+        performSegue(withIdentifier: "goalDetail", sender: self)
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedGoal = dataSource[indexPath.item]
+        performSegue(withIdentifier: "goalDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? GoalDetailViewController {
+            vc.goal = selectedGoal
+        }
+    }
 }
 
 extension UIViewController {

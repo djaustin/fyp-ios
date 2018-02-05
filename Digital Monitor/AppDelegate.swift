@@ -8,6 +8,7 @@
 
 import UIKit
 import p2_OAuth2
+import UserNotifications
 
 func UI(_ block: @escaping ()->Void) {
     DispatchQueue.main.async(execute: block)
@@ -19,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.authorize { (json, error) in
@@ -28,9 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error)
             }
         }
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            if granted {
+                UI {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
+        
         return true
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(token)
+        // Save the token in the user defaults for later use
+        UserDefaults.standard.setValue(token, forKey: "deviceToken")
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -43,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.authorize { (json, error) in
+            if let error = error {
+                print(error)
+            }
+        }
+
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
