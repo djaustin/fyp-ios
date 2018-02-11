@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.forgetTokens();
         DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.authorize { (json, error) in
             if let error = error {
                 print(error)
