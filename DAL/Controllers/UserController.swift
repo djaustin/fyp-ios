@@ -23,6 +23,7 @@ class UserController {
     let userGoalsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/"
     let userGoalsByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/%@"
     let userPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms"
+    let userPlatformApplicationsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/platforms/%@"
     let userAggregatedMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/"
     let userApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/applications/"
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
@@ -606,6 +607,64 @@ class UserController {
                     onCompletion(nil)
                 } else {
                     onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func getApplicationMetrics(forPlatform platform: String, forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let id = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let urlString = URL(string: String(format: userPlatformApplicationsMetricsEndpointTemplate, id, platform)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        var queryItems: [URLQueryItem] = []
+        for (key, value) in query {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        
+        guard var urlComponents = URLComponents(url: urlString, resolvingAgainstBaseURL: false) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        urlComponents.queryItems = queryItems
+        
+        guard let url = urlComponents.url else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        let req = oauth2PasswordGrant.request(forURL: url)
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        
+                        do{
+                            let responseBody = try jsonDecoder.decode(ApplicationsMetricsResponse.self, from: data)
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.applications, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        }catch {
+                            print(error)
+                            onCompletion(nil, error)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
                 }
             }
         }

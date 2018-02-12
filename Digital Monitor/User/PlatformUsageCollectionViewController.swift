@@ -12,9 +12,29 @@ private let reuseIdentifier = "Cell"
 
 class PlatformUsageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var sortButton: UIBarButtonItem!
+    var sortDescending = true
     var dataSource: [PlatformUsageData] = []
+    var selectedPlatform: String?
     var user: DMUser?
     
+    @IBAction func sortButtonWasPressed(_ sender: UIBarButtonItem) {
+        if sortDescending{
+            sortDescending = false
+            sender.image = #imageLiteral(resourceName: "NumericalSortAsc")
+            dataSource.sort { (platform1, platform2) -> Bool in
+                platform1.duration < platform2.duration
+            }
+            collectionView?.reloadData()
+        } else {
+            sortDescending = true
+            sender.image = #imageLiteral(resourceName: "NumericalSortDes")
+            dataSource.sort { (platform1, platform2) -> Bool in
+                platform1.duration > platform2.duration
+            }
+            collectionView?.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +79,9 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
         if let usageTile = cell as? UsageTileView {
+            usageTile.button.tag = indexPath.item
+            usageTile.button.addTarget(self, action: #selector(tileButtonWasPressed(_:)), for: .touchUpInside)
+            usageTile.button.isHidden = false
             usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             usageTile.layer.borderWidth = 0.5
             usageTile.layer.cornerRadius = 0
@@ -70,6 +93,11 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
         // Configure the cell
     
         return cell
+    }
+    
+    @objc func tileButtonWasPressed(_ button: UIButton){
+        selectedPlatform = dataSource[button.tag].name
+        performSegue(withIdentifier: "showPlatform", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -84,6 +112,18 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        selectedPlatform = dataSource[indexPath.item].name
+//        performSegue(withIdentifier: "showPlatform", sender: self)
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PlatformApplicationsCollectionViewController{
+            vc.platform = selectedPlatform
+        }
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*

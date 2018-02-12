@@ -11,6 +11,7 @@ import p2_OAuth2
 
 class ApplicationController{
     let organisationApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/organisations/%@/applications"
+    let applicationPlatformMetricsByIdTemplate = "https://digitalmonitor.tk/api/users/%@/applications"
     let applicationsEndpoint = URL(string: "https://digitalmonitor.tk/api/applications/")!
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
@@ -136,6 +137,6 @@ class ApplicationController{
             }
         }
     }
-
+    
     
 }

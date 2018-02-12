@@ -1,8 +1,8 @@
 //
-//  ApplicationUsageCollectionViewController.swift
+//  PlatformApplicationsCollectionViewController.swift
 //  Digital Monitor
 //
-//  Created by Dan Austin on 20/01/2018.
+//  Created by Dan Austin on 12/02/2018.
 //  Copyright © 2018 Dan Austin. All rights reserved.
 //
 
@@ -10,29 +10,11 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ApplicationUsageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PlatformApplicationsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var sortButton: UIBarButtonItem!
     var dataSource: [ApplicationUsageData] = []
-    var sortDescending = true
+    var platform: String?
     
-    @IBAction func sortButtonWasPressed(_ sender: UIBarButtonItem) {
-        if sortDescending{
-            sortDescending = false
-            sender.image = #imageLiteral(resourceName: "NumericalSortAsc")
-            dataSource.sort { (app1, app2) -> Bool in
-                app1.duration < app2.duration
-            }
-            collectionView?.reloadData()
-        } else {
-            sortDescending = true
-            sender.image = #imageLiteral(resourceName: "NumericalSortDes")
-            dataSource.sort { (app1, app2) -> Bool in
-                app1.duration > app2.duration
-            }
-            collectionView?.reloadData()
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,16 +23,27 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
 
         // Register cell classes
         self.collectionView!.register(UsageTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
-        dataSource.sort { (appOne, appTwo) -> Bool in
-            appOne.duration > appTwo.duration
+        if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
+            if let platform = platform {
+                user.getApplicationMetrics(forPlatform: platform, withQuery: [:]) { (data, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        if let data = data {
+                            self.dataSource = data.sorted(by: {$0.duration > $1.duration})
+                            UI {
+                                self.collectionView?.reloadData()
+                            }
+                        } else {
+                            print("No data or error")
+                        }
+                    }
+                }
+            }
         }
-        collectionView?.reloadData()
-
         // Do any additional setup after loading the view.
     }
 
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,39 +75,20 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        if let usageTile = cell as? UsageTileView {
-            usageTile.button.isHidden = false
-            usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            usageTile.layer.borderWidth = 0.5
-            usageTile.layer.cornerRadius = 0
-            let platform = dataSource[indexPath.item]
-            usageTile.titleLabel.text = platform.name
-            usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: platform.duration)
-            return usageTile
-        }
         // Configure the cell
-    
+        
+        if let tile = cell as? UsageTileView {
+            let application = dataSource[indexPath.item]
+            tile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            tile.layer.borderWidth = 0.5
+            tile.layer.cornerRadius = 0
+            tile.titleLabel.text = application.name
+            tile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: application.duration)
+            return tile
+        }
+        
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let halfWidth = view.frame.width/2
-        return CGSize(width: halfWidth, height: halfWidth)
-    }
-
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedPlatform = dataSource[indexPath.item]
-//        performSegue(withIdentifier: "showPlatform", sender: self)
-//    }
 
     // MARK: UICollectionViewDelegate
 
@@ -146,11 +120,19 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
     
     }
     */
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let vc = segue.destination as? PlatformApplicationsCollectionViewController {
-//            vc.platform = selectedPlatform
-//        }
-//    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let halfWidth = view.frame.width/2
+        return CGSize(width: halfWidth, height: halfWidth)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 
 }

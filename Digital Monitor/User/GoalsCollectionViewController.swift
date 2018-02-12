@@ -100,6 +100,13 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
             debugPrint("GOAL", goal)
             if let progress = goal.progress{
                 usageTile.progressRing.setProgress(value: CGFloat(progress*100), animationDuration: 2)
+                if progress > 1 {
+                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+                } else if progress > 0.75{
+                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                } else {
+                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+                }
                 debugPrint("PROGRESS BEING ADDED", usageTile.progressRing.value)
             }
             

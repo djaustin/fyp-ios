@@ -33,9 +33,8 @@ class GoalTileView: UICollectionViewCell {
         titleLabel.adjustsFontSizeToFitWidth = true
         usageTimeLabel.adjustsFontSizeToFitWidth = true
         
-    
-
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()

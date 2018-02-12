@@ -24,4 +24,11 @@ struct ApplicationUsageData : Codable {
     let id: String
     let name: String
     let duration: Int
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case duration
+    }
+    
 }

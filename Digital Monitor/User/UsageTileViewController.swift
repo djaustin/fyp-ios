@@ -28,6 +28,7 @@ class UsageTileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         user = DMUser.authenticatedUser
+    
         // Do any additional setup after loading the view.
     }
     
@@ -47,7 +48,8 @@ class UsageTileViewController: UIViewController {
         overallUsageView.informationLabel.text = nil
         overallUsageView.usageTimeLabel.text = nil
         overallUsageView.button.isEnabled = false
-        overallUsageView.button.isHidden = true
+        applicationUsageView.button.isHidden = false
+        platformUsageView.button.isHidden = false
         
         let applicationTappedGesture = UITapGestureRecognizer(target: self, action: #selector(applicationTileWasTapped(_:)))
         let platformTappedGesture = UITapGestureRecognizer(target: self, action: #selector(platformTileWasTapped(_:)))

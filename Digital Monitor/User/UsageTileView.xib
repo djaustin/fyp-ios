@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,12 +37,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-I5-NzD">
-                    <rect key="frame" x="5" y="27.5" width="190" height="0.0"/>
+                    <rect key="frame" x="5" y="100" width="190" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgu-MV-DT1">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgu-MV-DT1">
                     <rect key="frame" x="73" y="150" width="55" height="30"/>
                     <state key="normal" title="View All"/>
                 </button>
@@ -52,9 +52,9 @@
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="2sq-73-mYJ"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="4Px-jI-z9H"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="6vt-aY-uAf"/>
+                <constraint firstItem="qOS-I5-NzD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7QW-tY-JE1"/>
                 <constraint firstItem="qOS-I5-NzD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CHp-kP-JNp"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jit-MR-JHe"/>
-                <constraint firstItem="qOS-I5-NzD" firstAttribute="top" secondItem="SeW-kl-7iE" secondAttribute="bottom" constant="8.5" id="OzT-9z-hLH"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Svx-Hq-lJA"/>
                 <constraint firstItem="Dgu-MV-DT1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y3N-AH-twT"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="aAn-z6-NJI"/>
@@ -63,6 +63,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SeW-kl-7iE" secondAttribute="trailing" constant="5" id="rW6-uO-CUJ"/>
                 <constraint firstItem="qTx-fY-Kbk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="11" id="sIy-JA-9De"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qOS-I5-NzD" secondAttribute="trailing" constant="5" id="wCB-7p-11O"/>
+                <constraint firstItem="qOS-I5-NzD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wCZ-aF-1Pc"/>
                 <constraint firstItem="SeW-kl-7iE" firstAttribute="top" secondItem="qTx-fY-Kbk" secondAttribute="bottom" constant="8" id="xXX-i6-UM9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
