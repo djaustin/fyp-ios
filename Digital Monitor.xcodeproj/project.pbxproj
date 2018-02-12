@@ -30,6 +30,7 @@
 		DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */; };
 		DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */; };
 		DB4DA83D2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4DA83C2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift */; };
+		DB4DA83F2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4DA83E2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift */; };
 		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
 		DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726A2007C01E008DAD30 /* DMApplication.swift */; };
@@ -104,6 +105,7 @@
 		DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationLoginViewController.swift; sourceTree = "<group>"; };
 		DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrganisationsResponse.swift; sourceTree = "<group>"; };
 		DB4DA83C2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformApplicationsCollectionViewController.swift; sourceTree = "<group>"; };
+		DB4DA83E2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPlatformCollectionViewController.swift; sourceTree = "<group>"; };
 		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
 		DB52726A2007C01E008DAD30 /* DMApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMApplication.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				DB4DA83C2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift */,
 				DBB9D80E2006598300952EF7 /* LoginViewController.swift */,
 				DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */,
+				DB4DA83E2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift */,
 				DBBCE692201DFA5E00178715 /* GoalTileView.swift */,
 				DBBCE693201DFA5E00178715 /* GoalTileView.xib */,
 				DB29E0C5200F78BC00E988DB /* UsageTileView.xib */,
@@ -691,6 +694,7 @@
 				DB2C2658201795C20010A202 /* ClientController.swift in Sources */,
 				DB7329BE20288D2000C0FA5C /* DMDeviceToken.swift in Sources */,
 				DB7329BC20288C8500C0FA5C /* PutDeviceTokenRequest.swift in Sources */,
+				DB4DA83F2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift in Sources */,
 				DB2D2CD5201641F6006E5BA1 /* OrganisationRegistrationRequest.swift in Sources */,
 				DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */,
 				DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */,

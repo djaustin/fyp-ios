@@ -19,6 +19,7 @@ class UserController {
     let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
     let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
     let userApplicationsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications"
+    let userApplicationPlatformsMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/applications/%@"
     let userGoalProgressEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/progress"
     let userGoalsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/"
     let userGoalsByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/usage-goals/%@"
@@ -151,7 +152,7 @@ class UserController {
                     if let data = oauthResponse.data {
                         if let responseBody = try? jsonDecoder.decode(ApplicationsMetricsResponse.self, from: data){
                             if responseBody.status == "success"{
-                                return onCompletion(responseBody.data.applications, nil)
+                                return onCompletion(responseBody.data, nil)
                             } else {
                                 return onCompletion(nil, ResponseError.errorOnStatusOk)
                             }
@@ -652,7 +653,68 @@ class UserController {
                         do{
                             let responseBody = try jsonDecoder.decode(ApplicationsMetricsResponse.self, from: data)
                             if responseBody.status == "success"{
-                                return onCompletion(responseBody.data.applications, nil)
+                                return onCompletion(responseBody.data, nil)
+                            } else {
+                                return onCompletion(nil, ResponseError.errorOnStatusOk)
+                            }
+                        }catch {
+                            print(error)
+                            onCompletion(nil, error)
+                        }
+                    } else {
+                        onCompletion(nil, ResponseError.noResponseData)
+                    }
+                } else {
+                    onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func getPlatformMetrics(forApplication application: DMApplication, forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping ([PlatformUsageData]?, Error?) -> Void){
+        let jsonDecoder = JSONDecoder()
+        if !DMUser.userIsLoggedIn {
+            return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
+        }
+        guard let userId = user.id else {
+            return onCompletion(nil, UserError.QueryError.userNotSaved)
+        }
+        guard let applicationId = application.id else {
+            return onCompletion(nil, ApplicationError.QueryError.missingId)
+        }
+        guard let urlString = URL(string: String(format: userApplicationPlatformsMetricsEndpointTemplate, userId, applicationId)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        var queryItems: [URLQueryItem] = []
+        for (key, value) in query {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        
+        guard var urlComponents = URLComponents(url: urlString, resolvingAgainstBaseURL: false) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        urlComponents.queryItems = queryItems
+        
+        guard let url = urlComponents.url else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        
+        let req = oauth2PasswordGrant.request(forURL: url)
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(nil, error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    if let data = oauthResponse.data {
+                        
+                        do{
+                            let responseBody = try jsonDecoder.decode(PlatformsMetricsResponse.self, from: data)
+                            if responseBody.status == "success"{
+                                return onCompletion(responseBody.data.platforms, nil)
                             } else {
                                 return onCompletion(nil, ResponseError.errorOnStatusOk)
                             }

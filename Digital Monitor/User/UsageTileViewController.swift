@@ -127,15 +127,15 @@ class UsageTileViewController: UIViewController {
             }
             return
         }
-        guard let largestApplication = data.max(by: {$0.duration < $1.duration}) else {
+        guard let largestApplicationUsage = data.max(by: {$0.duration < $1.duration}) else {
             UI {
                 self.applicationUsageView.informationLabel.text = "Cannot find max"
             }
             return
         }
         UI {
-            self.applicationUsageView.informationLabel.text = largestApplication.name
-            self.applicationUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: largestApplication.duration)
+            self.applicationUsageView.informationLabel.text = largestApplicationUsage.application.name
+            self.applicationUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: largestApplicationUsage.duration)
         }
     }
     func populateOverallUsageTile(withData data: OverallMetricsResponseData){

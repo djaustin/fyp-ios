@@ -25,6 +25,7 @@ class PlatformApplicationsCollectionViewController: UICollectionViewController, 
         self.collectionView!.register(UsageTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
             if let platform = platform {
+                navigationItem.title = platform
                 user.getApplicationMetrics(forPlatform: platform, withQuery: [:]) { (data, error) in
                     if let error = error {
                         print(error)
@@ -78,12 +79,12 @@ class PlatformApplicationsCollectionViewController: UICollectionViewController, 
         // Configure the cell
         
         if let tile = cell as? UsageTileView {
-            let application = dataSource[indexPath.item]
+            let applicationUsage = dataSource[indexPath.item]
             tile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             tile.layer.borderWidth = 0.5
             tile.layer.cornerRadius = 0
-            tile.titleLabel.text = application.name
-            tile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: application.duration)
+            tile.titleLabel.text = applicationUsage.application.name
+            tile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: applicationUsage.duration)
             return tile
         }
         

@@ -1,8 +1,8 @@
 //
-//  ApplicationUsageCollectionViewController.swift
+//  ApplicationPlatformCollectionViewController.swift
 //  Digital Monitor
 //
-//  Created by Dan Austin on 20/01/2018.
+//  Created by Dan Austin on 12/02/2018.
 //  Copyright © 2018 Dan Austin. All rights reserved.
 //
 
@@ -10,30 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ApplicationUsageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ApplicationPlatformCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var sortButton: UIBarButtonItem!
-    var dataSource: [ApplicationUsageData] = []
-    var sortDescending = true
-    var selectedApplication: DMApplication?
-    
-    @IBAction func sortButtonWasPressed(_ sender: UIBarButtonItem) {
-        if sortDescending{
-            sortDescending = false
-            sender.image = #imageLiteral(resourceName: "NumericalSortAsc")
-            dataSource.sort { (app1, app2) -> Bool in
-                app1.duration < app2.duration
-            }
-            collectionView?.reloadData()
-        } else {
-            sortDescending = true
-            sender.image = #imageLiteral(resourceName: "NumericalSortDes")
-            dataSource.sort { (app1, app2) -> Bool in
-                app1.duration > app2.duration
-            }
-            collectionView?.reloadData()
-        }
-    }
+    var application: DMApplication?
+    var dataSource: [PlatformUsageData] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,16 +22,30 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
 
         // Register cell classes
         self.collectionView!.register(UsageTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
-        dataSource.sort { (appOne, appTwo) -> Bool in
-            appOne.duration > appTwo.duration
+        if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
+            if let application = application{
+                UI {
+                    self.navigationItem.title = application.name
+                }
+                user.getPlatformMetrics(forApplication: application, withQuery: [:]) { (data, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        if let data = data {
+                            self.dataSource = data.sorted(by: {$0.duration > $1.duration})
+                            UI {
+                                self.collectionView?.reloadData()
+                            }
+                        } else {
+                            print("No data or error")
+                        }
+                    }
+                }
+            }
         }
-        collectionView?.reloadData()
-
         // Do any additional setup after loading the view.
     }
 
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,33 +77,24 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        if let usageTile = cell as? UsageTileView {
-            usageTile.button.tag = indexPath.item
-            usageTile.button.addTarget(self, action: #selector(tileButtonWasPressed(_:)), for: .touchUpInside)
-            usageTile.button.isHidden = false
-            usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            usageTile.layer.borderWidth = 0.5
-            usageTile.layer.cornerRadius = 0
-            let applicationUsage = dataSource[indexPath.item]
-            usageTile.titleLabel.text = applicationUsage.application.name
-            usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: applicationUsage.duration)
-            return usageTile
+        if let tile = cell as? UsageTileView{
+            tile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            tile.layer.borderWidth = 0.5
+            tile.layer.cornerRadius = 0
+            tile.titleLabel.text = dataSource[indexPath.item].name
+            tile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: dataSource[indexPath.item].duration)
         }
         // Configure the cell
     
         return cell
     }
     
-    @objc func tileButtonWasPressed(_ button: UIButton){
-        selectedApplication = dataSource[button.tag].application
-        performSegue(withIdentifier: "showApplication", sender: self)
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let halfWidth = view.frame.width/2
         return CGSize(width: halfWidth, height: halfWidth)
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -119,7 +104,6 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
         return 0
     }
     
-
 
     // MARK: UICollectionViewDelegate
 
@@ -151,11 +135,5 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
     
     }
     */
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ApplicationPlatformCollectionViewController {
-            vc.application = selectedApplication
-        }
-    }
 
 }

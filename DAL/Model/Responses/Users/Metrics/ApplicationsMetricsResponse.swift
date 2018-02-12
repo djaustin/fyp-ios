@@ -10,25 +10,11 @@ import Foundation
 
 struct ApplicationsMetricsResponse : Codable {
     let status: String
-    let data: ApplicationsMetricsResponseData
+    let data: [ApplicationUsageData]
 
-}
-
-struct ApplicationsMetricsResponseData : Codable {
-    let applications: [ApplicationUsageData]
-    
-    
 }
 
 struct ApplicationUsageData : Codable {
-    let id: String
-    let name: String
+    let application: DMApplication
     let duration: Int
-    
-    private enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case name
-        case duration
-    }
-    
 }
