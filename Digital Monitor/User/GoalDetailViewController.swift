@@ -48,7 +48,22 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var secondsTextField: UITextField!
     @IBOutlet weak var applicationSwitch: UISwitch!
     @IBOutlet weak var platformSwitch: UISwitch!
+    @IBOutlet weak var deleteButton: UIButton!
     
+    @IBAction func deleteButtonWasPressed(_ sender: Any) {
+        guard let goal = goal else {
+            return
+        }
+        user.deleteGoal(goal) { (error) in
+            if let error = error {
+                print(error)
+            } else {
+                UI {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
     @IBAction func applicationSwitchDidChange(_ sender: Any) {
         if applicationSwitch.isOn {
             setApplicationEnabled(true)
@@ -102,9 +117,11 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if let goal = goal {
             navigationItem.title = "Edit Goal"
             saveButton.setTitle("Save", for: .normal)
+            deleteButton.isHidden = false
         } else {
             navigationItem.title = "New Goal"
             saveButton.setTitle("Add Goal", for: .normal)
+            deleteButton.isHidden = true
         }
         
         setApplicationEnabled(false)

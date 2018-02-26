@@ -731,4 +731,43 @@ class UserController {
             }
         }
     }
+    
+    func delete(usageGoal goal: DMUser.UsageGoal, fromUser user: DMUser, onCompletion: @escaping (Error?) -> Void){
+        let jsonEncoder = JSONEncoder()
+        guard let goalId = goal.id else {
+            return onCompletion(UsageGoalError.SaveError.missingId)
+        }
+        guard let userId = user.id else {
+            return onCompletion(UserError.QueryError.userNotSaved)
+        }
+        guard let url = URL(string: String(format: userGoalsByIdEndpointTemplate, userId, goalId)) else {
+            return onCompletion(RequestError.urlError)
+        }
+        
+        guard let body = try? jsonEncoder.encode(goal) else {
+            return onCompletion(RequestError.jsonEncodingError)
+        }
+        
+        var req = oauth2PasswordGrant.request(forURL: url)
+        
+        req.httpMethod = "DELETE"
+        
+        req.httpBody = body
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
 }

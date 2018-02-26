@@ -169,6 +169,18 @@ class DMUser : Codable {
             }
             onCompletion(error)
         })
-        
+    }
+    
+    func deleteGoal(_ goal: UsageGoal, onCompletion: @escaping (Error?) -> Void){
+        userController.delete(usageGoal: goal, fromUser: self) { (error) in
+            if error != nil {
+                if let index = self.usageGoals.index(where: { (element) -> Bool in
+                    element.id == goal.id
+                }){
+                    self.usageGoals.remove(at: index)
+                }
+            }
+            onCompletion(error)
+        }
     }
 }
