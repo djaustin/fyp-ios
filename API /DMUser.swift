@@ -28,7 +28,7 @@ class DMUser : Codable {
     }
     
     struct UsageGoal : Codable {
-        init(duration: Int, period: String, platform: String?, applicationId: String?) {
+        init(duration: Int, period: DMPeriod, platform: DMPlatform?, applicationId: String?) {
             self.duration = duration
             self.period = period
             self.platform = platform
@@ -36,10 +36,10 @@ class DMUser : Codable {
         }
         
         var id: String?
-        var platform: String?
+        var platform: DMPlatform?
         var applicationId: String?
         var duration: Int
-        var period: String
+        var period: DMPeriod
         var progress: Double?
         private enum CodingKeys: String, CodingKey {
             case platform
@@ -122,7 +122,7 @@ class DMUser : Codable {
         userController.getPlatforms(forUser: self, onCompletion: onCompletion)
     }
     
-    func getApplicationMetrics(forPlatform platform: String, withQuery query: [String:String], onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
+    func getApplicationMetrics(forPlatform platform: DMPlatform, withQuery query: [String:String], onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
         userController.getApplicationMetrics(forPlatform: platform, forUser: self, withQuery: query, onCompletion: onCompletion)
     }
     

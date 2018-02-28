@@ -21,6 +21,6 @@ struct PlatformsMetricsResponseData : Codable {
 }
 
 struct PlatformUsageData : Codable {
-    let name: String
+    let platform: DMPlatform
     let duration: Int
 }

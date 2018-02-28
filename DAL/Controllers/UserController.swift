@@ -532,6 +532,7 @@ class UserController {
     func add(usageGoal goal: DMUser.UsageGoal, toUser user: DMUser, onCompletion: @escaping (DMUser.UsageGoal?, Error?) -> Void){
         let jsonEncoder = JSONEncoder()
         let jsonDecoder = JSONDecoder()
+        
         guard let id = user.id else {
             return onCompletion(nil, UserError.QueryError.userNotSaved)
         }
@@ -540,9 +541,9 @@ class UserController {
             return onCompletion(nil, RequestError.urlError)
         }
         var req = oauth2ClientCredentials.request(forURL: URL)
-        
+        var body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.applicationId)
         req.httpMethod = "POST"
-        guard let requestBodyJSON = try? jsonEncoder.encode(goal) else {
+        guard let requestBodyJSON = try? jsonEncoder.encode(body) else {
             return onCompletion(nil, RequestError.jsonEncodingError)
         }
         
@@ -586,7 +587,9 @@ class UserController {
             return onCompletion(RequestError.urlError)
         }
         
-        guard let body = try? jsonEncoder.encode(goal) else {
+        let body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.applicationId)
+        
+        guard let jsonEncodedBody = try? jsonEncoder.encode(body) else {
             return onCompletion(RequestError.jsonEncodingError)
         }
         
@@ -594,7 +597,7 @@ class UserController {
         
         req.httpMethod = "PUT"
         
-        req.httpBody = body
+        req.httpBody = jsonEncodedBody
         
         req.setValue("application/json", forHTTPHeaderField: "content-type")
         
@@ -613,7 +616,7 @@ class UserController {
         }
     }
     
-    func getApplicationMetrics(forPlatform platform: String, forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
+    func getApplicationMetrics(forPlatform platform: DMPlatform, forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping ([ApplicationUsageData]?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
         if !DMUser.userIsLoggedIn {
             return onCompletion(nil, UserError.AuthenticationError.userNotLoggedIn)
@@ -621,7 +624,7 @@ class UserController {
         guard let id = user.id else {
             return onCompletion(nil, UserError.QueryError.userNotSaved)
         }
-        guard let urlString = URL(string: String(format: userPlatformApplicationsMetricsEndpointTemplate, id, platform)) else {
+        guard let urlString = URL(string: String(format: userPlatformApplicationsMetricsEndpointTemplate, id, platform.id)) else {
             return onCompletion(nil, RequestError.urlError)
         }
         

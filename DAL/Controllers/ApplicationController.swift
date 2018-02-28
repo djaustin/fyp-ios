@@ -13,6 +13,7 @@ class ApplicationController{
     let organisationApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/organisations/%@/applications"
     let applicationPlatformMetricsByIdTemplate = "https://digitalmonitor.tk/api/users/%@/applications"
     let applicationsEndpoint = URL(string: "https://digitalmonitor.tk/api/applications/")!
+    let applicationsByIdEndpointTemplate =  "https://digitalmonitor.tk/api/applications/%@"
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
 
@@ -106,11 +107,12 @@ class ApplicationController{
     
     func getApplication(byId id: String, onCompletion: @escaping (DMApplication?, Error?) -> Void) {
         let jsonDecoder = JSONDecoder()
-        var urlComponents = URLComponents(url: applicationsEndpoint, resolvingAgainstBaseURL: false)!
-        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
-        let req = oauth2PasswordGrant.request(forURL: urlComponents.url!)
+        guard let url = URL(string: String(format: applicationsByIdEndpointTemplate, id)) else {
+            return onCompletion(nil, RequestError.urlError)
+        }
+        let req = oauth2PasswordGrant.request(forURL: url)
         let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
-        
+    
         loader.perform(request: req) { (oauthResponse) in
             if let error = oauthResponse.error {
                 onCompletion(nil, error)

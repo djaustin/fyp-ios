@@ -16,9 +16,9 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.isEqual(periodPicker){
-            return periods[row]
+            return periods[row].name
         } else if pickerView.isEqual(platformPicker){
-            return platforms[row]
+            return platforms[row].name
         } else {
             return applications[row].name
         }
@@ -36,9 +36,9 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     
     var goal: DMUser.UsageGoal?
-    let periods = ["daily", "weekly", "monthly", "yearly"]
+    var periods: [DMPeriod] = []
     var applications: [DMApplication] = []
-    let platforms = ["ios", "android", "blackberry", "windows-phone", "desktop", "browser"]
+    var platforms: [DMPlatform] = []
     @IBOutlet weak var platformPicker: UIPickerView!
     @IBOutlet weak var applicationPicker: UIPickerView!
     @IBOutlet weak var periodPicker: UIPickerView!
@@ -161,6 +161,42 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         hoursTextField.delegate = self
         minutesTextField.delegate = self
         secondsTextField.delegate = self
+        populatePlatformsPicker()
+        populatePeriodsPicker()
+    }
+    
+    func populatePlatformsPicker(){
+        DMPlatform.getPlatforms { (platforms, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if let platforms = platforms {
+                    self.platforms = platforms
+                    UI {
+                        self.platformPicker.reloadAllComponents()
+                    }
+                } else {
+                    print("no error or platforms")
+                }
+            }
+        }
+    }
+    
+    func populatePeriodsPicker(){
+        DMPeriod.getPeriods { (periods, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if let periods = periods {
+                    self.periods = periods
+                    UI {
+                        self.periodPicker.reloadAllComponents()
+                    }
+                } else {
+                    print("no error or periods")
+                }
+            }
+        }
     }
     
     
@@ -183,7 +219,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setPlatformEnabled(true)
                 platformSwitch.isOn = true
                 if let row = platforms.index(where: { (element) -> Bool in
-                    element == platform
+                    element.id == platform.id
                 }) {
                     platformPicker.selectRow(row, inComponent: 0, animated: true)
                 }
@@ -197,7 +233,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             minutesTextField.text = String(m)
             secondsTextField.text = String(s)
             if let periodRow = periods.index(where: { (element) -> Bool in
-                element == goal.period
+                element.id == goal.period.id
             }){
                 periodPicker.selectRow(periodRow, inComponent: 0, animated: true)
             }
@@ -225,7 +261,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         return applicationSwitch.isOn && !applications.isEmpty ? applications[applicationPicker.selectedRow(inComponent: 0)] : nil
     }
     
-    func getChosenPlatform() -> String? {
+    func getChosenPlatform() -> DMPlatform? {
         return platformSwitch.isOn ? platforms[platformPicker.selectedRow(inComponent: 0)] : nil
     }
     

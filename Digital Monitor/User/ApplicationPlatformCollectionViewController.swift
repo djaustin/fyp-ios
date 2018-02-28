@@ -81,7 +81,7 @@ class ApplicationPlatformCollectionViewController: UICollectionViewController, U
             tile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             tile.layer.borderWidth = 0.5
             tile.layer.cornerRadius = 0
-            tile.titleLabel.text = dataSource[indexPath.item].name
+            tile.titleLabel.text = dataSource[indexPath.item].platform.name
             tile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: dataSource[indexPath.item].duration)
         }
         // Configure the cell

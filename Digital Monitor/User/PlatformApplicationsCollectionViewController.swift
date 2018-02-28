@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 class PlatformApplicationsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var dataSource: [ApplicationUsageData] = []
-    var platform: String?
+    var platform: DMPlatform?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class PlatformApplicationsCollectionViewController: UICollectionViewController, 
         self.collectionView!.register(UsageTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
             if let platform = platform {
-                navigationItem.title = platform
+                navigationItem.title = platform.name
                 user.getApplicationMetrics(forPlatform: platform, withQuery: [:]) { (data, error) in
                     if let error = error {
                         print(error)

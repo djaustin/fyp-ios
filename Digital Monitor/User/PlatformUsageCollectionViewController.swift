@@ -15,7 +15,7 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
     @IBOutlet weak var sortButton: UIBarButtonItem!
     var sortDescending = true
     var dataSource: [PlatformUsageData] = []
-    var selectedPlatform: String?
+    var selectedPlatform: DMPlatform?
     var user: DMUser?
     
     @IBAction func sortButtonWasPressed(_ sender: UIBarButtonItem) {
@@ -85,9 +85,9 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
             usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             usageTile.layer.borderWidth = 0.5
             usageTile.layer.cornerRadius = 0
-            let platform = dataSource[indexPath.item]
-            usageTile.titleLabel.text = platform.name
-            usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: platform.duration)
+            let platformData = dataSource[indexPath.item]
+            usageTile.titleLabel.text = platformData.platform.name
+            usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: platformData.duration)
             return usageTile
         }
         // Configure the cell
@@ -96,7 +96,7 @@ class PlatformUsageCollectionViewController: UICollectionViewController, UIColle
     }
     
     @objc func tileButtonWasPressed(_ button: UIButton){
-        selectedPlatform = dataSource[button.tag].name
+        selectedPlatform = dataSource[button.tag].platform
         performSegue(withIdentifier: "showPlatform", sender: self)
     }
     

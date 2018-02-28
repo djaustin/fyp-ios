@@ -81,11 +81,11 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                             UI {
                                 if let platform = goal.platform {
                                     usageTile.titleLabel.text = app.name
-                                    usageTile.subtitleLabel.text = "\(platform) - \(goal.period)"
+                                    usageTile.subtitleLabel.text = "\(platform.name) - \(goal.period.name)"
                                     
                                 } else {
                                     usageTile.titleLabel.text = app.name
-                                    usageTile.subtitleLabel.text = goal.period
+                                    usageTile.subtitleLabel.text = goal.period.name
                                 }
                                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
                             }
@@ -93,8 +93,8 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                     }
                 })
             } else {
-                usageTile.titleLabel.text = goal.platform
-                usageTile.subtitleLabel.text = goal.period
+                usageTile.titleLabel.text = goal.platform?.name
+                usageTile.subtitleLabel.text = goal.period.name
                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
             }
             debugPrint("GOAL", goal)

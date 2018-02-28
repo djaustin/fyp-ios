@@ -115,7 +115,7 @@ class UsageTileViewController: UIViewController {
             return
         }
         UI {
-            self.platformUsageView.informationLabel.text = topPlatform.name
+            self.platformUsageView.informationLabel.text = topPlatform.platform.name
             self.platformUsageView.usageTimeLabel.text = String(digitalClockFormatFromSeconds: topPlatform.duration)
         }
     }
