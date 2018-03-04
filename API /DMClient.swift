@@ -49,9 +49,9 @@ class DMClient : Codable {
         clientController.save(client: self, toApplication: application, ownedBy: organisation, onCompletion: onCompletion)
     }
     
-    static func addClient(name: String, redirectUri: String, applicationId: String, platform: String, onCompletion: @escaping (DMClient?, Error?) -> Void) {
+    static func addClient(name: String, redirectUri: String, applicationId: String, platformId: String, onCompletion: @escaping (DMClient?, Error?) -> Void) {
         let clientController = ClientController()
-        clientController.addClient(name: name, redirectUri: redirectUri, applicationId: applicationId, platform: platform, onCompletion: onCompletion)
+        clientController.addClient(name: name, redirectUri: redirectUri, applicationId: applicationId, platformId: platformId, onCompletion: onCompletion)
     }
 //
 //    func getSecret(onCompletion: @escaping (String?, Error?) -> Void) {

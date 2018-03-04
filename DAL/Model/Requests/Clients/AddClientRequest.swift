@@ -12,5 +12,5 @@ struct AddClientRequest : Encodable {
     let name: String
     let redirectUri: String
     let applicationId: String
-    let platform: String
+    let platformId: String
 }

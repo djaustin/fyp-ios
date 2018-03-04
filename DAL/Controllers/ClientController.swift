@@ -74,7 +74,7 @@ class ClientController {
         }
         
         var req = oauth2PasswordGrant.request(forURL: url)
-        
+        print(String(data: body, encoding: .utf8))
         req.httpMethod = "PATCH"
         
         req.httpBody = body
@@ -96,7 +96,7 @@ class ClientController {
         }
     }
     
-    func addClient(name: String, redirectUri: String, applicationId: String, platform: String, onCompletion: @escaping (DMClient?, Error?) -> Void){
+    func addClient(name: String, redirectUri: String, applicationId: String, platformId: String, onCompletion: @escaping (DMClient?, Error?) -> Void){
         
         guard let organisation = DMOrganisation.authenticatedOrganisation else {
             return onCompletion(nil, OrganisationError.QueryError.organisationNotFound)
@@ -105,8 +105,8 @@ class ClientController {
         guard let url = URL(string: String(format: applicationClientEndpointTemplate, organisation.id!, applicationId)) else {
             return onCompletion(nil, RequestError.urlError)
         }
-        
-        let client = AddClientRequest(name: name, redirectUri: redirectUri, applicationId: applicationId, platform: platform)
+    
+        let client = AddClientRequest(name: name, redirectUri: redirectUri, applicationId: applicationId, platformId: platformId)
         
         guard let body = try? jsonEncoder.encode(client) else {
             return onCompletion(nil, RequestError.jsonEncodingError)

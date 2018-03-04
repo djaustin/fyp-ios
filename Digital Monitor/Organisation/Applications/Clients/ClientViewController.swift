@@ -36,7 +36,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return platforms[row]
+        return platforms[row].name
     }
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -46,7 +46,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var platformPicker: UIPickerView!
     
     
-    let platforms: [String] = ["ios", "android", "blackberry", "windows-phone", "desktop", "browser"]
+    var platforms: [DMPlatform] = []
     var client: DMClient?
     
     @IBAction func saveButtonWasPressed(_ sender: Any) {
@@ -57,7 +57,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let chosenPlatform = platforms[platformPicker.selectedRow(inComponent: 0)]
         if let client = client {
             client.name = nameTextField.text!
-            client.platform = chosenPlatform
+            client.platform = chosenPlatform.id
             client.redirectUri = redirectUriTextField.text!
             client.save(toApplication: application, onCompletion: { (error) in
                 if let error = error {
@@ -69,7 +69,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 }
             })
         } else {
-            DMClient.addClient(name: nameTextField.text!, redirectUri: redirectUriTextField.text!, applicationId: application.id!, platform: chosenPlatform, onCompletion: { (client, error) in
+            DMClient.addClient(name: nameTextField.text!, redirectUri: redirectUriTextField.text!, applicationId: application.id!, platformId: chosenPlatform.id, onCompletion: { (client, error) in
                 if let error = error {
                     print(error)
                 } else {
@@ -95,6 +95,26 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
 
     func populateSubViews() {
+        DMPlatform.getPlatforms { (platforms, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if let platforms = platforms {
+                    self.platforms = platforms
+                    UI {
+                        self.platformPicker.reloadAllComponents()
+                        if let client = self.client {
+                            let index = platforms.index(where: {$0.id == client.platform})
+                            if let index = index {
+                                self.platformPicker.selectRow(index, inComponent: 0, animated: false)
+                            }
+                        }
+                    }
+                } else {
+                    print("No error or platforms")
+                }
+            }
+        }
         platformPicker.dataSource = self
         platformPicker.delegate = self
         var name: String?
@@ -104,8 +124,6 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             name = client.name
             id = client.clientId
             redirectUri = client.redirectUri
-            let index = platforms.index(of: client.platform)!
-            platformPicker.selectRow(index, inComponent: 0, animated: true)
             saveButton.setTitle("Save", for: .normal)
             navigationItem.title = client.name
         } else {
