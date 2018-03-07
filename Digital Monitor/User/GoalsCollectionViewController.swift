@@ -12,7 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class GoalsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    
+    var goalApplications: [String:DMApplication] = [:]
     var selectedGoal: DMUser.UsageGoal?
     var dataSource: [DMUser.UsageGoal] = []
     var user: DMUser!
@@ -35,6 +35,9 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
             } else {
                 if let goals = goals {
                     self.dataSource = goals
+                    for goal in goals {
+                        self.getGoalApplication(forGoal: goal)
+                    }
                     debugPrint("UPDATE DATASOURCE", self.dataSource)
                     UI {
                         self.collectionView?.reloadData()
@@ -68,31 +71,22 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
         
         if let usageTile = cell as? GoalTileView {
             let goal = dataSource[indexPath.item]
-            if let appId = goal.applicationId {
-                DMApplication.getApplication(byId: appId, onCompletion: { (app, error) in
-                    if let error = error {
-                        print(error)
-                        UI {
-                            usageTile.titleLabel.text = "ERROR"
-                        }
-
+            if let goalId = goal.id {
+                
+                if let app = goalApplications[goalId] {
+                    if let platform = goal.platform {
+                        usageTile.titleLabel.text = app.name
+                        usageTile.subtitleLabel.text = "\(platform.name) - \(goal.period.name)"
+                        
                     } else {
-                        if let app = app {
-                            UI {
-                                if let platform = goal.platform {
-                                    usageTile.titleLabel.text = app.name
-                                    usageTile.subtitleLabel.text = "\(platform.name) - \(goal.period.name)"
-                                    
-                                } else {
-                                    usageTile.titleLabel.text = app.name
-                                    usageTile.subtitleLabel.text = goal.period.name
-                                }
-                                usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
-                            }
-                        }
+                        usageTile.titleLabel.text = app.name
+                        usageTile.subtitleLabel.text = goal.period.name
                     }
-                })
+                    usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
+
+                }
             } else {
+                print("GOAL NO APP ID", goal)
                 usageTile.titleLabel.text = goal.platform?.name
                 usageTile.subtitleLabel.text = goal.period.name
                 usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
@@ -166,6 +160,29 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
     
     }
     */
+    
+    func getGoalApplication(forGoal goal: DMUser.UsageGoal){
+        guard let goalId = goal.id else {
+            print("No id for goal", goal)
+            return
+        }
+        
+        if let appId = goal.applicationId {
+            print("appId", appId)
+            DMApplication.getApplication(byId: appId, onCompletion: { (app, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    if let app = app {
+                        self.goalApplications[goalId] = app
+                        UI {
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                }
+            })
+        }
+    }
     
     @IBAction func addButtonWasPressed(_ sender: Any) {
         selectedGoal = nil
