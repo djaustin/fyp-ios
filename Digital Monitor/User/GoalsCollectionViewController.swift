@@ -72,7 +72,6 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
         if let usageTile = cell as? GoalTileView {
             let goal = dataSource[indexPath.item]
             if let goalId = goal.id {
-                
                 if let app = goalApplications[goalId] {
                     if let platform = goal.platform {
                         usageTile.titleLabel.text = app.name
@@ -84,24 +83,25 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
                     }
                     usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
 
+                }else {
+                    print("GOAL NO APP ID", goal)
+                    usageTile.titleLabel.text = goal.platform?.name
+                    usageTile.subtitleLabel.text = goal.period.name
+                    usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
                 }
-            } else {
-                print("GOAL NO APP ID", goal)
-                usageTile.titleLabel.text = goal.platform?.name
-                usageTile.subtitleLabel.text = goal.period.name
-                usageTile.usageTimeLabel.text = String(digitalClockFormatFromSeconds: goal.duration)
-            }
-            debugPrint("GOAL", goal)
-            if let progress = goal.progress{
-                usageTile.progressRing.setProgress(value: CGFloat(progress*100), animationDuration: 2)
-                if progress > 1 {
-                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-                } else if progress > 0.75{
-                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-                } else {
-                    usageTile.progressRing.innerRingColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+                debugPrint("GOAL", goal)
+                if let progress = goal.progress{
+                    usageTile.progressRing.setProgress(value: CGFloat(progress*100), animationDuration: 2)
+                    if progress > 1 {
+                        usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+                    } else if progress > 0.75{
+                        usageTile.progressRing.innerRingColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                    } else {
+                        usageTile.progressRing.innerRingColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+                    }
+                    debugPrint("PROGRESS BEING ADDED", usageTile.progressRing.value)
                 }
-                debugPrint("PROGRESS BEING ADDED", usageTile.progressRing.value)
+                
             }
             
             usageTile.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
