@@ -119,13 +119,8 @@ class ApplicationController{
             } else {
                 if oauthResponse.response.statusCode == 200 {
                     if let data = oauthResponse.data {
-                        if let responseBody = try? jsonDecoder.decode(GetApplicationsResponse.self, from: data){
-                            let applications = responseBody.data.applications
-                            if applications.count < 1 {
-                                onCompletion(nil, ApplicationError.QueryError.applicationNotFound)
-                            } else {
-                                onCompletion(applications[0], nil)
-                            }
+                        if let responseBody = try? jsonDecoder.decode(GetApplicationResponse.self, from: data){
+                            onCompletion(responseBody.data.application, nil)
                         } else {
                             onCompletion(nil, ResponseError.responseDecodeError)
                         }

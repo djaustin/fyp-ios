@@ -75,7 +75,7 @@ class ClientController {
         
         var req = oauth2PasswordGrant.request(forURL: url)
         print(String(data: body, encoding: .utf8))
-        req.httpMethod = "PATCH"
+        req.httpMethod = "PUT"
         
         req.httpBody = body
         
