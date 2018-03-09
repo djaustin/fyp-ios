@@ -541,7 +541,7 @@ class UserController {
             return onCompletion(nil, RequestError.urlError)
         }
         var req = oauth2ClientCredentials.request(forURL: URL)
-        var body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.applicationId)
+        let body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.application?.id)
         req.httpMethod = "POST"
         guard let requestBodyJSON = try? jsonEncoder.encode(body) else {
             return onCompletion(nil, RequestError.jsonEncodingError)
@@ -587,7 +587,7 @@ class UserController {
             return onCompletion(RequestError.urlError)
         }
         
-        let body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.applicationId)
+        let body = PostUsageGoalRequest(duration: goal.duration, periodId: goal.period.id, platformId: goal.platform?.id, applicationId: goal.application?.id)
         
         guard let jsonEncodedBody = try? jsonEncoder.encode(body) else {
             return onCompletion(RequestError.jsonEncodingError)

@@ -202,11 +202,11 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func populateControlsWithProvidedGoal(){
         if let goal = goal {
-            if let appId = goal.applicationId {
+            if let application = goal.application {
                 setApplicationEnabled(true)
                 applicationSwitch.isOn = true
                 if let row = applications.index(where: { (app) -> Bool in
-                    app.id == appId
+                    app.id == application.id
                 }) {
                     applicationPicker.selectRow(row, inComponent: 0, animated: true)
                     
@@ -286,11 +286,11 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let duration = getDurationInSeconds()
         let period = periods[periodPicker.selectedRow(inComponent: 0)]
         let platform = getChosenPlatform()
-        let applicationId = getChosenApplication()?.id
+        let application = getChosenApplication()
         if var goal = goal {
-            goal.applicationId = getChosenApplication()?.id
-            goal.platform = getChosenPlatform()
-            goal.duration = getDurationInSeconds()
+            goal.application = application
+            goal.platform = platform
+            goal.duration = duration
             goal.period = period
             user.saveGoal(goal) { (error) in
                 if let error = error {
@@ -303,7 +303,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
             }
         } else {
-            let newGoal = DMUser.UsageGoal(duration: duration, period: period, platform: platform, applicationId: applicationId)
+            let newGoal = DMUser.UsageGoal(duration: duration, period: period, platform: platform, application: application)
             user.add(usageGoal: newGoal) { (goal, error) in
                 if let error = error {
                     print(error)

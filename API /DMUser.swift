@@ -28,22 +28,22 @@ class DMUser : Codable {
     }
     
     struct UsageGoal : Codable {
-        init(duration: Int, period: DMPeriod, platform: DMPlatform?, applicationId: String?) {
+        init(duration: Int, period: DMPeriod, platform: DMPlatform?, application: DMApplication?) {
             self.duration = duration
             self.period = period
             self.platform = platform
-            self.applicationId = applicationId
+            self.application = application
         }
         
         var id: String?
         var platform: DMPlatform?
-        var applicationId: String?
+        var application: DMApplication?
         var duration: Int
         var period: DMPeriod
         var progress: Double?
         private enum CodingKeys: String, CodingKey {
             case platform
-            case applicationId
+            case application
             case duration
             case period
             case id = "_id"
