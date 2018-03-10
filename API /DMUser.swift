@@ -183,4 +183,9 @@ class DMUser : Codable {
             onCompletion(error)
         }
     }
+    
+    func getMonitoringExceptions(_ onCompletion: @escaping ([DMMonitoringException]?, Error?) -> Void){
+        let controller = MonitoringExceptionController()
+        controller.getMonitoringExceptions(forUser: self, onCompletion: onCompletion)
+    }
 }

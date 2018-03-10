@@ -10,6 +10,13 @@
 		48DC8B5419D159A1859D7628 /* Pods_Digital_Monitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */; };
 		DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */; };
 		DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */; };
+		DB1DE8132052F11200A85237 /* DMMonitoringException.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8122052F11200A85237 /* DMMonitoringException.swift */; };
+		DB1DE8152052F33F00A85237 /* MonitoringExceptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8142052F33F00A85237 /* MonitoringExceptionController.swift */; };
+		DB1DE81B2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE81A2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift */; };
+		DB1DE81D2052F76900A85237 /* MonitoringExceptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE81C2052F76900A85237 /* MonitoringExceptionsTableViewController.swift */; };
+		DB1DE81F205337C400A85237 /* MonitoringExceptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */; };
+		DB1DE8222054113600A85237 /* PostMonitoringExceptionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */; };
+		DB1DE8242054141B00A85237 /* PostMonitoringExceptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8232054141B00A85237 /* PostMonitoringExceptionResponse.swift */; };
 		DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */; };
 		DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB29E0C5200F78BC00E988DB /* UsageTileView.xib */; };
 		DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C7200F7A7700E988DB /* UsageTileView.swift */; };
@@ -67,7 +74,7 @@
 		DBBCE691201DEFA300178715 /* GoalsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */; };
 		DBBCE694201DFA5F00178715 /* GoalTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE692201DFA5E00178715 /* GoalTileView.swift */; };
 		DBBCE695201DFA5F00178715 /* GoalTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBBCE693201DFA5E00178715 /* GoalTileView.xib */; };
-		DBBCE697201E01F800178715 /* Date+StartAndEndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */; };
+		DBBCE697201E01F800178715 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE696201E01F800178715 /* Date+.swift */; };
 		DBBD09122051A62F000A1694 /* GetApplicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD09112051A62F000A1694 /* GetApplicationResponse.swift */; };
 		DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */; };
 		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
@@ -93,6 +100,13 @@
 		B2F73807EF99F5A6883CDAD7 /* Pods-Digital Monitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Digital Monitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor.debug.xcconfig"; sourceTree = "<group>"; };
 		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
+		DB1DE8122052F11200A85237 /* DMMonitoringException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMonitoringException.swift; sourceTree = "<group>"; };
+		DB1DE8142052F33F00A85237 /* MonitoringExceptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionController.swift; sourceTree = "<group>"; };
+		DB1DE81A2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonitoringExceptionsResponse.swift; sourceTree = "<group>"; };
+		DB1DE81C2052F76900A85237 /* MonitoringExceptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionsTableViewController.swift; sourceTree = "<group>"; };
+		DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionDetailViewController.swift; sourceTree = "<group>"; };
+		DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMonitoringExceptionRequest.swift; sourceTree = "<group>"; };
+		DB1DE8232054141B00A85237 /* PostMonitoringExceptionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMonitoringExceptionResponse.swift; sourceTree = "<group>"; };
 		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTileViewController.swift; sourceTree = "<group>"; };
 		DB29E0C5200F78BC00E988DB /* UsageTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsageTileView.xib; sourceTree = "<group>"; };
 		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/User/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
@@ -154,7 +168,7 @@
 		DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsCollectionViewController.swift; sourceTree = "<group>"; };
 		DBBCE692201DFA5E00178715 /* GoalTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTileView.swift; sourceTree = "<group>"; };
 		DBBCE693201DFA5E00178715 /* GoalTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTileView.xib; sourceTree = "<group>"; };
-		DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartAndEndOfDay.swift"; sourceTree = "<group>"; };
+		DBBCE696201E01F800178715 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DBBD09112051A62F000A1694 /* GetApplicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApplicationResponse.swift; sourceTree = "<group>"; };
 		DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOwnerExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
@@ -254,6 +268,23 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		DB1DE8192052F44A00A85237 /* Monitoring Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				DB1DE81A2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift */,
+				DB1DE8232054141B00A85237 /* PostMonitoringExceptionResponse.swift */,
+			);
+			path = "Monitoring Exceptions";
+			sourceTree = "<group>";
+		};
+		DB1DE8202054112300A85237 /* Monitoring Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */,
+			);
+			path = "Monitoring Exceptions";
+			sourceTree = "<group>";
+		};
 		DB2C265B201797A40010A202 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +361,7 @@
 		DB527274200A3A8C008DAD30 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				DB1DE8192052F44A00A85237 /* Monitoring Exceptions */,
 				DBEBC779201E358A006C2466 /* Goals */,
 				DBFA4D0B200E800C0020D702 /* Metrics */,
 				DB527276200A3AD1008DAD30 /* PostUserResponse.swift */,
@@ -342,6 +374,7 @@
 		DB527275200A3A97008DAD30 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				DB1DE8202054112300A85237 /* Monitoring Exceptions */,
 				DBCEEEDF20470059002D45CC /* Usage Goals */,
 				DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */,
 			);
@@ -358,6 +391,7 @@
 				DB7329B8202889B600C0FA5C /* DeviceTokenController.swift */,
 				DB35DBCF2046E6FC00024F6C /* PeriodController.swift */,
 				DB35DBD42046EA7900024F6C /* PlatformController.swift */,
+				DB1DE8142052F33F00A85237 /* MonitoringExceptionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +408,7 @@
 				DB7329BD20288D2000C0FA5C /* DMDeviceToken.swift */,
 				DB35DBCB204608D300024F6C /* DMPeriod.swift */,
 				DB35DBCD2046092100024F6C /* DMPlatform.swift */,
+				DB1DE8122052F11200A85237 /* DMMonitoringException.swift */,
 			);
 			path = "API ";
 			sourceTree = "<group>";
@@ -455,7 +490,7 @@
 				DBDBE39920178681007BA1DD /* Organisation */,
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
-				DBBCE696201E01F800178715 /* Date+StartAndEndOfDay.swift */,
+				DBBCE696201E01F800178715 /* Date+.swift */,
 				DBFFA105201F94A3007431B2 /* Int+AsDaysHoursMinutesSeconds.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
@@ -530,6 +565,8 @@
 				DBB9D81E20065C8100952EF7 /* RegisterViewController.swift */,
 				DBBCE690201DEFA300178715 /* GoalsCollectionViewController.swift */,
 				DB9FA588201F3EF1003C1724 /* GoalDetailViewController.swift */,
+				DB1DE81C2052F76900A85237 /* MonitoringExceptionsTableViewController.swift */,
+				DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -749,16 +786,21 @@
 				DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */,
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB35DBD02046E6FC00024F6C /* PeriodController.swift in Sources */,
+				DB1DE8152052F33F00A85237 /* MonitoringExceptionController.swift in Sources */,
 				DB5272672007BC35008DAD30 /* User.swift in Sources */,
+				DB1DE8132052F11200A85237 /* DMMonitoringException.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
+				DB1DE8242054141B00A85237 /* PostMonitoringExceptionResponse.swift in Sources */,
 				DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */,
-				DBBCE697201E01F800178715 /* Date+StartAndEndOfDay.swift in Sources */,
+				DBBCE697201E01F800178715 /* Date+.swift in Sources */,
 				DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */,
 				DBFFA10B201FCFFE007431B2 /* UsageGoalError.swift in Sources */,
 				DB9FA589201F3EF1003C1724 /* GoalDetailViewController.swift in Sources */,
 				DBFFA106201F94A3007431B2 /* Int+AsDaysHoursMinutesSeconds.swift in Sources */,
 				DBEBC77C201E35A0006C2466 /* GetGoalProgressResponse.swift in Sources */,
 				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
+				DB1DE8222054113600A85237 /* PostMonitoringExceptionRequest.swift in Sources */,
+				DB1DE81B2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift in Sources */,
 				DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */,
 				DBFA4D0D200E801E0020D702 /* OverallMetricsResponse.swift in Sources */,
 				DBF4BD8D2013BD6600FC4DCB /* ApplicationUsageCollectionViewController.swift in Sources */,
@@ -774,6 +816,8 @@
 				DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */,
 				DB8F33E02017413100FC6973 /* GetApplicationsResponse.swift in Sources */,
 				DB4DA83D2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift in Sources */,
+				DB1DE81F205337C400A85237 /* MonitoringExceptionDetailViewController.swift in Sources */,
+				DB1DE81D2052F76900A85237 /* MonitoringExceptionsTableViewController.swift in Sources */,
 				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
 				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,

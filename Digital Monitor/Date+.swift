@@ -19,4 +19,12 @@ extension Date {
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startOfDay)
     }
+    
+    func toString( dateFormat format  : String ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+        
+    
 }
