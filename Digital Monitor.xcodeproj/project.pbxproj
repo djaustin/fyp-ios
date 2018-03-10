@@ -17,6 +17,7 @@
 		DB1DE81F205337C400A85237 /* MonitoringExceptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */; };
 		DB1DE8222054113600A85237 /* PostMonitoringExceptionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */; };
 		DB1DE8242054141B00A85237 /* PostMonitoringExceptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8232054141B00A85237 /* PostMonitoringExceptionResponse.swift */; };
+		DB1DE827205431AA00A85237 /* MonitoringExceptionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE826205431AA00A85237 /* MonitoringExceptionError.swift */; };
 		DB29E0C2200F762C00E988DB /* UsageTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */; };
 		DB29E0C6200F78BC00E988DB /* UsageTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB29E0C5200F78BC00E988DB /* UsageTileView.xib */; };
 		DB29E0C8200F7A7700E988DB /* UsageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29E0C7200F7A7700E988DB /* UsageTileView.swift */; };
@@ -107,6 +108,7 @@
 		DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionDetailViewController.swift; sourceTree = "<group>"; };
 		DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMonitoringExceptionRequest.swift; sourceTree = "<group>"; };
 		DB1DE8232054141B00A85237 /* PostMonitoringExceptionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMonitoringExceptionResponse.swift; sourceTree = "<group>"; };
+		DB1DE826205431AA00A85237 /* MonitoringExceptionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionError.swift; sourceTree = "<group>"; };
 		DB29E0C1200F762C00E988DB /* UsageTileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageTileViewController.swift; sourceTree = "<group>"; };
 		DB29E0C5200F78BC00E988DB /* UsageTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsageTileView.xib; sourceTree = "<group>"; };
 		DB29E0C7200F7A7700E988DB /* UsageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageTileView.swift; path = "Digital Monitor/User/UsageTileView.swift"; sourceTree = SOURCE_ROOT; };
@@ -255,6 +257,7 @@
 		DB16BC3920075FC7009D3294 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				DB1DE8252054319000A85237 /* Monitoring Exceptions */,
 				DBFFA109201FCFF2007431B2 /* UsageGoal */,
 				DB2C26612017D78D0010A202 /* Client */,
 				DB2C265B201797A40010A202 /* Application */,
@@ -281,6 +284,14 @@
 			isa = PBXGroup;
 			children = (
 				DB1DE8212054113600A85237 /* PostMonitoringExceptionRequest.swift */,
+			);
+			path = "Monitoring Exceptions";
+			sourceTree = "<group>";
+		};
+		DB1DE8252054319000A85237 /* Monitoring Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				DB1DE826205431AA00A85237 /* MonitoringExceptionError.swift */,
 			);
 			path = "Monitoring Exceptions";
 			sourceTree = "<group>";
@@ -819,6 +830,7 @@
 				DB1DE81F205337C400A85237 /* MonitoringExceptionDetailViewController.swift in Sources */,
 				DB1DE81D2052F76900A85237 /* MonitoringExceptionsTableViewController.swift in Sources */,
 				DB527285200B9668008DAD30 /* UserError.swift in Sources */,
+				DB1DE827205431AA00A85237 /* MonitoringExceptionError.swift in Sources */,
 				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
 				DB2C26602017A46D0010A202 /* ClientViewController.swift in Sources */,

@@ -16,7 +16,7 @@ struct DMMonitoringException : Codable {
     var user: String
     var startTime: Date
     var endTime: Date
-    
+    let controller = MonitoringExceptionController()
     private enum CodingKeys: String, CodingKey {
         case platform
         case application
@@ -30,4 +30,14 @@ struct DMMonitoringException : Codable {
         let controller = MonitoringExceptionController()
         controller.addNew(exception: exception, onCompletion: onCompletion)
     }
+    
+    func save(_ onCompletion: @escaping (Error?) -> Void){
+        controller.save(exception: self, onCompletion: onCompletion)
+    }
+    
+    func delete(_ onCompletion: @escaping(Error?) -> Void){
+        controller.delete(exception: self, onCompletion: onCompletion)
+    }
+    
+    
 }

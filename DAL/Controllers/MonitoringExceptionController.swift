@@ -11,7 +11,7 @@ import p2_OAuth2
 
 class MonitoringExceptionController {
     
-    let monitoringExceptionsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/monitoring-exceptions"
+    let monitoringExceptionsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/monitoring-exceptions/"
     let oauth2Credentials = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
@@ -106,6 +106,70 @@ class MonitoringExceptionController {
                     }
                 } else {
                     onCompletion(nil, ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func save(exception: DMMonitoringException, onCompletion: @escaping (Error?) -> Void) {
+        
+        guard let exceptionId = exception.id else {
+            return onCompletion(MonitoringExceptionError.SaveError.missingId)
+        }
+        guard let url = URL(string: String(format: monitoringExceptionsEndpointTemplate, exception.user) + exceptionId) else {
+            return onCompletion(RequestError.urlError)
+        }
+        
+        var requestBody = PostMonitoringExceptionRequest(startTime: Int(exception.startTime.timeIntervalSince1970*1000), endTime: Int(exception.endTime.timeIntervalSince1970*1000), platformId: exception.platform?.id, applicationId: exception.application?.id)
+        
+        guard let body = try? jsonEncoder.encode(requestBody) else {
+            return onCompletion(RequestError.jsonEncodingError)
+        }
+        
+        var req = oauth2Credentials.request(forURL: url)
+        print(String(data: body, encoding: .utf8))
+        req.httpMethod = "PUT"
+        
+        req.httpBody = body
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2Credentials)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    return onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func delete(exception: DMMonitoringException, onCompletion: @escaping (Error?) -> Void) {
+        guard let exceptionId = exception.id else {
+            return onCompletion(MonitoringExceptionError.SaveError.missingId)
+        }
+        guard let url = URL(string: String(format: monitoringExceptionsEndpointTemplate, exception.user) + exceptionId) else {
+            return onCompletion(RequestError.urlError)
+        }
+        
+        var req = oauth2Credentials.request(forURL: url)
+        req.httpMethod = "DELETE"
+    
+        let loader = OAuth2DataLoader(oauth2: oauth2Credentials)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    return onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
                 }
             }
         }

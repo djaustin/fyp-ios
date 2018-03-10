@@ -43,18 +43,18 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     @IBOutlet weak var toDatePicker: UIDatePicker!
     
     @IBAction func deleteButtonWasPressed(_ sender: Any) {
-//        guard let exception = exception else {
-//            return
-//        }
-//        exception.delete { (error) in
-//            if let error = error {
-//                print(error)
-//            } else {
-//                UI {
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//            }
-//        }
+        guard let exception = exception else {
+            return
+        }
+        exception.delete { (error) in
+            if let error = error {
+                print(error)
+            } else {
+                UI {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
     }
     @IBAction func applicationSwitchDidChange(_ sender: Any) {
         if applicationSwitch.isOn {
@@ -213,16 +213,25 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     
     
     @IBAction func saveButtonWasPressed(_ sender: Any) {
+        print("SAVE BUTTON PRESSED")
         let platform = getChosenPlatform()
         let application = getChosenApplication()
         let startTime = fromDatePicker.date
         let endTime = toDatePicker.date
         if var exception = exception {
-//            exception.application = application
-//            exception.platform = platform
-//            exception.startTime = fromDatePicker.date
-//            exception.endTime = toDatePicker.date
-//            exception.save()
+            exception.application = application
+            exception.platform = platform
+            exception.startTime = fromDatePicker.date
+            exception.endTime = toDatePicker.date
+            exception.save { (error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    UI{
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
         } else {
             let newGoal = DMMonitoringException(id: nil, platform: platform, application: application, user: user.id!, startTime: startTime, endTime: endTime)
             DMMonitoringException.addNew(exception: newGoal) { (exception, error) in
@@ -230,7 +239,6 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
                     print(error)
                 } else {
                     if let exception = exception {
-                        
                         UI {
                             self.navigationController?.popViewController(animated: true)
                         }
