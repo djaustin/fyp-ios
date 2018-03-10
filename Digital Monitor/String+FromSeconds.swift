@@ -16,7 +16,7 @@ extension String {
         
         let (h,m,s) = hoursMinutesSeconds(fromSeconds: seconds)
         
-        let timeString = String(format: "%u:%02u:%02u", h, m, s)
+        let timeString = "\(h)h \(m)m"
 
         self.init(timeString)
         

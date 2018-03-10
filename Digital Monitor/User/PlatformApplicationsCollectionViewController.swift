@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class PlatformApplicationsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var startTime: Date?
+    var endTime: Date?
     var dataSource: [ApplicationUsageData] = []
     var platform: DMPlatform?
     
@@ -26,17 +28,27 @@ class PlatformApplicationsCollectionViewController: UICollectionViewController, 
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
             if let platform = platform {
                 navigationItem.title = platform.name
-                user.getApplicationMetrics(forPlatform: platform, withQuery: [:]) { (data, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        if let data = data {
-                            self.dataSource = data.sorted(by: {$0.duration > $1.duration})
-                            UI {
-                                self.collectionView?.reloadData()
+                if let startTime = startTime {
+                    if let endTime = endTime {
+                        let fromTime = startTime.timeIntervalSince1970*1000
+                        let toTime = endTime.timeIntervalSince1970*1000
+                        let query = [
+                            "fromTime": String(fromTime),
+                            "toTime": String(toTime)
+                        ]
+                        user.getApplicationMetrics(forPlatform: platform, withQuery: query) { (data, error) in
+                            if let error = error {
+                                print(error)
+                            } else {
+                                if let data = data {
+                                    self.dataSource = data.sorted(by: {$0.duration > $1.duration})
+                                    UI {
+                                        self.collectionView?.reloadData()
+                                    }
+                                } else {
+                                    print("No data or error")
+                                }
                             }
-                        } else {
-                            print("No data or error")
                         }
                     }
                 }

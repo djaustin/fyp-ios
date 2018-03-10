@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class ApplicationPlatformCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var startTime: Date?
+    var endTime: Date?
     var application: DMApplication?
     var dataSource: [PlatformUsageData] = []
     override func viewDidLoad() {
@@ -24,20 +26,28 @@ class ApplicationPlatformCollectionViewController: UICollectionViewController, U
         self.collectionView!.register(UsageTileView.self, forCellWithReuseIdentifier: reuseIdentifier)
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout") {
             if let application = application{
-                UI {
-                    self.navigationItem.title = application.name
-                }
-                user.getPlatformMetrics(forApplication: application, withQuery: [:]) { (data, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        if let data = data {
-                            self.dataSource = data.sorted(by: {$0.duration > $1.duration})
-                            UI {
-                                self.collectionView?.reloadData()
+                navigationItem.title = application.name
+                if let startTime = startTime {
+                    if let endTime = endTime {
+                        let fromTime = startTime.timeIntervalSince1970*1000
+                        let toTime = endTime.timeIntervalSince1970*1000
+                        let query = [
+                            "fromTime": String(fromTime),
+                            "toTime": String(toTime)
+                        ]
+                        user.getPlatformMetrics(forApplication: application, withQuery: query) { (data, error) in
+                            if let error = error {
+                                print(error)
+                            } else {
+                                if let data = data {
+                                    self.dataSource = data.sorted(by: {$0.duration > $1.duration})
+                                    UI {
+                                        self.collectionView?.reloadData()
+                                    }
+                                } else {
+                                    print("No data or error")
+                                }
                             }
-                        } else {
-                            print("No data or error")
                         }
                     }
                 }

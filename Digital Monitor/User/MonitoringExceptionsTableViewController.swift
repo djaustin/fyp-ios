@@ -76,8 +76,8 @@ class MonitoringExceptionsTableViewController: UITableViewController {
         let exception = exceptions[indexPath.row]
         cell.fromTimeLabel.text = exception.startTime.toString(dateFormat: "MM-dd-yyyy HH:mm")
         cell.toTimeLabel.text = exception.endTime.toString(dateFormat: "MM-dd-yyyy HH:mm")
-        cell.applicationLabel.text = exception.application?.name ?? "None"
-        cell.platformLabel.text = exception.platform?.name ?? "None"
+        cell.applicationLabel.text = exception.application?.name ?? "All"
+        cell.platformLabel.text = exception.platform?.name ?? "All"
 
         return cell
     }

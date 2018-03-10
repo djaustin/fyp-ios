@@ -18,9 +18,9 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if pickerView.isEqual(periodPicker){
             return periods[row].name
         } else if pickerView.isEqual(platformPicker){
-            return platforms[row].name
+            return row == 0 ? "All" : platforms[row-1].name
         } else {
-            return applications[row].name
+            return row == 0 ? "All" : applications[row-1].name
         }
     }
 
@@ -28,9 +28,9 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if pickerView.isEqual(periodPicker){
             return periods.count
         } else if pickerView.isEqual(platformPicker){
-            return platforms.count
+            return platforms.count + 1
         } else {
-            return applications.count
+            return applications.count + 1
         }
     }
     
@@ -45,9 +45,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var daysTextField: UITextField!
     @IBOutlet weak var hoursTextField: UITextField!
     @IBOutlet weak var minutesTextField: UITextField!
-    @IBOutlet weak var secondsTextField: UITextField!
-    @IBOutlet weak var applicationSwitch: UISwitch!
-    @IBOutlet weak var platformSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
     
     @IBAction func deleteButtonWasPressed(_ sender: Any) {
@@ -62,41 +59,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-        }
-    }
-    @IBAction func applicationSwitchDidChange(_ sender: Any) {
-        if applicationSwitch.isOn {
-            setApplicationEnabled(true)
-        } else {
-            setApplicationEnabled(false)
-        }
-    }
-    
-    @IBAction func platformSwitchDidChange(_ sender: Any) {
-        if platformSwitch.isOn {
-            setPlatformEnabled(true)
-        } else {
-            setPlatformEnabled(false)
-        }
-    }
-    
-    func setPlatformEnabled(_ enabled: Bool){
-        if enabled {
-            platformPicker.isUserInteractionEnabled = true
-            platformPicker.alpha = 1
-        } else {
-            platformPicker.isUserInteractionEnabled = false
-            platformPicker.alpha = 0.6
-        }
-    }
-    
-    func setApplicationEnabled(_ enabled: Bool){
-        if enabled {
-            applicationPicker.isUserInteractionEnabled = true
-            applicationPicker.alpha = 1
-        } else {
-            applicationPicker.isUserInteractionEnabled = false
-            applicationPicker.alpha = 0.6
         }
     }
 
@@ -123,9 +85,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             saveButton.setTitle("Add Goal", for: .normal)
             deleteButton.isHidden = true
         }
-        
-        setApplicationEnabled(false)
-        setPlatformEnabled(false)
+
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout"){
             self.user = user
             print("USER AUTHED")
@@ -136,7 +96,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 } else {
                     if let applications = applications {
                         
-                        self.applications = applications
+                        self.applications = applications.sorted(by: {$0.name < $1.name})
                         UI {
                             self.applicationPicker.reloadAllComponents()
                             self.populateControlsWithProvidedGoal()
@@ -160,7 +120,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         daysTextField.delegate = self
         hoursTextField.delegate = self
         minutesTextField.delegate = self
-        secondsTextField.delegate = self
         populatePlatformsPicker()
         populatePeriodsPicker()
     }
@@ -171,7 +130,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 print(error)
             } else {
                 if let platforms = platforms {
-                    self.platforms = platforms
+                    self.platforms = platforms.sorted(by: {$0.name < $1.name})
                     UI {
                         self.platformPicker.reloadAllComponents()
                     }
@@ -203,45 +162,34 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func populateControlsWithProvidedGoal(){
         if let goal = goal {
             if let application = goal.application {
-                setApplicationEnabled(true)
-                applicationSwitch.isOn = true
                 if let row = applications.index(where: { (app) -> Bool in
                     app.id == application.id
                 }) {
-                    applicationPicker.selectRow(row, inComponent: 0, animated: true)
+                    applicationPicker.selectRow(row+1, inComponent: 0, animated: false)
                     
                 }
             } else {
-                setApplicationEnabled(false)
-                platformSwitch.isOn = false
+                applicationPicker.selectRow(0, inComponent: 0, animated: false)
             }
             if let platform = goal.platform{
-                setPlatformEnabled(true)
-                platformSwitch.isOn = true
                 if let row = platforms.index(where: { (element) -> Bool in
                     element.id == platform.id
                 }) {
-                    platformPicker.selectRow(row, inComponent: 0, animated: true)
+                    platformPicker.selectRow(row+1, inComponent: 0, animated: false)
                 }
             } else {
-                setPlatformEnabled(false)
-                platformSwitch.isOn = false
+                platformPicker.selectRow(0, inComponent: 0, animated: false)
             }
             let (d, h, m, s) = goal.duration.asDaysHoursMinutesSeconds()
             daysTextField.text = String(d)
             hoursTextField.text = String(h)
             minutesTextField.text = String(m)
-            secondsTextField.text = String(s)
             if let periodRow = periods.index(where: { (element) -> Bool in
                 element.id == goal.period.id
             }){
-                periodPicker.selectRow(periodRow, inComponent: 0, animated: true)
+                periodPicker.selectRow(periodRow, inComponent: 0, animated: false)
             }
         }
-    }
-    
-    @IBAction func secondsTextFieldChanged(_ sender: UITextField) {
-        constrainValue(ofTextField: sender, betweenMinimum: 0, andMaximum: 60)
     }
     
     func constrainValue(ofTextField textField: UITextField, betweenMinimum minimum: Int, andMaximum maximum: Int){
@@ -257,12 +205,13 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     
     func getChosenApplication() -> DMApplication? {
-        
-        return applicationSwitch.isOn && !applications.isEmpty ? applications[applicationPicker.selectedRow(inComponent: 0)] : nil
+        let index = applicationPicker.selectedRow(inComponent: 0)
+        return index == 0 ? nil : applications[index-1]
     }
     
     func getChosenPlatform() -> DMPlatform? {
-        return platformSwitch.isOn ? platforms[platformPicker.selectedRow(inComponent: 0)] : nil
+        let index = platformPicker.selectedRow(inComponent: 0)
+        return index == 0 ? nil : platforms[index-1]
     }
     
     func getDurationInSeconds() -> Int {
@@ -274,10 +223,8 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             total += hours * 3600
         }
         if let minutes = Int(minutesTextField.text!){
+            debugPrint("MINUTES TEXT FIELD HAS TEXT", minutes)
             total += minutes * 60
-        }
-        if let seconds = Int(secondsTextField.text!){
-            total += seconds
         }
         return total
     }

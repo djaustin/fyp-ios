@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class ApplicationUsageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var startDate: Date?
+    var endDate: Date?
     @IBOutlet weak var sortButton: UIBarButtonItem!
     var dataSource: [ApplicationUsageData] = []
     var sortDescending = true
@@ -155,6 +157,8 @@ class ApplicationUsageCollectionViewController: UICollectionViewController, UICo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ApplicationPlatformCollectionViewController {
             vc.application = selectedApplication
+            vc.startTime = startDate
+            vc.endTime = endDate
         }
     }
 

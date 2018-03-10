@@ -16,17 +16,17 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.isEqual(platformPicker){
-            return platforms[row].name
+            return row == 0 ? "All" : platforms[row-1].name
         } else {
-            return applications[row].name
+            return row == 0 ? "All" : applications[row-1].name
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.isEqual(platformPicker){
-            return platforms.count
+            return platforms.count + 1
         } else {
-            return applications.count
+            return applications.count + 1
         }
     }
     
@@ -56,41 +56,6 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
             }
         }
     }
-    @IBAction func applicationSwitchDidChange(_ sender: Any) {
-        if applicationSwitch.isOn {
-            setApplicationEnabled(true)
-        } else {
-            setApplicationEnabled(false)
-        }
-    }
-    
-    @IBAction func platformSwitchDidChange(_ sender: Any) {
-        if platformSwitch.isOn {
-            setPlatformEnabled(true)
-        } else {
-            setPlatformEnabled(false)
-        }
-    }
-    
-    func setPlatformEnabled(_ enabled: Bool){
-        if enabled {
-            platformPicker.isUserInteractionEnabled = true
-            platformPicker.alpha = 1
-        } else {
-            platformPicker.isUserInteractionEnabled = false
-            platformPicker.alpha = 0.6
-        }
-    }
-    
-    func setApplicationEnabled(_ enabled: Bool){
-        if enabled {
-            applicationPicker.isUserInteractionEnabled = true
-            applicationPicker.alpha = 1
-        } else {
-            applicationPicker.isUserInteractionEnabled = false
-            applicationPicker.alpha = 0.6
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         loadViewData()
@@ -115,9 +80,7 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
             saveButton.setTitle("Add Exception", for: .normal)
             deleteButton.isHidden = true
         }
-        
-        setApplicationEnabled(false)
-        setPlatformEnabled(false)
+
         if let user = getUserOrReturnToLogin(withSegueIdentifier: "logout"){
             self.user = user
             print("USER AUTHED")
@@ -171,44 +134,39 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     func populateControlsWithProvidedException(){
         if let exception = exception {
             if let application = exception.application {
-                setApplicationEnabled(true)
-                applicationSwitch.isOn = true
                 if let row = applications.index(where: { (app) -> Bool in
                     app.id == application.id
                 }) {
-                    applicationPicker.selectRow(row, inComponent: 0, animated: true)
+                    applicationPicker.selectRow(row+1, inComponent: 0, animated: false)
                     
                 }
             } else {
-                setApplicationEnabled(false)
-                platformSwitch.isOn = false
+                applicationPicker.selectRow(0, inComponent: 0, animated: false)
             }
             if let platform = exception.platform{
-                setPlatformEnabled(true)
-                platformSwitch.isOn = true
                 if let row = platforms.index(where: { (element) -> Bool in
                     element.id == platform.id
                 }) {
-                    platformPicker.selectRow(row, inComponent: 0, animated: true)
+                    platformPicker.selectRow(row+1, inComponent: 0, animated: false)
                 }
             } else {
-                setPlatformEnabled(false)
-                platformSwitch.isOn = false
+                applicationPicker.selectRow(0, inComponent: 0, animated: false)
             }
-            fromDatePicker.date = exception.startTime
-            toDatePicker.date = exception.endTime
+            fromDatePicker.setDate(exception.startTime, animated: false)
+            toDatePicker.setDate(exception.endTime, animated: false) 
         }
     }
 
     
     
     func getChosenApplication() -> DMApplication? {
-        
-        return applicationSwitch.isOn && !applications.isEmpty ? applications[applicationPicker.selectedRow(inComponent: 0)] : nil
+        let index = applicationPicker.selectedRow(inComponent: 0)
+        return index == 0 ? nil : applications[index-1]
     }
     
     func getChosenPlatform() -> DMPlatform? {
-        return platformSwitch.isOn ? platforms[platformPicker.selectedRow(inComponent: 0)] : nil
+        let index = platformPicker.selectedRow(inComponent: 0)
+        return index == 0 ? nil : platforms[index-1]
     }
     
     

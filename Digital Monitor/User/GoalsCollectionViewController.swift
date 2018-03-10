@@ -41,6 +41,7 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
 //                    debugPrint("UPDATE DATASOURCE", self.dataSource)
                     UI {
                         self.collectionView?.reloadData()
+                        self.textAddButton.isHidden = goals.count > 0
                     }
                 }
             }
@@ -181,6 +182,7 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
 //        }
 //    }
     
+    @IBOutlet weak var textAddButton: UIButton!
     @IBAction func addButtonWasPressed(_ sender: Any) {
         selectedGoal = nil
         performSegue(withIdentifier: "goalDetail", sender: self)

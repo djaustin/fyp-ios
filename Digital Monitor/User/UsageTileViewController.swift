@@ -36,14 +36,18 @@ class UsageTileViewController: UIViewController {
         let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: fromDatePicker.date)!
         let today = Date()
         fromDatePicker.setDate(oneWeekAgo.startOfDay, animated: true)
+        fromDatePicker.maximumDate = today.startOfDay
         toDatePicker.setDate(today.endOfDay!, animated: true)
-        applicationUsageView.titleLabel.text = "Top Application"
+        toDatePicker.maximumDate = today.endOfDay!
+        applicationUsageView.titleLabel.text = "Top App"
         applicationUsageView.informationLabel.text = nil
         applicationUsageView.usageTimeLabel.text = nil
+        applicationUsageView.button.setTitle("All Apps", for: .normal)
         platformUsageView.usageTimeLabel.text = nil
         platformUsageView.titleLabel.text = "Top Platform"
         platformUsageView.informationLabel.text = nil
         platformUsageView.usageTimeLabel.text = nil
+        platformUsageView.button.setTitle("All Platforms", for: .normal)
         overallUsageView.titleLabel.text = "Overall"
         overallUsageView.informationLabel.text = nil
         overallUsageView.usageTimeLabel.text = nil
@@ -151,10 +155,14 @@ class UsageTileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PlatformUsageCollectionViewController {
             vc.dataSource = platformData
+            vc.startDate = fromDatePicker.date
+            vc.endDate = toDatePicker.date
         }
         
         if let vc = segue.destination as? ApplicationUsageCollectionViewController {
             vc.dataSource = applicationData
+            vc.startDate = fromDatePicker.date
+            vc.endDate = toDatePicker.date
         }
     }
 

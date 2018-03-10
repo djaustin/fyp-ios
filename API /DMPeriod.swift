@@ -11,10 +11,12 @@ import Foundation
 struct DMPeriod : Codable{
     let name: String
     let duration: Int
+    let key: String
     let id: String
     
     enum CodingKeys: String, CodingKey {
         case name
+        case key
         case duration
         case id = "_id"
     }
