@@ -51,9 +51,11 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         guard let goal = goal else {
             return
         }
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         user.deleteGoal(goal) { (error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Delete Failed", andText: String(describing: error))
             } else {
                 UI {
                     self.navigationController?.popViewController(animated: true)
@@ -92,7 +94,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             user.getAuthorisedApplications { (applications, error) in
                 print("DONE WITH THE REQUEST")
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Unable to retrieve applications", andText: String(describing: error))
                 } else {
                     if let applications = applications {
                         
@@ -127,7 +129,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func populatePlatformsPicker(){
         DMPlatform.getPlatforms { (platforms, error) in
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve platforms", andText: String(describing: error))
             } else {
                 if let platforms = platforms {
                     self.platforms = platforms.sorted(by: {$0.name < $1.name})
@@ -144,7 +146,7 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func populatePeriodsPicker(){
         DMPeriod.getPeriods { (periods, error) in
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve time periods", andText: String(describing: error))
             } else {
                 if let periods = periods {
                     self.periods = periods
@@ -231,19 +233,23 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func saveButtonWasPressed(_ sender: Any) {
         let duration = getDurationInSeconds()
+        if duration < 1 {
+            return presentErrorAlert(withTitle: "Save Failed", andText: "Please enter a duration greater than 0")
+        }
         let period = periods[periodPicker.selectedRow(inComponent: 0)]
         let platform = getChosenPlatform()
         let application = getChosenApplication()
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         if var goal = goal {
             goal.application = application
             goal.platform = platform
             goal.duration = duration
             goal.period = period
             user.saveGoal(goal) { (error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
-                    print("ABOUT TO POP CONTROLLER")
                     UI{
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -252,8 +258,9 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         } else {
             let newGoal = DMUser.UsageGoal(duration: duration, period: period, platform: platform, application: application)
             user.add(usageGoal: newGoal) { (goal, error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
                     if let goal = goal {
                         UI {

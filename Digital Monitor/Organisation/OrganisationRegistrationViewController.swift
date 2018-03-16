@@ -17,11 +17,11 @@ class OrganisationRegistrationViewController: UIViewController, UITextFieldDeleg
     
     @IBAction func registerButtonWasPressed(_ sender: Any) {
         let organisation = DMOrganisation(name: txtName.text!, email: txtEmail.text!, password: txtPassword.text!)
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         organisation.register { (success, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                UI {
-                    self.statusLabel.text = String(describing: error)
-                }
+                self.presentErrorAlert(withTitle: "Registration Failed", andText: String(describing: error))
             } else {
                 UI {
                     self.performSegue(withIdentifier: "registerToLogin", sender: self)

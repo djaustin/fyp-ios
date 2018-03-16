@@ -22,7 +22,7 @@ class AuthorisedClientsTableViewController: UITableViewController {
             user.getAuthorisedClients({ (clients, error) in
                 print("Get clients callback")
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Unable to retrieve clients", andText: String(describing: error))
                 } else {
                     if let clients = clients {
                         // Only add third party clients. This app uses a client but its a trusted first party and shouldn't be removable by the user
@@ -83,9 +83,11 @@ class AuthorisedClientsTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let client = dataSet[indexPath.row]
+            let spinner = UIViewController.displaySpinner(onView: self.view)
             user?.revokeAccess(fromClient: client, onCompletion: { (success, error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Operation Failed", andText: String(describing: error))
                 } else {
                     if success {
                         UI{

@@ -35,7 +35,7 @@ class MonitoringExceptionsTableViewController: UITableViewController {
         if let user = DMUser.authenticatedUser {
             user.getMonitoringExceptions { (exceptions, error) in
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Unable to retrieve monitoring exceptions", andText: String(describing: error))
                 } else {
                     if let exceptions = exceptions {
                         self.exceptions = exceptions

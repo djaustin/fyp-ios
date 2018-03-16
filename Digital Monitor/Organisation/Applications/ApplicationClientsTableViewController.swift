@@ -36,9 +36,11 @@ class ApplicationClientsTableViewController: UITableViewController {
         guard let organisation = organisation else {
             return print("Organisation NIL")
         }
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         organisation.getClients(forApplication: application, onCompletion: { (clients, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve application clients", andText: String(describing: error))
             } else {
                 if let clients = clients {
                     self.clients = clients

@@ -15,11 +15,11 @@ class OrganisationLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBAction func loginButtonWasTapped(_ sender: Any) {
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         DMOrganisation.login(withEmail: txtEmail.text!, password: txtPassword.text!) { (organisation, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                UI {
-                    self.lblStatus.text = String(describing: error)
-                }
+                    self.presentErrorAlert(withTitle: "Login Failed", andText: String(describing: error))
             } else {
                 UI {
                     self.performSegue(withIdentifier: "login", sender: self)

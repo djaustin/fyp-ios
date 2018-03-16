@@ -9,8 +9,16 @@
 import Foundation
 
 enum ClientError : Error {
-    enum RegistrationError : Error {
+    enum RegistrationError : Error, CustomStringConvertible {
         case missingSecret
         case missingClientId
+        public var description: String {
+            switch self {
+            case .missingSecret:
+                return "Client secret required"
+            case .missingClientId:
+                return "Client ID required"
+            }
+        }
     }
 }

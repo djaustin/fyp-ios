@@ -20,11 +20,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
    
     
     @IBAction func registerButtonWasTapped(_ sender: Any) {
-       let user = DMUser(email: txtEmail.text!, password: txtPassword.text!, firstName: txtFirstName.text!, lastName: txtLastName.text!)
+        let email = txtEmail.text!
+        let password = txtEmail.text!
+        let firstName = txtFirstName.text!
+        let lastName = txtLastName.text!
+        if(email.isEmpty || password.isEmpty || firstName.isEmpty || lastName.isEmpty){
+            presentErrorAlert(withTitle: "Registration", andText: "Please provide a value for all fields")
+            return
+        }
+       let user = DMUser(email: email, password: txtPassword.text!, firstName: txtFirstName.text!, lastName: txtLastName.text!)
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         user.register { (success, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
                 UI {
-                    self.lblStatus.text = String(describing: error)
+                    self.presentErrorAlert(withTitle: "Registration Error", andText: String(describing: error))
                 }
             } else {
                 UI {

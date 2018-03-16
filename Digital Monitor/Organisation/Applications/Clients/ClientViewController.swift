@@ -55,13 +55,15 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
         
         let chosenPlatform = platforms[platformPicker.selectedRow(inComponent: 0)]
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         if let client = client {
             client.name = nameTextField.text!
             client.platform = chosenPlatform.id
             client.redirectUri = redirectUriTextField.text!
             client.save(toApplication: application, onCompletion: { (error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
                     UI{
                         self.navigationItem.title = client.name
@@ -70,8 +72,9 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             })
         } else {
             DMClient.addClient(name: nameTextField.text!, redirectUri: redirectUriTextField.text!, applicationId: application.id!, platformId: chosenPlatform.id, onCompletion: { (client, error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
                     if let client = client {
                         self.client = client
@@ -97,7 +100,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func populateSubViews() {
         DMPlatform.getPlatforms { (platforms, error) in
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve platforms", andText: String(describing: error))
             } else {
                 if let platforms = platforms {
                     self.platforms = platforms

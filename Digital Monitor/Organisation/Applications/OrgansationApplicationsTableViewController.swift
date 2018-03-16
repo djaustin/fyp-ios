@@ -37,9 +37,11 @@ class OrgansationApplicationsTableViewController: UITableViewController {
     }
     
     func saveApplicationToOrganisation(withName name: String) {
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         organisation?.addApplication(withName: name, onCompletion: { (application, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to save application", andText: String(describing: error))
             } else {
                 if let application = application {
                     self.applications.append(application)
@@ -59,9 +61,11 @@ class OrgansationApplicationsTableViewController: UITableViewController {
     }
 
     func loadOrganisationApplications(){
-            organisation?.getApplications(onCompletion: { (applications, error) in
+        let spinner = UIViewController.displaySpinner(onView: self.view)
+        organisation?.getApplications(onCompletion: { (applications, error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve applications", andText: String(describing: error))
             } else {
                 if let applications = applications {
                     self.applications = applications

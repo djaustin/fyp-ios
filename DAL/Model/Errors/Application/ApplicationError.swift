@@ -9,8 +9,16 @@
 import Foundation
 
 enum ApplicationError : Error {
-    enum QueryError : Error {
+    enum QueryError : Error, CustomStringConvertible {
         case missingId
         case applicationNotFound
+        public var description: String {
+            switch self {
+            case .missingId:
+                return "Application ID required"
+            case .applicationNotFound:
+                return "Application not found"
+            }
+        }
     }
 }

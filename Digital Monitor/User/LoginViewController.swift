@@ -10,15 +10,27 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-        
+    var activityIndicator: UIView?
     @IBAction func loginButtonWasTapped(_ sender: Any) {
-        DMUser.login(withEmail: txtEmail.text!, password: txtPassword.text!) { (user, error) in
+        let email = txtEmail.text!
+        let password = txtPassword.text!
+        
+        if(email.isEmpty || password.isEmpty){
+            presentErrorAlert(withTitle: "Account Login", andText: "Please enter your email and password");
+            return
+        }
+        
+        activityIndicator = UIViewController.displaySpinner(onView: self.view)
+        
+        DMUser.login(withEmail: email, password: password) { (user, error) in
+            if let spinner = self.activityIndicator {
+                UIViewController.removeSpinner(spinner: spinner)
+            }
             if let error = error {
                 UI {
-                    self.lblStatus.text = String(describing: error)
+                    self.presentErrorAlert(withTitle: "Login Failed", andText: String(describing: error))
                 }
             } else {
                 if user != nil {
@@ -27,7 +39,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                 } else {
                     UI {
-                        self.lblStatus.text = "No user or error"
+                        self.presentErrorAlert(withTitle: "Login Failed", andText: "Unable to find user")
                     }
                     
                 }

@@ -8,7 +8,15 @@
 
 import Foundation
 
-enum RequestError : Error {
+enum RequestError : Error, CustomStringConvertible {
     case jsonEncodingError
     case urlError
+    public var description: String {
+        switch self {
+        case .jsonEncodingError:
+            return "Unable to encode request body to JSON"
+        case .urlError:
+            return "Unable to form URL for request"
+        }
+    }
 }

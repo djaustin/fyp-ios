@@ -29,16 +29,14 @@ class GoalsCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillAppear(_ animated: Bool) {
         dataSource = user.usageGoals
+        let spinner = UIViewController.displaySpinner(onView: self.view, withStyle: .gray, withBackground: false)
         user.getUsageGoalProgress(onCompletion: { goals, error in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve goal progress", andText: String(describing: error))
             } else {
                 if let goals = goals {
                     self.dataSource = goals
-//                    for goal in goals {
-//                        self.getGoalApplication(forGoal: goal)
-//                    }
-//                    debugPrint("UPDATE DATASOURCE", self.dataSource)
                     UI {
                         self.collectionView?.reloadData()
                         self.textAddButton.isHidden = goals.count > 0

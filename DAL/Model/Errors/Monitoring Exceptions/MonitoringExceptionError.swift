@@ -9,7 +9,13 @@
 import Foundation
 
 enum MonitoringExceptionError : Error {
-    enum SaveError : Error {
+    enum SaveError : Error, CustomStringConvertible {
         case missingId
+        public var description: String {
+            switch self {
+            case .missingId:
+                return "Monitoring exception ID required"
+            }
+        }
     }
 }

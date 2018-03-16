@@ -566,10 +566,10 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1z-cE-I2s">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Digital Monitor" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1z-cE-I2s">
                                 <rect key="frame" x="16" y="144" width="343" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -590,7 +590,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="navigationController.navigationBarHidden" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="lblStatus" destination="Y1z-cE-I2s" id="jbG-KG-qQU"/>
                         <outlet property="txtEmail" destination="MhS-8S-q8s" id="9c4-cy-XLR"/>
                         <outlet property="txtPassword" destination="g9O-5g-OGw" id="HeB-QO-eMH"/>
                         <segue destination="EmG-d5-RCR" kind="show" identifier="login" id="djH-Gk-xch"/>

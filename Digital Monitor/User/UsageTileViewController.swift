@@ -84,14 +84,15 @@ class UsageTileViewController: UIViewController {
             "fromTime": String(fromTime),
             "toTime": String(toTime)
         ]
-        
+        let overallSpinner = UIViewController.displaySpinner(onView: overallUsageView, withStyle: .gray, withBackground: false)
+        let appSpinner = UIViewController.displaySpinner(onView: applicationUsageView, withStyle: .gray, withBackground: false)
+        let platformSpinner = UIViewController.displaySpinner(onView: platformUsageView, withStyle: .gray, withBackground: false)
         user?.getAggregatedMetrics(withQuery: query, onCompletion: { (data, error) in
+            UIViewController.removeSpinner(spinner: overallSpinner)
+            UIViewController.removeSpinner(spinner: appSpinner)
+            UIViewController.removeSpinner(spinner: platformSpinner)
             if let error = error {
-                UI{
-                    self.platformUsageView.informationLabel.text = String(describing: error)
-                    self.applicationUsageView.informationLabel.text = String(describing: error)
-                    self.overallUsageView.informationLabel.text = String(describing: error)
-                }
+                self.presentErrorAlert(withTitle: "Unable to retrieve usage", andText: String(describing: error))
             } else {
                 if let data = data {
                     self.applicationData = data.applications

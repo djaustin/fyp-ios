@@ -64,6 +64,7 @@
 		DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92150E2011179C0083A843 /* PlatformsMetricsResponse.swift */; };
 		DB921511201123C50083A843 /* AggregatedMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */; };
 		DB956673200D1E3C00CCB9D6 /* GetClientsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */; };
+		DB95F51E205AD91200EB514A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95F51D205AD91200EB514A /* UIViewController+.swift */; };
 		DB9FA589201F3EF1003C1724 /* GoalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9FA588201F3EF1003C1724 /* GoalDetailViewController.swift */; };
 		DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80C2006598300952EF7 /* AppDelegate.swift */; };
 		DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9D80E2006598300952EF7 /* LoginViewController.swift */; };
@@ -156,6 +157,7 @@
 		DB921510201123C50083A843 /* AggregatedMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedMetricsResponse.swift; sourceTree = "<group>"; };
 		DB9348A7202872D3008D859F /* Digital Monitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Digital Monitor.entitlements"; sourceTree = "<group>"; };
 		DB956672200D1E3C00CCB9D6 /* GetClientsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClientsResponse.swift; sourceTree = "<group>"; };
+		DB95F51D205AD91200EB514A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		DB9FA588201F3EF1003C1724 /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
 		DBB9D8092006598300952EF7 /* Digital Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9D80C2006598300952EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,7 +264,6 @@
 				DB2C26612017D78D0010A202 /* Client */,
 				DB2C265B201797A40010A202 /* Application */,
 				DB2D2CD920164757006E5BA1 /* Organisation */,
-				DB527283200B965C008DAD30 /* Response */,
 				DB527282200B9642008DAD30 /* Request */,
 				DB527281200B9638008DAD30 /* User */,
 				DB52726E2008DD63008DAD30 /* RequestError.swift */,
@@ -439,13 +440,6 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		DB527283200B965C008DAD30 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
 		DB7329BA20288C7800C0FA5C /* Device Tokens */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +496,7 @@
 				DBB9D80C2006598300952EF7 /* AppDelegate.swift */,
 				DBB9D8102006598300952EF7 /* Main.storyboard */,
 				DBBCE696201E01F800178715 /* Date+.swift */,
+				DB95F51D205AD91200EB514A /* UIViewController+.swift */,
 				DBFFA105201F94A3007431B2 /* Int+AsDaysHoursMinutesSeconds.swift */,
 				DB29E0C9200F868F00E988DB /* String+FromSeconds.swift */,
 				DBB9D8132006598300952EF7 /* Assets.xcassets */,
@@ -553,7 +548,6 @@
 				DBDBE3A4201790B5007BA1DD /* Applications */,
 				DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */,
 				DB2D2CCC20163C0C006E5BA1 /* OrganisationRegistrationViewController.swift */,
-				DB8F33DA20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift */,
 			);
 			path = Organisation;
 			sourceTree = "<group>";
@@ -593,6 +587,7 @@
 		DBDBE3A4201790B5007BA1DD /* Applications */ = {
 			isa = PBXGroup;
 			children = (
+				DB8F33DA20173D5F00FC6973 /* OrgansationApplicationsTableViewController.swift */,
 				DB2C265E2017A42F0010A202 /* Clients */,
 				DB2C2655201791F80010A202 /* ApplicationClientsTableViewController.swift */,
 			);
@@ -833,6 +828,7 @@
 				DB1DE827205431AA00A85237 /* MonitoringExceptionError.swift in Sources */,
 				DB92150F2011179C0083A843 /* PlatformsMetricsResponse.swift in Sources */,
 				DB5272712008F0A7008DAD30 /* ResponseError.swift in Sources */,
+				DB95F51E205AD91200EB514A /* UIViewController+.swift in Sources */,
 				DB2C26602017A46D0010A202 /* ClientViewController.swift in Sources */,
 				DBFFA108201FC7B7007431B2 /* PostUsageGoalResponse.swift in Sources */,
 				DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */,

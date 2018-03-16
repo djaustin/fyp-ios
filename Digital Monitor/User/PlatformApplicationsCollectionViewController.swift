@@ -36,9 +36,11 @@ class PlatformApplicationsCollectionViewController: UICollectionViewController, 
                             "fromTime": String(fromTime),
                             "toTime": String(toTime)
                         ]
+                        let spinner = UIViewController.displaySpinner(onView: self.view)
                         user.getApplicationMetrics(forPlatform: platform, withQuery: query) { (data, error) in
+                            UIViewController.removeSpinner(spinner: spinner)
                             if let error = error {
-                                print(error)
+                                self.presentErrorAlert(withTitle: "Unable to retrieve application usage", andText: String(describing: error))
                             } else {
                                 if let data = data {
                                     self.dataSource = data.sorted(by: {$0.duration > $1.duration})

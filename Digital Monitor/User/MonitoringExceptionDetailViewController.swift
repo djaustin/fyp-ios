@@ -46,9 +46,11 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
         guard let exception = exception else {
             return
         }
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         exception.delete { (error) in
+            UIViewController.removeSpinner(spinner: spinner)
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to delete monitoring exception", andText: String(describing: error))
             } else {
                 UI {
                     self.navigationController?.popViewController(animated: true)
@@ -87,7 +89,7 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
             user.getAuthorisedApplications { (applications, error) in
                 print("DONE WITH THE REQUEST")
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Unable to retrieve applications", andText: String(describing: error))
                 } else {
                     if let applications = applications {
                         
@@ -116,7 +118,7 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     func populatePlatformsPicker(){
         DMPlatform.getPlatforms { (platforms, error) in
             if let error = error {
-                print(error)
+                self.presentErrorAlert(withTitle: "Unable to retrieve platforms", andText: String(describing: error))
             } else {
                 if let platforms = platforms {
                     self.platforms = platforms
@@ -169,21 +171,22 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
         return index == 0 ? nil : platforms[index-1]
     }
     
-    
     @IBAction func saveButtonWasPressed(_ sender: Any) {
         print("SAVE BUTTON PRESSED")
         let platform = getChosenPlatform()
         let application = getChosenApplication()
         let startTime = fromDatePicker.date
         let endTime = toDatePicker.date
+        let spinner = UIViewController.displaySpinner(onView: self.view)
         if var exception = exception {
             exception.application = application
             exception.platform = platform
             exception.startTime = fromDatePicker.date
             exception.endTime = toDatePicker.date
             exception.save { (error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
                     UI{
                         self.navigationController?.popViewController(animated: true)
@@ -193,10 +196,11 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
         } else {
             let newGoal = DMMonitoringException(id: nil, platform: platform, application: application, user: user.id!, startTime: startTime, endTime: endTime)
             DMMonitoringException.addNew(exception: newGoal) { (exception, error) in
+                UIViewController.removeSpinner(spinner: spinner)
                 if let error = error{
-                    print(error)
+                    self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
                 } else {
-                    if let exception = exception {
+                    if exception != nil {
                         UI {
                             self.navigationController?.popViewController(animated: true)
                         }
@@ -205,6 +209,7 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
             }
         }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
