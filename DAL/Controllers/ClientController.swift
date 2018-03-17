@@ -144,6 +144,29 @@ class ClientController {
         }
     }
     
+    func delete(client: DMClient, onCompletion: @escaping (Error?) -> Void) {
+        guard let orgId = DMOrganisation.authenticatedOrganisation?.id else {
+            return onCompletion(OrganisationError.QueryError.missingId)
+        }
+        guard let url = URL(string: String(format: applicationClientEndpointTemplate, orgId, client.applicationId) + client.id) else {
+            return onCompletion(RequestError.urlError)
+        }
+        var req = oauth2PasswordGrant.request(forURL: url)
+        req.httpMethod = "DELETE"
+        let loader = OAuth2DataLoader(oauth2: oauth2PasswordGrant)
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    return onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
 //    func getSecret(forClient client: DMClient, onCompletion: @escaping (String?, Error?) -> Void) {
 //        guard let organisation = DMOrganisation.authenticatedOrganisation else {
 //            return onCompletion(nil, OrganisationError.QueryError.organisationNotFound)

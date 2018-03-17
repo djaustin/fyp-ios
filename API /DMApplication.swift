@@ -19,6 +19,12 @@ struct DMApplication : Codable {
         case clientIds
         case id = "_id"
     }
+    
+    func delete(onCompletion: @escaping (Error?) -> Void){
+        let applicationController = ApplicationController()
+        applicationController.delete(application: self, onCompletion: onCompletion)
+    }
+    
     static func getApplication(byId id: String, onCompletion: @escaping (DMApplication?, Error?) -> Void) {
         let applicationController = ApplicationController()
         applicationController.getApplication(byId: id, onCompletion: onCompletion)

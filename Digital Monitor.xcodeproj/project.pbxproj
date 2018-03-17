@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48DC8B5419D159A1859D7628 /* Pods_Digital_Monitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */; };
 		DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */; };
+		DB109570205D8D1700F52D84 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10956F205D8D1700F52D84 /* ProfileViewController.swift */; };
 		DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */; };
 		DB1DE8132052F11200A85237 /* DMMonitoringException.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8122052F11200A85237 /* DMMonitoringException.swift */; };
 		DB1DE8152052F33F00A85237 /* MonitoringExceptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1DE8142052F33F00A85237 /* MonitoringExceptionController.swift */; };
@@ -37,6 +38,8 @@
 		DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDA20164776006E5BA1 /* OrganisationError.swift */; };
 		DB2D2CDD20164C57006E5BA1 /* OrganisationLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */; };
 		DB2D2CDF20164EE4006E5BA1 /* GetOrganisationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */; };
+		DB356326205D937E001459E2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB356325205D937E001459E2 /* ChangePasswordViewController.swift */; };
+		DB356328205D9B74001459E2 /* PutUserRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB356327205D9B74001459E2 /* PutUserRequestBody.swift */; };
 		DB35DBCC204608D300024F6C /* DMPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35DBCB204608D300024F6C /* DMPeriod.swift */; };
 		DB35DBCE2046092100024F6C /* DMPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35DBCD2046092100024F6C /* DMPlatform.swift */; };
 		DB35DBD02046E6FC00024F6C /* PeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35DBCF2046E6FC00024F6C /* PeriodController.swift */; };
@@ -101,6 +104,7 @@
 		6AB6198C1C6980B1DBD229D9 /* Pods_Digital_Monitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Digital_Monitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F73807EF99F5A6883CDAD7 /* Pods-Digital Monitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Digital Monitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Digital Monitor/Pods-Digital Monitor.debug.xcconfig"; sourceTree = "<group>"; };
 		DB0AE17E200E494F006B1AC7 /* RevokeClientAccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeClientAccessResponse.swift; sourceTree = "<group>"; };
+		DB10956F205D8D1700F52D84 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DB16BC3A2007650D009D3294 /* DigitalMonitorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalMonitorAPI.swift; sourceTree = "<group>"; };
 		DB1DE8122052F11200A85237 /* DMMonitoringException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMonitoringException.swift; sourceTree = "<group>"; };
 		DB1DE8142052F33F00A85237 /* MonitoringExceptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringExceptionController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		DB2D2CDA20164776006E5BA1 /* OrganisationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationError.swift; sourceTree = "<group>"; };
 		DB2D2CDC20164C57006E5BA1 /* OrganisationLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationLoginViewController.swift; sourceTree = "<group>"; };
 		DB2D2CDE20164EE4006E5BA1 /* GetOrganisationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrganisationsResponse.swift; sourceTree = "<group>"; };
+		DB356325205D937E001459E2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		DB356327205D9B74001459E2 /* PutUserRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUserRequestBody.swift; sourceTree = "<group>"; };
 		DB35DBCB204608D300024F6C /* DMPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPeriod.swift; sourceTree = "<group>"; };
 		DB35DBCD2046092100024F6C /* DMPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPlatform.swift; sourceTree = "<group>"; };
 		DB35DBCF2046E6FC00024F6C /* PeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodController.swift; sourceTree = "<group>"; };
@@ -389,6 +395,7 @@
 				DB1DE8202054112300A85237 /* Monitoring Exceptions */,
 				DBCEEEDF20470059002D45CC /* Usage Goals */,
 				DBB9D831200674B800952EF7 /* UserRegistrationRequestBody.swift */,
+				DB356327205D9B74001459E2 /* PutUserRequestBody.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -572,6 +579,8 @@
 				DB9FA588201F3EF1003C1724 /* GoalDetailViewController.swift */,
 				DB1DE81C2052F76900A85237 /* MonitoringExceptionsTableViewController.swift */,
 				DB1DE81E205337C400A85237 /* MonitoringExceptionDetailViewController.swift */,
+				DB10956F205D8D1700F52D84 /* ProfileViewController.swift */,
+				DB356325205D937E001459E2 /* ChangePasswordViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -805,6 +814,7 @@
 				DBFFA106201F94A3007431B2 /* Int+AsDaysHoursMinutesSeconds.swift in Sources */,
 				DBEBC77C201E35A0006C2466 /* GetGoalProgressResponse.swift in Sources */,
 				DBF4BD8F2013BD9700FC4DCB /* PlatformUsageCollectionViewController.swift in Sources */,
+				DB109570205D8D1700F52D84 /* ProfileViewController.swift in Sources */,
 				DB1DE8222054113600A85237 /* PostMonitoringExceptionRequest.swift in Sources */,
 				DB1DE81B2052F45C00A85237 /* GetMonitoringExceptionsResponse.swift in Sources */,
 				DB2D2CDB20164776006E5BA1 /* OrganisationError.swift in Sources */,
@@ -843,12 +853,14 @@
 				DB2C26662017E5BF0010A202 /* AddClientRequest.swift in Sources */,
 				DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */,
 				DBF832FF200D13AE00F93748 /* AuthorisedClientsTableViewController.swift in Sources */,
+				DB356326205D937E001459E2 /* ChangePasswordViewController.swift in Sources */,
 				DBF832FD200D032E00F93748 /* SettingsTableViewController.swift in Sources */,
 				DB2C26682017E7130010A202 /* PostClientResponse.swift in Sources */,
 				DB5A6923200F9E970030DDE6 /* ApplicationsMetricsResponse.swift in Sources */,
 				DB29E0CA200F868F00E988DB /* String+FromSeconds.swift in Sources */,
 				DBB9D80F2006598300952EF7 /* LoginViewController.swift in Sources */,
 				DBB9D80D2006598300952EF7 /* AppDelegate.swift in Sources */,
+				DB356328205D9B74001459E2 /* PutUserRequestBody.swift in Sources */,
 				DBBCE694201DFA5F00178715 /* GoalTileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

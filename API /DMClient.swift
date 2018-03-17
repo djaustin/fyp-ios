@@ -49,6 +49,10 @@ class DMClient : Codable {
         clientController.save(client: self, toApplication: application, ownedBy: organisation, onCompletion: onCompletion)
     }
     
+    func delete(onCompletion: @escaping (Error?) -> Void){
+        clientController.delete(client: self, onCompletion: onCompletion)
+    }
+    
     static func addClient(name: String, redirectUri: String, applicationId: String, platformId: String, onCompletion: @escaping (DMClient?, Error?) -> Void) {
         let clientController = ClientController()
         clientController.addClient(name: name, redirectUri: redirectUri, applicationId: applicationId, platformId: platformId, onCompletion: onCompletion)

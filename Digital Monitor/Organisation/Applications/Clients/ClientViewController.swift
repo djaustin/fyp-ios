@@ -10,7 +10,8 @@ import UIKit
 
 class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
-    var application: DMApplication? 
+    @IBOutlet weak var deleteButton: UIButton!
+    var application: DMApplication?
     @IBOutlet weak var saveButton: UIButton!
     var secretHidden = true
     @IBAction func viewSecretButtonWasPressed(_ sender: Any) {
@@ -54,12 +55,19 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             return print("NO APPLICATION PASSED THROUGH")
         }
         
+        let name = nameTextField.text!
+        let redirectUri = redirectUriTextField.text!
+        
+        if(name.isEmpty || redirectUri.isEmpty){
+            return presentErrorAlert(withTitle: "Save Client", andText: "Please provide a name and redirect URI")
+        }
+        
         let chosenPlatform = platforms[platformPicker.selectedRow(inComponent: 0)]
         let spinner = UIViewController.displaySpinner(onView: self.view)
         if let client = client {
-            client.name = nameTextField.text!
+            client.name = name
             client.platform = chosenPlatform.id
-            client.redirectUri = redirectUriTextField.text!
+            client.redirectUri = redirectUri
             client.save(toApplication: application, onCompletion: { (error) in
                 UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
@@ -71,7 +79,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 }
             })
         } else {
-            DMClient.addClient(name: nameTextField.text!, redirectUri: redirectUriTextField.text!, applicationId: application.id!, platformId: chosenPlatform.id, onCompletion: { (client, error) in
+            DMClient.addClient(name: name, redirectUri: redirectUri, applicationId: application.id!, platformId: chosenPlatform.id, onCompletion: { (client, error) in
                 UIViewController.removeSpinner(spinner: spinner)
                 if let error = error {
                     self.presentErrorAlert(withTitle: "Save Failed", andText: String(describing: error))
@@ -81,6 +89,7 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                         self.secretHidden = false
                         UI {
                             self.saveButton.setTitle("Save", for: .normal)
+                            self.deleteButton.isHidden = false
                             self.navigationItem.title = client.name
                             self.secretTextField.text = client.secret
                             self.idTextField.text = client.clientId
@@ -129,12 +138,14 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             redirectUri = client.redirectUri
             saveButton.setTitle("Save", for: .normal)
             navigationItem.title = client.name
+            deleteButton.isHidden = false
         } else {
             name = nil
             id = nil
             redirectUri = nil
             saveButton.setTitle("Add Client", for: .normal)
             navigationItem.title = "New Client"
+            deleteButton.isHidden = true
         }
         
         nameTextField.text = name
@@ -148,6 +159,29 @@ class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         redirectUriTextField.tag = 2
     }
     
+    @IBAction func deleteButtonWasPressed(_ sender: Any) {
+        guard let client = client else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Delete Client?", message: "Are you sure you want to delete this client? All associated usage logs will also be deleted", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            let spinner = UIViewController.displaySpinner(onView: self.view)
+            client.delete(onCompletion: { (error) in
+                UIViewController.removeSpinner(spinner: spinner)
+                if let error = error {
+                    self.presentErrorAlert(withTitle: "Delete Failed", andText: String(describing: error))
+                } else {
+                    UI{
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

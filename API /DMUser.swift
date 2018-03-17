@@ -184,6 +184,23 @@ class DMUser : Codable {
         }
     }
     
+    func save(onCompletion: @escaping (Error?) -> Void) {
+        userController.save(user: self) { (error) in
+            if error == nil {
+                DMUser.authenticatedUser = self
+            }
+            onCompletion(error)
+        }
+    }
+    
+    func delete(onCompletion: @escaping (Error?) -> Void){
+        userController.delete(user: self, onCompletion: onCompletion)
+    }
+    
+    func save(password: String, onCompletion: @escaping (Error?) -> Void){
+        userController.save(password: password, forUser: self, onCompletion: onCompletion)
+    }
+    
     func getMonitoringExceptions(_ onCompletion: @escaping ([DMMonitoringException]?, Error?) -> Void){
         let controller = MonitoringExceptionController()
         controller.getMonitoringExceptions(forUser: self, onCompletion: onCompletion)

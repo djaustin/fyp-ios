@@ -113,17 +113,29 @@ class OrgansationApplicationsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let alert = UIAlertController(title: "Delete Application?", message: "Are you sure you want to delete this application? All associated clients and their usage logs will be deleted along with all user goals relating to this application.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                let spinner = UIViewController.displaySpinner(onView: self.view)
+                self.applications[indexPath.row].delete { (error) in
+                    UIViewController.removeSpinner(spinner: spinner)
+                    if let error = error {
+                        self.presentErrorAlert(withTitle: "Delete Failed", andText: String(describing: error))
+                    } else {
+                        self.applications.remove(at: indexPath.row)
+                        UI{
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

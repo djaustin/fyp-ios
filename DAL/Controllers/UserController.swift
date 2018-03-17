@@ -15,6 +15,7 @@ class UserController {
     
     
     let usersEndpoint = URL(string: "https://digitalmonitor.tk/api/users")!
+    let usersIdTemplate = "https://digitalmonitor.tk/api/users/%@"
     let userClientsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients"
     let userClientByIdEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/clients/%@"
     let userOverallMetricsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/metrics/overall"
@@ -674,6 +675,70 @@ class UserController {
         }
     }
     
+    func save(user: DMUser, onCompletion: @escaping (Error?) -> Void){
+        let jsonEncoder = JSONEncoder()
+        guard let firstName = user.firstName else {
+            return onCompletion(UserError.RegistrationError.missingFirstName)
+        }
+        guard let userId = user.id else {
+            return onCompletion(UserError.QueryError.userNotSaved)
+        }
+        guard let lastName = user.lastName else {
+            return onCompletion(UserError.RegistrationError.missingLastName)
+        }
+        guard let url = URL(string: String(format: usersIdTemplate, userId)) else {
+            return onCompletion(RequestError.urlError)
+        }
+        let requestBody = PutUserRequestBody(firstName: firstName, lastName: lastName, email: nil, password: nil)
+        var req = oauth2PasswordGrant.request(forURL: url)
+        
+        req.httpMethod = "PUT"
+        guard let requestBodyJSON = try? jsonEncoder.encode(requestBody) else {
+            return onCompletion(RequestError.jsonEncodingError)
+        }
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        req.httpBody = requestBodyJSON
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2ClientCredentials)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
+    func delete(user: DMUser, onCompletion: @escaping (Error?) -> Void){
+        guard let userId = user.id else {
+            return onCompletion(UserError.QueryError.userNotSaved)
+        }
+       
+        guard let url = URL(string: String(format: usersIdTemplate, userId)) else {
+            return onCompletion(RequestError.urlError)
+        }
+        var req = oauth2PasswordGrant.request(forURL: url)
+        req.httpMethod = "DELETE"
+        let loader = OAuth2DataLoader(oauth2: oauth2ClientCredentials)
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+    
     func getPlatformMetrics(forApplication application: DMApplication, forUser user: DMUser, withQuery query: [String:String], onCompletion: @escaping ([PlatformUsageData]?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
         if !DMUser.userIsLoggedIn {
@@ -773,4 +838,40 @@ class UserController {
             }
         }
     }
+    
+    func save(password: String, forUser user: DMUser, onCompletion: @escaping (Error?) -> Void){
+        let jsonEncoder = JSONEncoder()
+       
+        guard let userId = user.id else {
+            return onCompletion(UserError.QueryError.userNotSaved)
+        }
+        guard let url = URL(string: String(format: usersIdTemplate, userId)) else {
+            return onCompletion(RequestError.urlError)
+        }
+        let requestBody = PutUserRequestBody(firstName: nil, lastName: nil, email: nil, password: password)
+        var req = oauth2PasswordGrant.request(forURL: url)
+        
+        req.httpMethod = "PUT"
+        guard let requestBodyJSON = try? jsonEncoder.encode(requestBody) else {
+            return onCompletion(RequestError.jsonEncodingError)
+        }
+        
+        req.setValue("application/json", forHTTPHeaderField: "content-type")
+        req.httpBody = requestBodyJSON
+        
+        let loader = OAuth2DataLoader(oauth2: oauth2ClientCredentials)
+        
+        loader.perform(request: req) { (oauthResponse) in
+            if let error = oauthResponse.error {
+                onCompletion(error)
+            } else {
+                if oauthResponse.response.statusCode == 200 {
+                    onCompletion(nil)
+                } else {
+                    onCompletion(ResponseError.responseNotOK)
+                }
+            }
+        }
+    }
+        
 }

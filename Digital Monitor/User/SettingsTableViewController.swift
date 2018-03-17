@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
-    var menuItems = ["Authorised Clients"]
+    var menuItems = ["Profile", "Authorised Clients"]
     
     @IBAction func logoutButtonWasPressed(_ sender: Any) {
         DMUser.logout()
@@ -42,6 +42,8 @@ class SettingsTableViewController: UITableViewController {
         switch menuItems[indexPath.row] {
         case "Authorised Clients":
             performSegue(withIdentifier: "openAuthorisedClients", sender: self)
+        case "Profile":
+            performSegue(withIdentifier: "showProfile", sender: self)
         default:
             return
         }
