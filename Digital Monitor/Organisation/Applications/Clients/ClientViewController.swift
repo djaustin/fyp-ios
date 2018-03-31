@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for client detail view
 class ClientViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var deleteButton: UIButton!

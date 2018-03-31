@@ -9,11 +9,18 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller to interact with the web API for plaform related endpoints
 class PlatformController {
     
+    /// URL endpoint
     let platformsEndpoint = "https://digitalmonitor.tk/api/platforms"
+    
+    /// Manager for OAuth 2 access credentials
     let oauth2Credentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
     
+    /// Construct, send, and parse a request and response for platforms from the web API
+    ///
+    /// - Parameter onCompletion: callback function to be called on completion
     func getPlatforms(_ onCompletion: @escaping ([DMPlatform]?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
         

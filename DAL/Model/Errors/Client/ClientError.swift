@@ -8,10 +8,18 @@
 
 import Foundation
 
+/// Errors relating to client operations
 enum ClientError : Error {
+    
+    /// Errors relating to registration of new clients
     enum RegistrationError : Error, CustomStringConvertible {
+        
+        // Errors
         case missingSecret
         case missingClientId
+        
+        
+        /// Text description of errors
         public var description: String {
             switch self {
             case .missingSecret:

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for the goal detail view
 class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -71,7 +72,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
     }
 
     var user: DMUser!
@@ -102,7 +102,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                         UI {
                             self.applicationPicker.reloadAllComponents()
                             self.populateControlsWithProvidedGoal()
-                            // TODO: Maybe set the chosen application here as well
                         }
                     }
                 }
@@ -225,7 +224,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             total += hours * 3600
         }
         if let minutes = Int(minutesTextField.text!){
-            debugPrint("MINUTES TEXT FIELD HAS TEXT", minutes)
             total += minutes * 60
         }
         return total
@@ -287,7 +285,6 @@ class GoalDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

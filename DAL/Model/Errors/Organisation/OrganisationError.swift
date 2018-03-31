@@ -8,9 +8,15 @@
 
 import Foundation
 
+/// Errors relating to organisation operations
 enum OrganisationError : Error {
+    
+    /// Errors relating to organisation registration
     enum RegistrationError : Error, CustomStringConvertible {
+        // Errors
         case missingPassword
+        
+        /// Text description of the errors
         public var description: String {
             switch self {
             case .missingPassword:
@@ -19,9 +25,15 @@ enum OrganisationError : Error {
         }
     }
     
+    /// Errors relating to querying of organisations
     enum QueryError : Error, CustomStringConvertible {
+        
+        // Errors
         case organisationNotFound
         case missingId
+        
+        
+        /// Text description of errors
         public var description: String {
             switch self {
             case .missingId:

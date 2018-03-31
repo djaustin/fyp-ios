@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of GET request to monitoring exceptions endpoint
 struct GetMonitoringExceptionsResponse : Decodable {
     var status: String
     var data: GetMonitoringExceptionsResponseData

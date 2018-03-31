@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of GET request to applications metrics endpoint
 struct ApplicationsMetricsResponse : Codable {
     let status: String
     let data: [ApplicationUsageData]

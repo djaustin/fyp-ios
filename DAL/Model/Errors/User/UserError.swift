@@ -8,13 +8,19 @@
 
 import Foundation
 
+/// Errors relating to user operations
 enum UserError : Error {
+    
+    /// Errors relating to registration of users
     enum RegistrationError : Error, CustomStringConvertible {
+        
+        // Errors
         case missingEmail
         case missingPassword
         case missingFirstName
         case missingLastName
         
+        /// Text description of errors
         public var description: String {
             switch self {
             case .missingEmail:
@@ -29,9 +35,14 @@ enum UserError : Error {
         }
     }
     
+    /// Errors relating to querying of users
     enum QueryError : Error, CustomStringConvertible {
+        
+        // Errors
         case userNotFound
         case userNotSaved
+        
+        /// Text description of errors
         public var description: String {
             switch self {
             case .userNotFound:
@@ -41,13 +52,18 @@ enum UserError : Error {
             }
         }
     }
+    
+    /// Errors relating to authentication of users
     enum AuthenticationError : Error, CustomStringConvertible {
+        
+        // Errors
         case userNotLoggedIn
+        
+        /// Text description of errors
         public var description: String {
             switch self {
             case .userNotLoggedIn:
                 return "User is not logged in"
-            
             }
         }
     }

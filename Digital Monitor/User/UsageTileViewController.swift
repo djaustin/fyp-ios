@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for Usage Tile View
 class UsageTileViewController: UIViewController {
 
     @IBOutlet weak var fromDatePicker: UIDatePicker!
@@ -28,8 +29,6 @@ class UsageTileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         user = DMUser.authenticatedUser
-    
-        // Do any additional setup after loading the view.
     }
     
     func setupViews(){
@@ -72,13 +71,20 @@ class UsageTileViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func getUsageOverviewData(){
+        let fromDate = fromDatePicker.date.startOfDay
+        let toDate = toDatePicker.date.endOfDay
         
-        let fromTime = Int(fromDatePicker.date.timeIntervalSince1970 * 1000)
-        let toTime = Int(toDatePicker.date.timeIntervalSince1970 * 1000)
+        let fromTime = Int(fromDate.timeIntervalSince1970 * 1000)
+        let toTime: Int
+        if let toDate = toDate {
+            toTime = Int(toDate.timeIntervalSince1970 * 1000)
+        } else {
+            toTime = Int(toDatePicker.date.timeIntervalSince1970 * 1000)
+        }
+        
         
         let query = [
             "fromTime": String(fromTime),

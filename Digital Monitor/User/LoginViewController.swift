@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for the Login View
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtEmail: UITextField!
@@ -62,7 +63,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

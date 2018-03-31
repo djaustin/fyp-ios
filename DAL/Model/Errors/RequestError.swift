@@ -8,9 +8,14 @@
 
 import Foundation
 
+/// Errors relating to HTTP requests made to the web API
 enum RequestError : Error, CustomStringConvertible {
+    
+    // Errors
     case jsonEncodingError
     case urlError
+    
+    /// Text description of errors
     public var description: String {
         switch self {
         case .jsonEncodingError:

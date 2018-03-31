@@ -10,6 +10,10 @@ import UIKit
 import p2_OAuth2
 import UserNotifications
 
+
+/// Global utility function that runs the provided code block on the UI thread
+///
+/// - Parameter block: Code block to run on the UI thread
 func UI(_ block: @escaping ()->Void) {
     DispatchQueue.main.async(execute: block)
 }
@@ -20,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
+    /// Runs when the application is finished launching. This attempts to generate a client access token using the 'Client Credentials' OAuth 2 flow
+    /// It also requests notification permission from the user to allow usage goal notifications to be received
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.authorize { (json, error) in
@@ -28,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // Request permission from the user to send them notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if granted {
                 UI {
@@ -39,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // Run when the user authorises notifications on the app. Saves the APNs device token so that it can be sent to the API on user login
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print(token)
         // Save the token in the user defaults for later use
         UserDefaults.standard.setValue(token, forKey: "deviceToken")
     }
@@ -58,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Remove existing tokens and attempt to retrieve new tokens
         DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.forgetTokens();
         DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials.authorize { (json, error) in
             if let error = error {

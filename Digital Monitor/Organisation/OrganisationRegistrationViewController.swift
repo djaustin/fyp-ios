@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for organisation registration view
 class OrganisationRegistrationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtPassword: UITextField!
@@ -43,12 +44,10 @@ class OrganisationRegistrationViewController: UIViewController, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

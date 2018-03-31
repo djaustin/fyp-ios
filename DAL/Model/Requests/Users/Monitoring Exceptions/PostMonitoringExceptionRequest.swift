@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+/// Request body of POST request to monitoring exceptions endpoint
 struct PostMonitoringExceptionRequest : Encodable{
     var startTime: Int
     var endTime: Int

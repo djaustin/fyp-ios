@@ -9,10 +9,16 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller to interact with the web API for monitoring exception related endpoints
 class MonitoringExceptionController {
     
+    /// Endpoint URL template
     let monitoringExceptionsEndpointTemplate = "https://digitalmonitor.tk/api/users/%@/monitoring-exceptions/"
+    
+    /// Manager for OAuth 2 access tokens
     let oauth2Credentials = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
+    
+    /// Decoder to convert from JSON to swift objects
     let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         let formatter = DateFormatter()
@@ -20,8 +26,15 @@ class MonitoringExceptionController {
         jsonDecoder.dateDecodingStrategy = .formatted(formatter)
         return jsonDecoder
     }()
+    
+    /// Encoder to convert from swift object to JSON
     let jsonEncoder = JSONEncoder()
     
+    /// Construct, send, and parse a request and response for monitoring exceptions from the web API
+    ///
+    /// - Parameters:
+    ///   - user: user for which to retrieve monitoring exceptions
+    ///   - onCompletion: callback function to be called on completion
     func getMonitoringExceptions(forUser user: DMUser, onCompletion: @escaping ([DMMonitoringException]?, Error?) -> Void){
         
         guard let userId = user.id else {
@@ -68,6 +81,12 @@ class MonitoringExceptionController {
         }
     }
     
+    
+    /// Construct, send, and parse a request and response for adding a new monitoring exceptio from the web API
+    ///
+    /// - Parameters:
+    ///   - exception: exception to be added
+    ///   - onCompletion: callback function to be called on completion
     func addNew(exception: DMMonitoringException, onCompletion: @escaping (DMMonitoringException?, Error?) -> Void) {
         guard let url = URL(string: String(format: monitoringExceptionsEndpointTemplate, exception.user)) else {
             return onCompletion(nil, RequestError.urlError)
@@ -111,6 +130,11 @@ class MonitoringExceptionController {
         }
     }
     
+    /// Construct, send, and parse a request and response for saving monitoring from the web API
+    ///
+    /// - Parameters:
+    ///   - exception: monitoring exception to be saved
+    ///   - onCompletion: callback function to be called on completion
     func save(exception: DMMonitoringException, onCompletion: @escaping (Error?) -> Void) {
         
         guard let exceptionId = exception.id else {
@@ -149,6 +173,11 @@ class MonitoringExceptionController {
         }
     }
     
+    /// Construct, send, and parse a request and response for deleting a monitoring exception from the web API
+    ///
+    /// - Parameters:
+    ///   - exception: exception to be deleted
+    ///   - onCompletion: callback function to be called on completion
     func delete(exception: DMMonitoringException, onCompletion: @escaping (Error?) -> Void) {
         guard let exceptionId = exception.id else {
             return onCompletion(MonitoringExceptionError.SaveError.missingId)

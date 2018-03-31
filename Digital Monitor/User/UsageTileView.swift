@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom collection view cell used as a reusable component for usage views
 class UsageTileView: UICollectionViewCell {
 
     @IBOutlet weak var informationLabel: UILabel!

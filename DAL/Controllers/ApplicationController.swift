@@ -9,15 +9,25 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller to interact with the web API for application related endpoints
 class ApplicationController{
+    
+    // Endpoint URLS and templates
     let organisationApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/organisations/%@/applications"
     let applicationPlatformMetricsByIdTemplate = "https://digitalmonitor.tk/api/users/%@/applications"
     let applicationsEndpoint = URL(string: "https://digitalmonitor.tk/api/applications/")!
     let applicationsByIdEndpointTemplate =  "https://digitalmonitor.tk/api/applications/%@"
+    
+    // Manager for OAuth 2 access tokens
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
 
     
+    /// Construct, send, and parse a request and response organisation applications from the web API
+    ///
+    /// - Parameters:
+    ///   - organisation: organisation for which to get the applications
+    ///   - onCompletion: callback function to be called on completion
     func getApplications(forOrganisation organisation: DMOrganisation, onCompletion: @escaping ([DMApplication]?, Error?) -> Void){
         
         guard let organisationId = organisation.id else {
@@ -55,6 +65,12 @@ class ApplicationController{
         }
     }
     
+    /// Construct, send, and parse a request and response for adding a new application to an organisation from the web API
+    ///
+    /// - Parameters:
+    ///   - name: name of application to be added to the organisation
+    ///   - organisation: organisation to which to add the application
+    ///   - onCompletion: callback function to be called on completion
     func addApplication(withName name: String, toOrganisation organisation: DMOrganisation, onCompletion: @escaping (DMApplication?, Error?) -> Void){
         let jsonEncoder = JSONEncoder()
         let jsonDecoder = JSONDecoder()
@@ -105,6 +121,11 @@ class ApplicationController{
         
     }
     
+    /// Construct, send, and parse a request and response for application by ID query from the web API
+    ///
+    /// - Parameters:
+    ///   - id: ID of application to search for
+    ///   - onCompletion: callback function to be called on completion
     func getApplication(byId id: String, onCompletion: @escaping (DMApplication?, Error?) -> Void) {
         let jsonDecoder = JSONDecoder()
         guard let url = URL(string: String(format: applicationsByIdEndpointTemplate, id)) else {
@@ -135,6 +156,11 @@ class ApplicationController{
         }
     }
     
+    /// Construct, send, and parse a request and response for deleting an organisation application from the web API
+    ///
+    /// - Parameters:
+    ///   - application: application to be deleted
+    ///   - onCompletion: callback function to be called on completion
     func delete(application: DMApplication, onCompletion: @escaping (Error?) -> Void) {
         guard let orgId = DMOrganisation.authenticatedOrganisation?.id else {
             return onCompletion(OrganisationError.QueryError.missingId)

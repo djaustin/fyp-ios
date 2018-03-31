@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of POST request to client endpoint
 struct PostClientResponse : Codable {
     var status: String
     var data: PostClientResponseData

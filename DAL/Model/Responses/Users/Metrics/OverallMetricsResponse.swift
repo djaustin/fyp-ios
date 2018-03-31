@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of GET request to overall metrics endpoint
 struct OverallMetricsResponse : Codable {
     let status : String
     let data : OverallMetricsResponseData

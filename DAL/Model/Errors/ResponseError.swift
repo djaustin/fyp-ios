@@ -8,12 +8,17 @@
 
 import Foundation
 
+/// Error relating to HTTP responses from the web API
 enum ResponseError : Error, CustomStringConvertible {
+    
+    // Errors
     case nilResponse
     case responseDecodeError
     case responseNotOK
     case noResponseData
     case errorOnStatusOk
+    
+    /// Text descriptions of errors
     public var description: String {
         switch self {
         case .nilResponse:

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for monitoring exception detail view
 class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -66,7 +67,6 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
     }
     
     var user: DMUser!
@@ -216,7 +216,6 @@ class MonitoringExceptionDetailViewController: UIViewController, UIPickerViewDat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

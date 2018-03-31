@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
+    /// Presents an alert view dialog on the view controller with the title and text provided
+    ///
+    /// - Parameters:
+    ///   - title: The title of the dialog
+    ///   - text: The text in the dialog box
     func presentErrorAlert(withTitle title: String, andText text: String){
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

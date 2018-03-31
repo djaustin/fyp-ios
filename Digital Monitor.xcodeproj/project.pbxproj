@@ -48,7 +48,6 @@
 		DB35DBD82046EAFC00024F6C /* GetPlatformsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35DBD72046EAFC00024F6C /* GetPlatformsResponse.swift */; };
 		DB4DA83D2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4DA83C2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift */; };
 		DB4DA83F2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4DA83E2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift */; };
-		DB5272672007BC35008DAD30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272662007BC35008DAD30 /* User.swift */; };
 		DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5272682007BEF5008DAD30 /* DMOrganisation.swift */; };
 		DB52726B2007C01E008DAD30 /* DMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726A2007C01E008DAD30 /* DMApplication.swift */; };
 		DB52726F2008DD63008DAD30 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52726E2008DD63008DAD30 /* RequestError.swift */; };
@@ -81,8 +80,6 @@
 		DBBCE695201DFA5F00178715 /* GoalTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBBCE693201DFA5E00178715 /* GoalTileView.xib */; };
 		DBBCE697201E01F800178715 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCE696201E01F800178715 /* Date+.swift */; };
 		DBBD09122051A62F000A1694 /* GetApplicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD09112051A62F000A1694 /* GetApplicationResponse.swift */; };
-		DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */; };
-		DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */; };
 		DBCB8E29200CC8C100F5D58E /* GetUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */; };
 		DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */; };
 		DBCEEEE120470073002D45CC /* PostUsageGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCEEEE020470073002D45CC /* PostUsageGoalRequest.swift */; };
@@ -143,7 +140,6 @@
 		DB35DBD72046EAFC00024F6C /* GetPlatformsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlatformsResponse.swift; sourceTree = "<group>"; };
 		DB4DA83C2032366B0074A4F1 /* PlatformApplicationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformApplicationsCollectionViewController.swift; sourceTree = "<group>"; };
 		DB4DA83E2032519A0074A4F1 /* ApplicationPlatformCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPlatformCollectionViewController.swift; sourceTree = "<group>"; };
-		DB5272662007BC35008DAD30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5272682007BEF5008DAD30 /* DMOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOrganisation.swift; sourceTree = "<group>"; };
 		DB52726A2007C01E008DAD30 /* DMApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMApplication.swift; sourceTree = "<group>"; };
 		DB52726E2008DD63008DAD30 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -180,8 +176,6 @@
 		DBBCE693201DFA5E00178715 /* GoalTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTileView.xib; sourceTree = "<group>"; };
 		DBBCE696201E01F800178715 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DBBD09112051A62F000A1694 /* GetApplicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApplicationResponse.swift; sourceTree = "<group>"; };
-		DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOwnerExchangeResponse.swift; sourceTree = "<group>"; };
-		DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponse.swift; sourceTree = "<group>"; };
 		DBCB8E28200CC8C100F5D58E /* GetUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponse.swift; sourceTree = "<group>"; };
 		DBCB8E2C200CE86A00F5D58E /* DMUsageLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUsageLog.swift; sourceTree = "<group>"; };
 		DBCEEEE020470073002D45CC /* PostUsageGoalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUsageGoalRequest.swift; sourceTree = "<group>"; };
@@ -214,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				DB16BC3920075FC7009D3294 /* Errors */,
-				DB16BC3720075F0C009D3294 /* Database */,
 				DB16BC3620075EFD009D3294 /* Responses */,
 				DB16BC3520075EEA009D3294 /* Requests */,
 			);
@@ -241,25 +234,9 @@
 				DB8F33DE201740C100FC6973 /* Applications */,
 				DB2D2CD62016428C006E5BA1 /* Organisations */,
 				DB956671200D1E2E00CCB9D6 /* Clients */,
-				DBCB8E23200BCBA400F5D58E /* OAuth2 */,
 				DB527274200A3A8C008DAD30 /* Users */,
 			);
 			path = Responses;
-			sourceTree = "<group>";
-		};
-		DB16BC3720075F0C009D3294 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				DB5272662007BC35008DAD30 /* User.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		DB16BC3820075F86009D3294 /* Connection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Connection;
 			sourceTree = "<group>";
 		};
 		DB16BC3920075FC7009D3294 /* Errors */ = {
@@ -270,7 +247,6 @@
 				DB2C26612017D78D0010A202 /* Client */,
 				DB2C265B201797A40010A202 /* Application */,
 				DB2D2CD920164757006E5BA1 /* Organisation */,
-				DB527282200B9642008DAD30 /* Request */,
 				DB527281200B9638008DAD30 /* User */,
 				DB52726E2008DD63008DAD30 /* RequestError.swift */,
 				DB5272702008F0A7008DAD30 /* ResponseError.swift */,
@@ -440,13 +416,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		DB527282200B9642008DAD30 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
 		DB7329BA20288C7800C0FA5C /* Device Tokens */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,19 +495,9 @@
 			isa = PBXGroup;
 			children = (
 				DB527278200A678F008DAD30 /* Controllers */,
-				DB16BC3820075F86009D3294 /* Connection */,
 				DB16BC3420075EE2009D3294 /* Model */,
 			);
 			path = DAL;
-			sourceTree = "<group>";
-		};
-		DBCB8E23200BCBA400F5D58E /* OAuth2 */ = {
-			isa = PBXGroup;
-			children = (
-				DBCB8E24200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift */,
-				DBCB8E26200BCC5E00F5D58E /* TokenExchangeResponse.swift */,
-			);
-			path = OAuth2;
 			sourceTree = "<group>";
 		};
 		DBCEEEDF20470059002D45CC /* Usage Goals */ = {
@@ -802,7 +761,6 @@
 				DB16BC3B2007650D009D3294 /* DigitalMonitorAPI.swift in Sources */,
 				DB35DBD02046E6FC00024F6C /* PeriodController.swift in Sources */,
 				DB1DE8152052F33F00A85237 /* MonitoringExceptionController.swift in Sources */,
-				DB5272672007BC35008DAD30 /* User.swift in Sources */,
 				DB1DE8132052F11200A85237 /* DMMonitoringException.swift in Sources */,
 				DB52727B200A67B5008DAD30 /* UserController.swift in Sources */,
 				DB1DE8242054141B00A85237 /* PostMonitoringExceptionResponse.swift in Sources */,
@@ -826,7 +784,6 @@
 				DBB9D81F20065C8100952EF7 /* RegisterViewController.swift in Sources */,
 				DB52727E200A74CF008DAD30 /* DMUser.swift in Sources */,
 				DB35DBD52046EA7900024F6C /* PlatformController.swift in Sources */,
-				DBCB8E27200BCC5E00F5D58E /* TokenExchangeResponse.swift in Sources */,
 				DB2C265A201796320010A202 /* DMClient.swift in Sources */,
 				DB2C2656201791F80010A202 /* ApplicationClientsTableViewController.swift in Sources */,
 				DBCB8E2D200CE86A00F5D58E /* DMUsageLog.swift in Sources */,
@@ -844,7 +801,6 @@
 				DBDBE39F20178CDE007BA1DD /* AddApplicationResponse.swift in Sources */,
 				DB5272692007BEF5008DAD30 /* DMOrganisation.swift in Sources */,
 				DB35DBCE2046092100024F6C /* DMPlatform.swift in Sources */,
-				DBCB8E25200BCBEA00F5D58E /* ResourceOwnerExchangeResponse.swift in Sources */,
 				DB35DBD82046EAFC00024F6C /* GetPlatformsResponse.swift in Sources */,
 				DB8F33DD20173ED900FC6973 /* ApplicationController.swift in Sources */,
 				DB0AE17F200E494F006B1AC7 /* RevokeClientAccessResponse.swift in Sources */,

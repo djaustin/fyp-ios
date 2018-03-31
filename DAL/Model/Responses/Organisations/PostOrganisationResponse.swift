@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/// Response body of POST request to organisation endpoint
 struct PostOrganisationResponse : Codable {
     var status: String
     var data: PostOrganisationResponseData

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of GET request to the platforms endpoint
 struct GetPlatformsResponse : Codable {
     var status: String
     var data: GetPlatformsResponseData

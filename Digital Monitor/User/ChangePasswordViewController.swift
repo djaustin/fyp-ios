@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for the change password view
 class ChangePasswordViewController: UIViewController {
     var user: DMUser!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
@@ -19,7 +20,6 @@ class ChangePasswordViewController: UIViewController {
             return
         }
         self.user = user
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func changePasswordButtonWasPressed(_ sender: Any) {
@@ -46,18 +46,6 @@ class ChangePasswordViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

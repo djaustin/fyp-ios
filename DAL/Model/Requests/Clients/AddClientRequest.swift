@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of POST request to client endpoint
 struct AddClientRequest : Encodable {
     let name: String
     let redirectUri: String

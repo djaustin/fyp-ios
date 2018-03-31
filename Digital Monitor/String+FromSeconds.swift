@@ -9,15 +9,25 @@
 import Foundation
 
 extension String {
+    
+    /// Convert seconds as integer to string displaying time in human readable format
+    ///
+    /// - Parameter seconds: number of seconds as integer
     init(digitalClockFormatFromSeconds seconds: Int){
         func hoursMinutesSeconds(fromSeconds seconds: Int) -> (Int, Int, Int) {
             return (seconds / 3600, (seconds % 3600) / 60, seconds % 60)
         }
         
         let (h,m,s) = hoursMinutesSeconds(fromSeconds: seconds)
-        
-        let timeString = "\(h)h \(m)m"
-
+        var timeString = "\(h)h \(m)m"
+        if h < 1 {
+            if m < 1 {
+                timeString = "\(s)s"
+            } else {
+                timeString = "\(m)m \(s)s"
+            }
+        }
+    
         self.init(timeString)
         
     }

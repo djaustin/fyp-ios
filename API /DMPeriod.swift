@@ -8,12 +8,16 @@
 
 import Foundation
 
+/// Represents a period in the Digital Monitor API
 struct DMPeriod : Codable{
+    
+    // Member variables
     let name: String
     let duration: Int
     let key: String
     let id: String
     
+    // coding keys to convert between object and JSON
     enum CodingKeys: String, CodingKey {
         case name
         case key
@@ -21,6 +25,9 @@ struct DMPeriod : Codable{
         case id = "_id"
     }
     
+    /// Get all periods from the web service
+    ///
+    /// - Parameter onCompletion: callback function to be called on completion
     static func getPeriods(_ onCompletion: @escaping ([DMPeriod]?, Error?) -> Void){
         let controller = PeriodController()
         controller.getPeriods(onCompletion)

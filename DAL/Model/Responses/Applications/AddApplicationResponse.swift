@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of POST request to applications endpoint
 struct PostApplicationResponse : Codable {
     var status: String
     var data: PostApplicationResponseData

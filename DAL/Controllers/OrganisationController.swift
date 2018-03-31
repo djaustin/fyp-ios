@@ -9,12 +9,21 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller to interact with the web API for organisation related calls
 class OrganisationController{
+    // Organisation resource endpoint URL
     let organisationsEndpoint = URL(string: "https://digitalmonitor.tk/api/organisations")!
     
+    // Objects to manage OAuth 2 access tokens
     let oauth2ClientCredentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
     let oauth2PasswordGrant = DigitalMonitorAPI.sharedInstance.oauth2PasswordGrant
     
+    
+    /// Construct, send, and parse a request and response for organisation registration from the web API
+    ///
+    /// - Parameters:
+    ///   - organisation: organisation to register
+    ///   - onCompletion: callback function to be called on completion
     func register(organisation: DMOrganisation, onCompletion: @escaping (Bool?, Error?) -> Void){
         let jsonEncoder = JSONEncoder()
         let jsonDecoder = JSONDecoder()
@@ -61,6 +70,11 @@ class OrganisationController{
         }
     }
     
+    /// Construct, send, and parse a request and response for an organisation email query from the web API
+    ///
+    /// - Parameters:
+    ///   - email: email to search for
+    ///   - onCompletion: callback function on completion
     func getOrganisation(byEmail email: String, onCompletion: @escaping (DMOrganisation?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
         var urlComponents = URLComponents(url: organisationsEndpoint, resolvingAgainstBaseURL: false)!
@@ -95,6 +109,12 @@ class OrganisationController{
         }
     }
     
+    /// Construct, send, and parse a request and response for organisation login using the OAuth 2 from the web API
+    ///
+    /// - Parameters:
+    ///   - email: organisation email used for authentication
+    ///   - password: organisation password used for
+    ///   - onCompletion: callback function to be called on completion
     func login(email: String, password: String, onCompletion: @escaping (DMOrganisation?, Error?) -> Void) {
         oauth2PasswordGrant.forgetTokens()
         oauth2PasswordGrant.username = email

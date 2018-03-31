@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 
+/// Custom collection view cell used as reusable component in usage goal collection view
 class GoalTileView: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!

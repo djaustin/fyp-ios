@@ -9,10 +9,13 @@
 import Foundation
 
 extension Date {
+    
+    /// Get the start of the day from the date
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
     
+    /// Get the end of the day from the date
     var endOfDay: Date? {
         var components = DateComponents()
         components.day = 1
@@ -20,6 +23,10 @@ extension Date {
         return Calendar.current.date(byAdding: components, to: startOfDay)
     }
     
+    /// Convert the date into a string using the format provided
+    ///
+    /// - Parameter format: String format to produce from date
+    /// - Returns: String of date
     func toString( dateFormat format  : String ) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for organisation login view
 class OrganisationLoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var lblStatus: UILabel!
@@ -42,12 +43,10 @@ class OrganisationLoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

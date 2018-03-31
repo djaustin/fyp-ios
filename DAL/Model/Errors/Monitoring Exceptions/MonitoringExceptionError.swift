@@ -8,9 +8,15 @@
 
 import Foundation
 
+/// Errors relating to monitoring exception operations
 enum MonitoringExceptionError : Error {
+    
+    /// Errors relating to saving of monitoring exceptions
     enum SaveError : Error, CustomStringConvertible {
+        // Errors
         case missingId
+        
+        /// Text descriptions of the errors
         public var description: String {
             switch self {
             case .missingId:

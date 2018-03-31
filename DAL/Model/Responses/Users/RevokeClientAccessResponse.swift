@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of DELETE request to user clients endpoint
 struct RevokeClientAccessResponse : Codable {
     var status: String
     var data: String?

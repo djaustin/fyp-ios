@@ -9,11 +9,22 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller to interact with the web API for device token related endpoints
 class DeviceTokenController {
 
+    // URL endpoint templaye
     let organisationApplicationsEndpointTemplate = "https://digitalmonitor.tk/api/device-tokens/%@"
+    
+    // Manager for OAuth access tokens
     let oauth2Credentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
     
+    
+    /// Construct, send, and parse a request and response for associating a device token with a user from the web API
+    ///
+    /// - Parameters:
+    ///   - token: APNs device token of the current device
+    ///   - user: user to associate with the device token
+    ///   - onCompletion: callback function to called on completion
     func associate(token: String, withUser user: DMUser, onCompletion: @escaping (Error?) -> Void){
         let jsonEncoder = JSONEncoder()
 

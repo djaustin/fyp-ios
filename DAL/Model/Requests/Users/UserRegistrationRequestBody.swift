@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of POST request to users endpoint
 struct UserRegistrationRequestBody : Encodable {
     let firstName: String
     let lastName: String

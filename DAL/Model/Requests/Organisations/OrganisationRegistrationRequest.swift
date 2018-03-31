@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of POST request to organisations endpoint
 struct OrganisationRegistrationRequestBody : Encodable {
     let name: String
     let email: String

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of PUT request to the users endpoint
 struct PutUserRequestBody : Encodable {
     let firstName: String?
     let lastName: String?

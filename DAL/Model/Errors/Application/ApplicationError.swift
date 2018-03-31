@@ -8,10 +8,19 @@
 
 import Foundation
 
+
+/// Errors relating to application operations
 enum ApplicationError : Error {
+    
+    /// Errors relating to querying for applications
     enum QueryError : Error, CustomStringConvertible {
+        
+        // Errors
         case missingId
         case applicationNotFound
+        
+        
+        /// Text description of errors
         public var description: String {
             switch self {
             case .missingId:

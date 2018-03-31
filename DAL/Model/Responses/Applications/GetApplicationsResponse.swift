@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/// Response body of GET request to applications endpoint
 struct GetApplicationsResponse : Codable {
     var status: String
     var data: GetApplicationsResponseData

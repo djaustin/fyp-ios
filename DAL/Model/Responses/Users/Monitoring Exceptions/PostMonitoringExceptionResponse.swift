@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/// Response body of POST request to monitoring exceptions endpoint
 struct PostMonitoringExceptionResponse : Codable {
     var status: String
     var data: PostMonitoringExceptionResponseData

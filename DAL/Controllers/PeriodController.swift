@@ -9,11 +9,19 @@
 import Foundation
 import p2_OAuth2
 
+/// Controller used to interact with the web API for period related endpoints
 class PeriodController {
     
+    
+    /// URL endpoint
     let periodsEndpoint = "https://digitalmonitor.tk/api/periods"
+    
+    /// manager for OAuth access tokens
     let oauth2Credentials = DigitalMonitorAPI.sharedInstance.oauth2ClientCredentials
     
+    /// Construct, send, and parse a request and response for periods from the web API
+    ///
+    /// - Parameter onCompletion: callback function to be called on completion
     func getPeriods(_ onCompletion: @escaping ([DMPeriod]?, Error?) -> Void){
         let jsonDecoder = JSONDecoder()
 

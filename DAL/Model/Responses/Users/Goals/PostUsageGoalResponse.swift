@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of POST request to usage goal endpoint
 struct PostUsageGoalResponse : Codable {
     var status: String
     var data: PostUsageGoalData

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Response body of GET request to usage goal progress endpoint
 struct GetGoalProgressResponse : Codable {
     var status: String
     var data: GetGoalProgressResponseData

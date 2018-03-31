@@ -8,12 +8,16 @@
 
 import Foundation
 
+/// Represents a user usage log in the Digital Monitor API
 struct DMUsageLog : Codable {
+    
+    // Member variables
     var id: String
     var userId: String
     var clientId: String
     var log: DMUsageLogLog
    
+    // Coding keys used to convert between object and JSON
     private enum CodingKeys: String, CodingKey {
         case userId
         case clientId
@@ -21,6 +25,7 @@ struct DMUsageLog : Codable {
         case id = "_id"
     }
     
+    // Log details 
     struct DMUsageLogLog : Codable {
         var startTime: Date
         var endTime: Date

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of POST request to usage goal endpoint
 struct PostUsageGoalRequest : Codable {
     init(duration: Int, periodId: String, platformId: String?, applicationId: String?) {
         self.duration = duration

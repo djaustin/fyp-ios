@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Request body of POST request to applications endpoint
 struct AddApplicationRequest : Encodable {
     let name: String
 }
